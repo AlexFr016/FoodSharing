@@ -26,13 +26,13 @@ const pages = [
 const settings = ['Личный кабинет', 'Избранное', 'Выйти'];
 
 export default function NavigationBar(): JSX.Element {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
-  const handleOpenNavMenu = (event) => {
+  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event) => {
+  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
   };
 
@@ -48,11 +48,9 @@ export default function NavigationBar(): JSX.Element {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <FastfoodOutlinedIcon
-            sx={{ display: { xs: 'none', md: 'flex' }, mr: 2 }}
-          />
+          <FastfoodOutlinedIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
-            variant="h5"
+            variant="h6"
             noWrap
             component="a"
             href="/"

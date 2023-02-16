@@ -8,8 +8,7 @@ function App(): JSX.Element {
     <Container>
       <NavigationBar />
       <Routes>
-
-        
+        <Route path="/" />
       </Routes>
     </Container>
   );
