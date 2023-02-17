@@ -1,9 +1,9 @@
 import { Container } from '@mui/system';
 import React from 'react';
-import AboutPartnerCard from '../ui/AboutPartnerCard/AboutPartnerCard';
-import OneFavoriteCard from '../ui/OneFavoriteCard/OneFavoriteCard';
-import OnePersonCard from '../ui/OnePersonCard/OnePersonCard';
-import OneStatisticCard from '../ui/OneStatisticCard/OneStatisticCard';
+import AboutPartnerCard from '../../ui/AboutPartnerCard/AboutPartnerCard';
+import OneFavoriteCard from '../../ui/OneFavoriteCard/OneFavoriteCard';
+import OnePersonCard from '../../ui/OnePersonCard/OnePersonCard';
+import OneStatisticCard from '../../ui/OneStatisticCard/OneStatisticCard';
 
 export default function PersonalAreaPage(): JSX.Element {
   return (
