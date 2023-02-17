@@ -202,7 +202,7 @@ export default function NavigationBar(): JSX.Element {
             </Button>
             <Button
               component={Link}
-              to="/"
+              to="/search"
               color="inherit"
               sx={{
                 my: 2,
@@ -211,7 +211,7 @@ export default function NavigationBar(): JSX.Element {
                 fontStyle: 'border',
               }}
             >
-              Все заявки
+              Найти заявки
             </Button>
             <Button
               component={Link}
