@@ -7,7 +7,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import './LoginPage.css';
+
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { ButtonGroup } from '@mui/material';
@@ -21,7 +21,7 @@ export default function LoginPage(): JSX.Element {
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>): void =>
     setFormInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   return (
-    <Container sx={{ bgcolor: '#DCDCDC', opacity: 0.5 }} component="main" maxWidth="lg">
+    <Container component="main" maxWidth="lg" sx={{ height: '100vh' }}>
       <CssBaseline />
       <Box
         sx={{
@@ -68,12 +68,19 @@ export default function LoginPage(): JSX.Element {
             aria-label="outlined primary button group"
           > */}
           <Grid sx={{ mt: 3, mb: 2 }} container spacing={2}>
-            <Button component={Link} className="promoBtn"
-              to="/" type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+            <Button
+              component={Link}
+              className="promoBtn"
+              to="/"
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
               Войти
             </Button>
             <Button
-            className="promoBtn"
+              className="promoBtn"
               component={Link}
               to="/signup"
               type="submit"

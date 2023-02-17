@@ -31,7 +31,7 @@ export default function HeaderMainPage(): JSX.Element {
                 border: 'none',
                 boxShadow: 'none',
                 borderRadius: '0',
-                opacity: 0.5,
+                opacity: 0.68,
               }}
             >
               <CardMedia sx={{ height: 0 }} />
@@ -47,7 +47,7 @@ export default function HeaderMainPage(): JSX.Element {
                     {' '}
                     - О нас
                   </div> */}
-                  <div style={{ fontWeight: '800', color: 'black' }}>
+                  <div style={{ fontWeight: '800', color: 'black', textAlign: 'center' }}>
                     FoodSher
                   </div>
                 </Typography>
@@ -58,15 +58,13 @@ export default function HeaderMainPage(): JSX.Element {
                   fontWeight="900"
                 >
                   <div style={{ color: 'black', textAlign: 'justify', fontSize: 17 }}>
-                    Cоциальный проект, который решает задачу спасения продуктов
-                    питания от мусорного полигона, куда она обычно направляется
-                    после истечения срока годности.
+                    Cоциальный проект, который решает задачу спасения продуктов питания от мусорного
+                    полигона, куда она обычно направляется после истечения срока годности.
                   </div>
                   <br />
                   <p style={{ color: 'black', textAlign: 'justify', fontSize: 17 }}>
-                    Наша задача – помочь бизнесу сэкономить на издержках и
-                    распределить продукты до истечения срока годности между
-                    теми, кто в них нуждается.
+                    Наша задача – помочь бизнесу сэкономить на издержках и распределить продукты до
+                    истечения срока годности между теми, кто в них нуждается.
                   </p>
                 </Typography>
               </CardContent>
@@ -83,7 +81,7 @@ export default function HeaderMainPage(): JSX.Element {
                 border: 'none',
                 boxShadow: 'none',
                 borderRadius: '0',
-                opacity: 0.5,
+                opacity: 0.68,
               }}
             >
               <CardMedia sx={{ height: 0 }} />
@@ -111,13 +109,11 @@ export default function HeaderMainPage(): JSX.Element {
                   </div>
                   <br />
                   <div style={{ color: 'black', textAlign: 'justify', fontSize: 18 }}>
-                    Ценность продуктов с истекающим сроком годности оценивается
-                    в 1.6 трлн. рублей.
+                    Ценность продуктов с истекающим сроком годности оценивается в 1.6 трлн. рублей.
                   </div>
                   <br />
                   <div style={{ color: 'black', textAlign: 'justify', fontSize: 18 }}>
-                    Спасение данного объема товара позволило бы прокормить 30
-                    млн. человек.
+                    Спасение данного объема товара позволило бы прокормить 30 млн. человек.
                   </div>
                 </Typography>
               </CardContent>
@@ -144,8 +140,8 @@ export default function HeaderMainPage(): JSX.Element {
           <br /> В чем секрет? Просто попробуйте <span>Наш</span> сервис!
         </div> */}
 
-        <Link to="/books" style={{ textDecoration: 'none' }}>
-          <button type="button" className="promoBtn">
+        <Link to="/signup" style={{ textDecoration: 'none' }}>
+          <button type="button" className="promoBtn" style={{ backgroundColor: '#f68b01' }}>
             Сделать мир лучше!
           </button>
         </Link>
