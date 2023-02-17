@@ -163,7 +163,7 @@ export default function NavigationBar(): JSX.Element {
             </Button>
             <Button
               component={Link}
-              to="/"
+              to="/login"
               color="inherit"
               sx={{
                 my: 2,
@@ -266,7 +266,7 @@ export default function NavigationBar(): JSX.Element {
             >
               <Button
                 component={Link}
-                to="/"
+                to="/personarea"
                 color="inherit"
                 sx={{
                   my: 2,
