@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './SignUpPage.css';
+
 import {
   Box,
   Button,
@@ -33,7 +33,7 @@ export default function SignUpPage(): JSX.Element {
     setFormInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   return (
     // <ThemeProvider >
-    <Container sx={{ bgcolor: '#DCDCDC', opacity: 0.5 }} component="main" maxWidth="lg">
+    <Container sx={{ height: '100vh' }} component="main" maxWidth="lg">
       <CssBaseline />
       <Box
         sx={{
