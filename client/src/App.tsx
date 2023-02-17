@@ -9,7 +9,6 @@ function App(): JSX.Element {
   return (
     <Container>
       <NavigationBar />
-      <LoginPage />
       <Routes>
         <Route path="/mainpage" element={<MainPage />} />
         <Route path="/header" element={<HeaderMainPage />} />
