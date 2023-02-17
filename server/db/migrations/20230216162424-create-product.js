@@ -42,6 +42,7 @@ module.exports = {
           model: 'Requests',
           key: 'id',
         },
+        onDelete: 'CASCADE',
       },
       createdAt: {
         allowNull: false,

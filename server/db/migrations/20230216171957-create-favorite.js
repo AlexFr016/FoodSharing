@@ -18,6 +18,7 @@ module.exports = {
             key: 'id',
           },
           unique: 'uniqueFav',
+          onDelete: 'CASCADE',
         },
         requestid: {
           type: Sequelize.INTEGER,
@@ -27,6 +28,7 @@ module.exports = {
             key: 'id',
           },
           unique: 'uniqueFav',
+          onDelete: 'CASCADE',
         },
         createdAt: {
           allowNull: false,

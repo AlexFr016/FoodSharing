@@ -18,6 +18,7 @@ module.exports = {
             key: 'id',
           },
           unique: 'uniqueRating',
+          onDelete: 'CASCADE',
         },
         ownerid: {
           type: Sequelize.INTEGER,
@@ -27,6 +28,11 @@ module.exports = {
             key: 'id',
           },
           unique: 'uniqueRating',
+          onDelete: 'CASCADE',
+        },
+
+        evaluation: {
+          type: Sequelize.FLOAT,
         },
         createdAt: {
           allowNull: false,

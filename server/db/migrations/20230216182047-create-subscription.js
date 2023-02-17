@@ -18,6 +18,7 @@ module.exports = {
             key: 'id',
           },
           unique: 'uniqueSub',
+          onDelete: 'CASCADE',
         },
         companyid: {
           type: Sequelize.INTEGER,
@@ -27,6 +28,7 @@ module.exports = {
             key: 'id',
           },
           unique: 'uniqueSub',
+          onDelete: 'CASCADE',
         },
         createdAt: {
           allowNull: false,

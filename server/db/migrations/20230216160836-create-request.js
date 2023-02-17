@@ -40,10 +40,10 @@ module.exports = {
           model: 'Users',
           key: 'id',
         },
+        onDelete: 'CASCADE',
       },
       statusid: {
         type: Sequelize.INTEGER,
-        defaultValue: 1,
         allowNull: false,
         references: {
           model: 'Statuses',

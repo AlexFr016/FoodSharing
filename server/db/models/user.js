@@ -7,23 +7,47 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({ Role, Request, Comment, Product, Rating, Subscription }) {
-      this.belongsTo(Role, { foreignKey: 'roleid' });
+    static associate(models) {
+      this.belongsTo(models.Role, { foreignKey: 'roleid' });
 
-      this.hasMany(Request, { foreignKey: 'partnerid' });
+      this.hasMany(models.Request, { foreignKey: 'partnerid' });
 
-      this.hasMany(Comment, { foreignKey: 'authorid' });
-      this.hasMany(Comment, { foreignKey: 'userid' });
+      this.belongsToMany(models.User, {
+        through: 'Comment',
+        as: 'AuthorComments',
+        foreignKey: 'authorid',
+      });
+      this.belongsToMany(models.User, {
+        through: 'Comment',
+        as: 'UserComments',
+        foreignKey: 'userid',
+      });
 
-      this.hasMany(Rating, { foreignKey: 'clientid' });
-      this.hasMany(Rating, { foreignKey: 'ownerid' });
+      this.belongsToMany(models.User, {
+        through: 'Rating',
+        as: 'UserRatings',
+        foreignKey: 'clientid',
+      });
+      this.belongsToMany(models.User, {
+        through: 'Rating',
+        as: 'OwnerRatings',
+        foreignKey: 'ownerid',
+      });
 
-      this.hasMany(Subscription, { foreignKey: 'subscriberid' });
-      this.hasMany(Subscription, { foreignKey: 'companyid' });
+      this.belongsToMany(models.User, {
+        through: 'Subscription',
+        as: 'SubscriberUsers',
+        foreignKey: 'subscriberid',
+      });
+      this.belongsToMany(models.User, {
+        through: 'Subscription',
+        as: 'CompanySubUsers',
+        foreignKey: 'companyid',
+      });
 
-      this.belongsToMany(Request, { through: 'Favorite', foreignKey: 'userid' });
+      this.belongsToMany(models.Request, { through: 'Favorite', foreignKey: 'userid' });
 
-      this.belongsToMany(Product, { through: 'Reserve', foreignKey: 'userid' });
+      this.belongsToMany(models.Product, { through: 'Reserve', foreignKey: 'userid' });
     }
   }
   User.init(

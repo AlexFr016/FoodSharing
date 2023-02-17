@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       clientid: DataTypes.INTEGER,
       ownerid: DataTypes.INTEGER,
+      evaluation: DataTypes.FLOAT,
     },
     {
       sequelize,

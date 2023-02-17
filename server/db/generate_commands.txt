@@ -29,6 +29,8 @@ npx sequelize-cli model:generate --name Comment --attributes body:text,authorid:
 
 npx sequelize-cli model:generate --name Favorite --attributes userid:integer,requestid:integer
 
-npx sequelize-cli model:generate --name Rating --attributes clientid:integer,ownerid:integer
+npx sequelize-cli model:generate --name Rating --attributes clientid:integer,ownerid:integer,evaluation:float
 
 npx sequelize-cli model:generate --name Subscription --attributes subscriberid:integer,companyid:integer
+
+
