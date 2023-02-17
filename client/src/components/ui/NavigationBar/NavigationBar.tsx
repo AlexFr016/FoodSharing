@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import FastfoodOutlinedIcon from '@mui/icons-material/FastfoodOutlined';
+import { Link } from 'react-router-dom';
 
 const pages = [
   'О нас',
@@ -26,42 +26,58 @@ const pages = [
 const settings = ['Личный кабинет', 'Избранное', 'Выйти'];
 
 export default function NavigationBar(): JSX.Element {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
+    null,
+  );
+  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
+    null,
+  );
 
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>): void => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>): void => {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
+  const handleCloseNavMenu = (): void => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
+  const handleCloseUserMenu = (): void => {
     setAnchorElUser(null);
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{ bgcolor: '#DCDCDC', opacity: 0.5 }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <FastfoodOutlinedIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <Box
+            component="img"
+            sx={{
+              height: 44,
+            }}
+            alt="Your logo."
+            src="https://cdn-icons-png.flaticon.com/512/99/99072.png"
+          />
+
+          {/* <FastfoodOutlinedIcon
+            sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}
+          /> */}
           <Typography
             variant="h6"
             noWrap
             component="a"
-            href="/"
+            href="/mainpage"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color: 'black',
               textDecoration: 'none',
+              paddingLeft: '10px',
             }}
           >
             FoodSher
@@ -123,20 +139,116 @@ export default function NavigationBar(): JSX.Element {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+            <Button
+              component={Link}
+              to="/mainpage"
+              color="inherit"
+              sx={{
+                my: 2,
+                color: 'black',
+                display: 'block',
+                fontStyle: 'border',
+              }}
+            >
+              О нас
+            </Button>
+            <Button
+              component={Link}
+              to="/"
+              color="inherit"
+              sx={{
+                my: 2,
+                color: 'black',
+                display: 'block',
+                fontStyle: 'border',
+              }}
+            >
+              Наши партнеры
+            </Button>
+            <Button
+              component={Link}
+              to="/"
+              color="inherit"
+              sx={{
+                my: 2,
+                color: 'black',
+                display: 'block',
+                fontStyle: 'border',
+              }}
+            >
+              Присоединиться
+            </Button>
+            <Button
+              component={Link}
+              to="/"
+              color="inherit"
+              sx={{
+                my: 2,
+                color: 'black',
+                display: 'block',
+                fontStyle: 'border',
+              }}
+            >
+              FAQ
+            </Button>
+            <Button
+              component={Link}
+              to="/"
+              color="inherit"
+              sx={{
+                my: 2,
+                color: 'black',
+                display: 'block',
+                fontStyle: 'border',
+              }}
+            >
+              Создать заявку
+            </Button>
+            <Button
+              component={Link}
+              to="/"
+              color="inherit"
+              sx={{
+                my: 2,
+                color: 'black',
+                display: 'block',
+                fontStyle: 'border',
+              }}
+            >
+              Все заявки
+            </Button>
+            <Button
+              component={Link}
+              to="/"
+              color="inherit"
+              sx={{
+                my: 2,
+                color: 'black',
+                display: 'block',
+                fontStyle: 'border',
+              }}
+            >
+              Контакты
+            </Button>
+            {/* {pages.map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{
+                  my: 2,
+                  color: 'black',
+                  display: 'block',
+                  fontStyle: 'border',
+                }}
               >
                 {page}
               </Button>
-            ))}
+            ))} */}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 3 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
@@ -156,11 +268,54 @@ export default function NavigationBar(): JSX.Element {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
+              <Button
+                component={Link}
+                to="/"
+                color="inherit"
+                sx={{
+                  my: 2,
+                  color: 'black',
+                  display: 'block',
+                  fontStyle: 'border',
+                  textAlign: 'center',
+                }}
+              >
+                Личный кабинет
+              </Button>
+              <Button
+                component={Link}
+                to="/"
+                color="inherit"
+                sx={{
+                  my: 2,
+                  color: 'black',
+                  display: 'block',
+                  fontStyle: 'border',
+                  textAlign: 'center',
+                }}
+              >
+                Избранное
+              </Button>
+              <Button
+                component={Link}
+                to="/"
+                color="inherit"
+                sx={{
+                  my: 2,
+                  color: 'black',
+                  display: 'block',
+                  fontStyle: 'border',
+                  textAlign: 'center',
+                }}
+              >
+                Выйти
+              </Button>
+
+              {/* {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
-              ))}
+              ))} */}
             </Menu>
           </Box>
         </Toolbar>
