@@ -5,13 +5,13 @@ import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-
+import './LoginPage.css';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { ButtonGroup } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 export default function LoginPage(): JSX.Element {
   const [formInput, setFormInput] = useState({
@@ -21,7 +21,7 @@ export default function LoginPage(): JSX.Element {
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>): void =>
     setFormInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   return (
-    <Container component="main" maxWidth="lg">
+    <Container sx={{ bgcolor: '#DCDCDC', opacity: 0.5 }} component="main" maxWidth="lg">
       <CssBaseline />
       <Box
         sx={{
@@ -68,10 +68,19 @@ export default function LoginPage(): JSX.Element {
             aria-label="outlined primary button group"
           > */}
           <Grid sx={{ mt: 3, mb: 2 }} container spacing={2}>
-            <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+            <Button component={Link} className="promoBtn"
+              to="/" type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
               Войти
             </Button>
-            <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+            <Button
+            className="promoBtn"
+              component={Link}
+              to="/signup"
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
               Зарегестрироваться
             </Button>
           </Grid>

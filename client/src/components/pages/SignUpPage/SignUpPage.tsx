@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './SignUpPage.css';
 import {
   Box,
   Button,
@@ -13,6 +14,7 @@ import {
   ThemeProvider,
   Typography,
 } from '@mui/material';
+import { Link } from 'react-router-dom';
 import { Copyright } from '@mui/icons-material';
 
 export default function SignUpPage(): JSX.Element {
@@ -28,10 +30,10 @@ export default function SignUpPage(): JSX.Element {
     role: '',
   });
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>): void =>
-  setFormInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setFormInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   return (
     // <ThemeProvider >
-    <Container component="main" maxWidth="lg">
+    <Container sx={{ bgcolor: '#DCDCDC', opacity: 0.5 }} component="main" maxWidth="lg">
       <CssBaseline />
       <Box
         sx={{
@@ -61,7 +63,7 @@ export default function SignUpPage(): JSX.Element {
             </Grid>
             <Grid item xs={15} sm={4}>
               <TextField
-              value={formInput.lastName}
+                value={formInput.lastName}
                 required
                 fullWidth
                 id="lastName"
@@ -96,7 +98,7 @@ export default function SignUpPage(): JSX.Element {
             </Grid>
             <Grid item xs={15}>
               <TextField
-              value={formInput.email}
+                value={formInput.email}
                 required
                 fullWidth
                 id="email"
@@ -119,7 +121,7 @@ export default function SignUpPage(): JSX.Element {
             </Grid>
             <Grid item xs={15}>
               <TextField
-              value={formInput.hashpass}
+                value={formInput.hashpass}
                 required
                 fullWidth
                 name="hashpass"
@@ -132,7 +134,7 @@ export default function SignUpPage(): JSX.Element {
             </Grid>
             <Grid item xs={15}>
               <TextField
-              value={formInput.validpass}
+                value={formInput.validpass}
                 required
                 fullWidth
                 name="validpass"
@@ -145,12 +147,15 @@ export default function SignUpPage(): JSX.Element {
             </Grid>
           </Grid>
           <Button
+            component={Link}
+            to="/login"
             type="submit"
-            // fullWidth
+            className="promoBtn"
+            fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
-            Зарегестрироваться!
+            Зарегистрироваться!
           </Button>
         </Box>
       </Box>
