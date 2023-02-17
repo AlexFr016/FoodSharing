@@ -21,14 +21,12 @@ export default function LoginPage(): JSX.Element {
     pass: '',
   });
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>): void =>
     setFormInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     const submitHandler = (e: React.FormEvent<HTMLFormElement>): void => {
       e.preventDefault();
       dispatch(loginHandler(formInput));
       e.currentTarget.reset();
-      navigate("")
     };
   return (
     <Container component="main" maxWidth="lg" sx={{ height: '100vh' }}>
