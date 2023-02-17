@@ -2,7 +2,8 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Container } from '@mui/material';
 import NavigationBar from './components/ui/NavigationBar/NavigationBar';
-import LoginPage from './components/pages/LoginPage';
+import MainPage from './components/pages/mainPage/MainPage';
+import HeaderMainPage from './components/ui/HeaderMainPage/HeaderMainPage';
 
 function App(): JSX.Element {
   return (
@@ -10,7 +11,8 @@ function App(): JSX.Element {
       <NavigationBar />
       <LoginPage />
       <Routes>
-        <Route path="/" />
+        <Route path="/mainpage" element={<MainPage />} />
+        <Route path="/header" element={<HeaderMainPage />} />
       </Routes>
     </Container>
   );
