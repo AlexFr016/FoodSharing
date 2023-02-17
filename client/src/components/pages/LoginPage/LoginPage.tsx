@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom';
 export default function LoginPage(): JSX.Element {
   const [formInput, setFormInput] = useState({
     email: '',
-    hashpass: '',
+    pass: '',
   });
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>): void =>
     setFormInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -44,20 +44,18 @@ export default function LoginPage(): JSX.Element {
                 id="email"
                 label="Email Address"
                 name="email"
-                autoComplete="email"
                 onChange={changeHandler}
               />
             </Grid>
             <Grid item xs={15}>
               <TextField
-                value={formInput.hashpass}
+                value={formInput.pass}
                 required
                 fullWidth
-                name="hashpass"
+                name="pass"
                 label="Password"
                 type="password"
                 id="password"
-                autoComplete="new-password"
                 onChange={changeHandler}
               />
             </Grid>
