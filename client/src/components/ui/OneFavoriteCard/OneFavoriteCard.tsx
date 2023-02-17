@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function OneFavoriteCard(): JSX.Element {
   return (
-    <Card sx={{ width: 400, boxShadow: 10, borderRadius: 10, bgcolor: 'rebeccapurple' }}>
+    <Card sx={{ width: 400, boxShadow: 10, borderRadius: 10, bgcolor: 'inherit', marginX: 3 }}>
       <CardActions>
         <Button size="small">Редактировать профиль</Button>
       </CardActions>

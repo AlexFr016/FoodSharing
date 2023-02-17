@@ -1,5 +1,4 @@
-import { Container, Grid } from '@mui/material';
-import { flexbox } from '@mui/system';
+import { Container } from '@mui/material';
 import React from 'react';
 import AboutPartnerCard from '../ui/AboutPartnerCard/AboutPartnerCard';
 import OneFavoriteCard from '../ui/OneFavoriteCard/OneFavoriteCard';

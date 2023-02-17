@@ -8,9 +8,10 @@ export default function AboutPartnerCard(): JSX.Element {
         width: 400,
         height: 400,
         overflowY: 'scroll',
-        bgcolor: 'green',
+        bgcolor: 'inherit',
         borderRadius: 10,
         boxShadow: 10,
+        marginX: 3,
       }}
     >
       <h1>

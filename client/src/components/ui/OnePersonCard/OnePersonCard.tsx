@@ -11,11 +11,12 @@ export default function OnePersonCard(): JSX.Element {
   return (
     <Card
       sx={{
-        maxWidth: 345,
+        width: 400,
         borderRadius: 10,
         boxShadow: 10,
-        bgcolor: 'red',
+        bgcolor: 'inherit',
         height: 515,
+        marginX: 3,
       }}
     >
       <CardMedia
