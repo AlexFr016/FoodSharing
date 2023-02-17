@@ -20,12 +20,15 @@ export default function SignUpPage(): JSX.Element {
     firstName: '',
     lastName: '',
     secondName: '',
+    login: '',
     email: '',
     phone: '',
     hashpass: '',
     validpass: '',
     role: '',
   });
+  const changeHandler = (e: React.ChangeEvent<HTMLInputElement>): void =>
+  setFormInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   return (
     // <ThemeProvider >
     <Container component="main" maxWidth="lg">
@@ -39,7 +42,7 @@ export default function SignUpPage(): JSX.Element {
         }}
       >
         <Typography component="h1" variant="h5">
-          Sign up
+          Заполните форму для регистрации:
         </Typography>
         <Box component="form" noValidate sx={{ mt: 2 }}>
           <Grid container spacing={2}>
@@ -53,6 +56,7 @@ export default function SignUpPage(): JSX.Element {
                 id="firstName"
                 label="First Name"
                 autoFocus
+                onChange={changeHandler}
               />
             </Grid>
             <Grid item xs={15} sm={4}>
@@ -64,174 +68,93 @@ export default function SignUpPage(): JSX.Element {
                 label="Last Name"
                 name="lastName"
                 autoComplete="family-name"
+                onChange={changeHandler}
               />
             </Grid>
             <Grid item xs={15} sm={4}>
               <TextField
                 required
                 fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
+                value={formInput.secondName}
+                id="secondName"
+                label="Second Name"
+                name="secondName"
                 autoComplete="family-name"
+                onChange={changeHandler}
               />
             </Grid>
             <Grid item xs={15}>
               <TextField
-                
+                value={formInput.phone}
                 id="outlined-basic"
                 label="Телефон"
                 name="phone"
                 variant="outlined"
                 fullWidth
+                onChange={changeHandler}
               />
             </Grid>
             <Grid item xs={15}>
               <TextField
+              value={formInput.email}
                 required
                 fullWidth
                 id="email"
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                onChange={changeHandler}
               />
             </Grid>
             <Grid item xs={15}>
               <TextField
-                
+                value={formInput.login}
                 id="outlined-basic"
                 label="Логин"
                 name="phone"
                 variant="outlined"
                 fullWidth
+                onChange={changeHandler}
               />
             </Grid>
             <Grid item xs={15}>
               <TextField
+              value={formInput.hashpass}
                 required
                 fullWidth
-                name="password"
+                name="hashpass"
                 label="Password"
                 type="password"
                 id="password"
                 autoComplete="new-password"
+                onChange={changeHandler}
               />
             </Grid>
             <Grid item xs={15}>
               <TextField
+              value={formInput.validpass}
                 required
                 fullWidth
-                name="password"
+                name="validpass"
                 label="Password"
                 type="password"
                 id="password"
                 autoComplete="new-password"
+                onChange={changeHandler}
               />
             </Grid>
           </Grid>
           <Button
             type="submit"
-            fullWidth
+            // fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
-            Sign Up
+            Зарегестрироваться!
           </Button>
         </Box>
       </Box>
     </Container>
     //   </ThemeProvider>
-    // <Box
-    //   sx={{
-    //     marginTop: 8,
-    //     display: 'flex',
-    //     flexDirection: 'column',
-    //     alignItems: 'center',
-    //   }}
-    // >
-    //   <Grid container spacing={2}>
-    //     <Grid item xs={12} sm={6}>
-    //       <TextField
-    //         value={formInput.firstName}
-    //         id="outlined-basic"
-    //         label="Ваше имя"
-    //         name="firstName"
-    //         variant="outlined"
-    //         margin="normal"
-    //         fullWidth
-    //       />
-    //     </Grid>
-    //     <Grid item xs={12} sm={6}>
-    //       <TextField
-    //         value={formInput.lastName}
-    //         id="outlined-basic"
-    //         label="Ваша фамилия"
-    //         name="lastName"
-    //         variant="outlined"
-    //         margin="normal"
-    //         fullWidth
-    //       />
-    //     </Grid>
-    //     <Grid item xs={12} sm={6}>
-    //       <TextField
-    //         value={formInput.secondName}
-    //         id="outlined-basic"
-    //         label="Ваше отчество"
-    //         name="secondName"
-    //         variant="outlined"
-    //         margin="normal"
-    //         fullWidth
-    //       />
-    //     </Grid>
-    //     <Grid item xs={12}>
-    //     <TextField
-
-    //       value={formInput.email}
-    //       id="outlined-basic"
-    //       label="e-mail"
-    //       name="email"
-    //       variant="outlined"
-    //       margin="normal"
-    //     />
-    //     </Grid>
-    //     <Grid item xs={12}>
-    //     <TextField
-
-    //       value={formInput.phone}
-    //       id="outlined-basic"
-    //       label="Телефон"
-    //       name="phone"
-    //       variant="outlined"
-    //       margin="normal"
-    //     />
-    //     </Grid>
-    //     <Grid item xs={12}>
-    //     <TextField
-
-    //       value={formInput.hashpass}
-    //       id="outlined-basic"
-    //       label="Придумайте пароль"
-    //       name="hashpass"
-    //       type="password"
-    //       variant="outlined"
-    //       margin="normal"
-    //     />
-    //     </Grid>
-    //     <Grid item xs={12}>
-    //     <TextField
-
-    //       value={formInput.validpass}
-    //       id="outlined-basic"
-    //       label="Повторите пароль"
-    //       name="validpass"
-    //       type="password"
-    //       variant="outlined"
-    //       margin="normal"
-    //     />
-    //     </Grid>
-
-    //     <Button type="submit">Зарегестрироваться</Button>
-    //   </Grid>
-    // </Box>
   );
 }
