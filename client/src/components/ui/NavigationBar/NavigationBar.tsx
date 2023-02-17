@@ -26,12 +26,8 @@ const pages = [
 const settings = ['Личный кабинет', 'Избранное', 'Выйти'];
 
 export default function NavigationBar(): JSX.Element {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null,
-  );
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
-    null,
-  );
+  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>): void => {
     setAnchorElNav(event.currentTarget);
@@ -206,7 +202,7 @@ export default function NavigationBar(): JSX.Element {
             </Button>
             <Button
               component={Link}
-              to="/"
+              to="/search"
               color="inherit"
               sx={{
                 my: 2,
@@ -215,7 +211,7 @@ export default function NavigationBar(): JSX.Element {
                 fontStyle: 'border',
               }}
             >
-              Все заявки
+              Найти заявки
             </Button>
             <Button
               component={Link}
