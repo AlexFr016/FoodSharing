@@ -25,7 +25,7 @@ export default function SignUpPage(): JSX.Element {
     login: '',
     email: '',
     phone: '',
-    hashpass: '',
+    pass: '',
     validpass: '',
     role: '',
   });
@@ -113,7 +113,7 @@ export default function SignUpPage(): JSX.Element {
                 value={formInput.login}
                 id="outlined-basic"
                 label="Логин"
-                name="phone"
+                name="login"
                 variant="outlined"
                 fullWidth
                 onChange={changeHandler}
@@ -121,10 +121,10 @@ export default function SignUpPage(): JSX.Element {
             </Grid>
             <Grid item xs={15}>
               <TextField
-                value={formInput.hashpass}
+                value={formInput.pass}
                 required
                 fullWidth
-                name="hashpass"
+                name="pass"
                 label="Password"
                 type="password"
                 id="password"
