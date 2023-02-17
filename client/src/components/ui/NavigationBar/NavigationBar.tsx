@@ -193,7 +193,7 @@ export default function NavigationBar(): JSX.Element {
             </Button>
             <Button
               component={Link}
-              to="/"
+              to="/createrequest"
               color="inherit"
               sx={{
                 my: 2,
