@@ -21,7 +21,6 @@ export default function ProfilePersonPage(): JSX.Element {
         style={{ display: 'flex', justifyContent: 'center', padding: '50px', alignItems: 'center' }}
       >
         <OnePersonCard />
-
         <div>
           <OneStatisticCard />
           <AboutPartnerCard />

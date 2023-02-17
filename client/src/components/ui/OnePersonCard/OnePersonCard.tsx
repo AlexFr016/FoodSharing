@@ -11,7 +11,7 @@ export default function OnePersonCard(): JSX.Element {
   return (
     <Card
       sx={{
-        width: 400,
+        maxWidth: 400,
         borderRadius: 10,
         boxShadow: 10,
         bgcolor: 'inherit',
@@ -20,7 +20,7 @@ export default function OnePersonCard(): JSX.Element {
       }}
     >
       <CardMedia
-        sx={{ height: 235 }}
+        sx={{ height: 250, padding: '1em 1em 0 1em', objectFit: 'contain' }}
         component="img"
         alt="partner photo"
         image="https://yt3.googleusercontent.com/7hEuTuz61XTJuYYxXRKwcnlImTx4e3erahW-H6je0TCwtVsiRqaWIN71HKNW48wMZLflEV_4zg=s900-c-k-c0x00ffffff-no-rj"

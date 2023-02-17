@@ -3,15 +3,16 @@ import React from 'react';
 
 export default function OneFavoriteCard(): JSX.Element {
   return (
-    <Card sx={{ width: 400, boxShadow: 10, borderRadius: 10, bgcolor: 'inherit', marginX: 3 }}>
+    <Card sx={{ maxWidth: 320, boxShadow: 10, borderRadius: 10, bgcolor: '#fff', marginX: 3 }}>
       <CardActions>
         <Button size="small">Редактировать профиль</Button>
       </CardActions>
       <CardMedia
         component="img"
-        alt="green iguana"
+        alt="favorite"
         height="120"
-        image="/static/images/cards/contemplative-reptile.jpg"
+        image="https://yt3.googleusercontent.com/7hEuTuz61XTJuYYxXRKwcnlImTx4e3erahW-H6je0TCwtVsiRqaWIN71HKNW48wMZLflEV_4zg=s900-c-k-c0x00ffffff-no-rj"
+        sx={{ padding: '1em 1em 0 1em', objectFit: 'contain' }}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">

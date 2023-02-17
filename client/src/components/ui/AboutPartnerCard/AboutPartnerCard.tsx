@@ -5,7 +5,7 @@ export default function AboutPartnerCard(): JSX.Element {
   return (
     <Card
       sx={{
-        width: 400,
+        maxWidth: 400,
         height: 400,
         overflowY: 'scroll',
         bgcolor: 'inherit',
