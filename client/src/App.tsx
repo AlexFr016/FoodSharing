@@ -1,6 +1,6 @@
 import { Container } from '@mui/material';
 import axios from 'axios';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import PersonalAreaPage from './components/pages/PersonalAreaPage/PersonalAreaPage';
 import ProfilePersonPage from './components/pages/ProfilePersonPage/ProfilePersonPage';
@@ -13,12 +13,16 @@ import SearchPage from './components/pages/searchPage/SearchPage';
 
 import LoginPage from './components/pages/LoginPage/LoginPage';
 import SignUpPage from './components/pages/SignUpPage/SignUpPage';
-
-axios.defaults.baseURL = 'http://localhost:3001';
-axios.defaults.withCredentials = true;
+import { useAppDispatch } from './redux/hooks';
+import { checkAuth } from './redux/userSlice/userReducer';
 
 
 function App(): JSX.Element {
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(checkAuth())
+  }, [])
+
   return (
     <Container>
       <NavigationBar />
