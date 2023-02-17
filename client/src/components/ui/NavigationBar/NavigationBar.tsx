@@ -45,7 +45,7 @@ export default function NavigationBar(): JSX.Element {
   };
 
   return (
-    <AppBar position="static" sx={{ bgcolor: '#DCDCDC', opacity: 0.5 }}>
+    <AppBar position="static" sx={{ bgcolor: '#DCDCDC', opacity: 0.68 }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box
@@ -148,7 +148,7 @@ export default function NavigationBar(): JSX.Element {
             >
               О нас
             </Button>
-            <Button
+            {/* <Button
               component={Link}
               to="/"
               color="inherit"
@@ -160,7 +160,7 @@ export default function NavigationBar(): JSX.Element {
               }}
             >
               Наши партнеры
-            </Button>
+            </Button> */}
             <Button
               component={Link}
               to="/login"
@@ -244,8 +244,8 @@ export default function NavigationBar(): JSX.Element {
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 3 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 3 }} style={{ opacity: 1 }}>
+                <Avatar style={{backgroundColor:"black"}} alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
             <Menu
