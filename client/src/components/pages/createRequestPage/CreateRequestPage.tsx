@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
@@ -12,6 +12,8 @@ import dayjs from 'dayjs';
 import axios from 'axios';
 import type { BackendRequestType } from '../../../redux/requestSlice/requestType';
 import CreateExcelFile from './CreateExcelFile';
+import { checkAuth } from '../../../redux/userSlice/userReducer';
+import { useAppDispatch } from '../../../redux/hooks';
 
 export default function CreateRequestPage(): JSX.Element {
   const [file, setFile] = useState(null);
