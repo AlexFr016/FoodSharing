@@ -92,7 +92,7 @@ export default function LoginPage(): JSX.Element {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Зарегестрироваться
+              Зарегистрироваться
             </Button>
           </Grid>
           {/* </ButtonGroup> */}
