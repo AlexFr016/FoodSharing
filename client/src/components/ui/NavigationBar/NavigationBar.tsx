@@ -14,6 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
+import { logoutHandler } from '../../../redux/userSlice/userReducer';
 
 const pages = [
   'О нас',
@@ -313,7 +314,8 @@ export default function NavigationBar(): JSX.Element {
                 </Button>
                 <Button
                   component={Link}
-                  to="/"
+                  to="/mainpage"
+                  onClick={() => dispatch(logoutHandler())}
                   color="inherit"
                   sx={{
                     my: 2,

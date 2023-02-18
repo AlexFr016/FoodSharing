@@ -11,7 +11,7 @@ type PrivateRouteProps = {
 
 export default function PrivateRoute({
   isAllowed,
-  redirectPath = '/',
+  redirectPath = '/mainpage',
   children,
 }: PrivateRouteProps): JSX.Element {
   if (!isAllowed) {

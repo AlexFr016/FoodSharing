@@ -68,7 +68,7 @@ export const checkAuth = (): AppThunk => (dispatch) => {
 };
 
 export const logoutHandler = (): AppThunk => (dispatch) => {
-  axios('/auth/logout')
+  axios('/api/user/logout')
     .then(() => dispatch(logoutUser()))
     .catch(console.log);
 };
