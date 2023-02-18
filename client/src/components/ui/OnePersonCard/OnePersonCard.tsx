@@ -6,8 +6,10 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { ButtonGroup } from '@mui/material';
+import { useAppSelector } from '../../../redux/hooks';
 
 export default function OnePersonCard(): JSX.Element {
+  const user = useAppSelector((store) => store.user);
   return (
     <Card
       sx={{
@@ -26,26 +28,37 @@ export default function OnePersonCard(): JSX.Element {
         image="https://yt3.googleusercontent.com/7hEuTuz61XTJuYYxXRKwcnlImTx4e3erahW-H6je0TCwtVsiRqaWIN71HKNW48wMZLflEV_4zg=s900-c-k-c0x00ffffff-no-rj"
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          ФИО
-        </Typography>
-        <Typography gutterBottom variant="h5" component="div">
-          email
-        </Typography>
-        <Typography gutterBottom variant="h5" component="div">
-          Пароль
-        </Typography>
-        <Typography gutterBottom variant="h5" component="div">
-          Телефон
-        </Typography>
+        {user.status === 'logged' ? (
+          <>
+            <Typography gutterBottom variant="h5" component="div">
+              {user.status === 'logged' && [
+                user.firstName,
+                ' ',
+                user.lastName,
+                ' ',
+                user.secondName,
+              ]}
+            </Typography>
+            <Typography gutterBottom variant="h5" component="div">
+              {user.status === 'logged' && user.email}
+            </Typography>
+            <Typography gutterBottom variant="h5" component="div">
+              {user.status === 'logged' && user.phone}
+            </Typography>
+            <CardActions sx={{ justifyContent: 'center' }}>
+              <Button variant="contained" size="small" sx={{ bgcolor: '#F8C621' }}>
+                Редактировать профиль
+              </Button>
+            </CardActions>
+            <CardActions sx={{ justifyContent: 'center' }}>
+              <ButtonGroup variant="contained" aria-label="outlined primary button group">
+                <Button size="small">Сохранить</Button>
+                <Button size="small">Отмена</Button>
+              </ButtonGroup>
+            </CardActions>
+          </>
+        ) : null}
       </CardContent>
-      <CardActions>
-        <Button size="small">Редактировать профиль</Button>
-        <ButtonGroup variant="contained" aria-label="outlined primary button group">
-          <Button size="small">Сохранить</Button>
-          <Button size="small">Отмена</Button>
-        </ButtonGroup>
-      </CardActions>
     </Card>
   );
 }
