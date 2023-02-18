@@ -30,7 +30,6 @@ function App(): JSX.Element {
         <Route path="/mainpage" element={<MainPage />} />
         <Route path="/personarea" element={<PersonalAreaPage />} />
         <Route path="/profile" element={<ProfilePersonPage />} />
-        <Route path="/header" element={<HeaderMainPage />} />
         <Route path="/createrequest" element={<CreateRequestPage />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/login" element={<LoginPage />} />
