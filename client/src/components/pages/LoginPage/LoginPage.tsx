@@ -23,11 +23,11 @@ export default function LoginPage(): JSX.Element {
   const dispatch = useAppDispatch();
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>): void =>
     setFormInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-    const submitHandler = (e: React.FormEvent<HTMLFormElement>): void => {
-      e.preventDefault();
-      dispatch(loginHandler(formInput));
-      e.currentTarget.reset();
-    };
+  const submitHandler = (e: React.FormEvent<HTMLFormElement>): void => {
+    e.preventDefault();
+    dispatch(loginHandler(formInput));
+    e.currentTarget.reset();
+  };
   return (
     <Container component="main" maxWidth="lg" sx={{ height: '100vh' }}>
       <CssBaseline />
@@ -40,7 +40,7 @@ export default function LoginPage(): JSX.Element {
         }}
       >
         <Typography component="h1" variant="h5">
-          Заполните форму для регистрации:
+          Заполните ваши данные:
         </Typography>
         <Box onSubmit={(e) => submitHandler(e)} component="form" noValidate sx={{ mt: 2 }}>
           <Grid container spacing={2}>
@@ -53,11 +53,13 @@ export default function LoginPage(): JSX.Element {
                 label="Email Address"
                 name="email"
                 onChange={changeHandler}
+                style={{background: '#fafafa'}}
               />
             </Grid>
             <Grid item xs={15}>
               <TextField
                 value={formInput.pass}
+                style={{background: '#fafafa'}}
                 required
                 fullWidth
                 name="pass"
@@ -73,27 +75,32 @@ export default function LoginPage(): JSX.Element {
             variant="contained"
             aria-label="outlined primary button group"
           > */}
-          <Grid sx={{ mt: 3, mb: 2 }} container spacing={2}>
-            <Button
-              // component={Link}
-
-              // to="/"
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Войти
-            </Button>
-            <Button
-              component={Link}
-              to="/signup"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Зарегестрироваться
-            </Button>
+          <Grid sx={{ mt: 3, mb: 2 }} container spacing={1}>
+            <Grid item xs={5}>
+              <Button
+                // component={Link}
+                style={{background: '#fafafa'}}
+                // to="/"
+                type="submit"
+                // fullWidth
+                variant="outlined"
+                sx={{ mt: 3, mb: 2 }}
+              >
+                Войти
+              </Button>
+            </Grid>
+            <Grid item xs={5}>
+              <Button
+                component={Link}
+                to="/signup"
+                // fullWidth
+                variant="outlined"
+                sx={{ mt: 3, mb: 2 }}
+                style={{background: '#fafafa'}}
+              >
+                Зарегестрироваться
+              </Button>
+            </Grid>
           </Grid>
           {/* </ButtonGroup> */}
         </Box>
