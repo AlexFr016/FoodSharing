@@ -1,6 +1,6 @@
 const express = require('express');
 const { Op, Sequelize } = require('sequelize');
-const { Request, Product, User } = require('../db/models');
+const { Request, User } = require('../db/models');
 
 const apiFavoritesRouter = express.Router();
 

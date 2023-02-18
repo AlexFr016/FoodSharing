@@ -19,7 +19,7 @@ import StarIcon from '@mui/icons-material/Star';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import { useAppSelector } from '../../../redux/hooks';
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
 
 export default function RequestCards(): JSX.Element {
   const requests = useAppSelector((store) => store.searchRequests.requests);
