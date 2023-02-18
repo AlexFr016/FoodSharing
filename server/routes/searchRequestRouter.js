@@ -46,10 +46,6 @@ searchRequestRouter.post('/', async (req, res) => {
           ],
         },
       },
-      {
-        model: User,
-        attributes: ['companyName'],
-      },
     ],
   });
 

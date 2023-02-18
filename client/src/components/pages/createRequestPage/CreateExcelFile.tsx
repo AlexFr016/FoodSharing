@@ -4,7 +4,7 @@ import { MuiFileInput } from 'mui-file-input';
 import axios from 'axios';
 
 export default function CreateExcelFile(): JSX.Element {
-  const [file, setFile] = useState<FileList | null >();
+  const [file, setFile] = useState<FileList | null>();
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
     console.log(e.currentTarget.files);
     setFile(e.currentTarget.files);

@@ -1,5 +1,5 @@
 const express = require('express');
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
 const { Request, Product } = require('../db/models');
 const upload = require('../middlewares/multer');
 const parse = require('../middlewares/parse');
@@ -30,7 +30,9 @@ postRouter.post('/newproduct', upload.single('productName'), async (req, res) =>
       newProduct.push(...el.data);
     });
     console.log(newProduct);
+    // eslint-disable-next-line no-restricted-syntax, no-undef
     for await (product of newProduct) {
+      // eslint-disable-next-line no-undef
       Product.create(product);
     }
   } catch (error) {
