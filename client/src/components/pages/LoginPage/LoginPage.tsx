@@ -11,15 +11,23 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { ButtonGroup } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../../redux/hooks';
+import { loginHandler } from '../../../redux/userSlice/userReducer';
 
 export default function LoginPage(): JSX.Element {
   const [formInput, setFormInput] = useState({
     email: '',
-    hashpass: '',
+    pass: '',
   });
+  const dispatch = useAppDispatch();
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>): void =>
     setFormInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    const submitHandler = (e: React.FormEvent<HTMLFormElement>): void => {
+      e.preventDefault();
+      dispatch(loginHandler(formInput));
+      e.currentTarget.reset();
+    };
   return (
     <Container component="main" maxWidth="lg" sx={{ height: '100vh' }}>
       <CssBaseline />
@@ -34,7 +42,7 @@ export default function LoginPage(): JSX.Element {
         <Typography component="h1" variant="h5">
           Заполните форму для регистрации:
         </Typography>
-        <Box component="form" noValidate sx={{ mt: 2 }}>
+        <Box onSubmit={(e) => submitHandler(e)} component="form" noValidate sx={{ mt: 2 }}>
           <Grid container spacing={2}>
             <Grid item xs={15}>
               <TextField
@@ -44,20 +52,18 @@ export default function LoginPage(): JSX.Element {
                 id="email"
                 label="Email Address"
                 name="email"
-                autoComplete="email"
                 onChange={changeHandler}
               />
             </Grid>
             <Grid item xs={15}>
               <TextField
-                value={formInput.hashpass}
+                value={formInput.pass}
                 required
                 fullWidth
-                name="hashpass"
+                name="pass"
                 label="Password"
                 type="password"
                 id="password"
-                autoComplete="new-password"
                 onChange={changeHandler}
               />
             </Grid>
@@ -69,9 +75,9 @@ export default function LoginPage(): JSX.Element {
           > */}
           <Grid sx={{ mt: 3, mb: 2 }} container spacing={2}>
             <Button
-              component={Link}
-              className="promoBtn"
-              to="/"
+              // component={Link}
+
+              // to="/"
               type="submit"
               fullWidth
               variant="contained"
@@ -80,10 +86,8 @@ export default function LoginPage(): JSX.Element {
               Войти
             </Button>
             <Button
-              className="promoBtn"
               component={Link}
               to="/signup"
-              type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}

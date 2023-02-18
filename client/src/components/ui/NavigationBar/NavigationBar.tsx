@@ -13,6 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 
 const pages = [
   'О нас',
@@ -44,6 +45,9 @@ export default function NavigationBar(): JSX.Element {
     setAnchorElUser(null);
   };
 
+  const user = useAppSelector((store) => store.user);
+  const dispatch = useAppDispatch();
+  console.log(user);
   return (
     <AppBar position="static" sx={{ bgcolor: '#DCDCDC', opacity: 0.68 }}>
       <Container maxWidth="xl">
@@ -134,6 +138,7 @@ export default function NavigationBar(): JSX.Element {
           >
             LOGO
           </Typography>
+
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <Button
               component={Link}
@@ -161,9 +166,57 @@ export default function NavigationBar(): JSX.Element {
             >
               Наши партнеры
             </Button> */}
+            {user.status === 'empty' && (
+              <Button
+                component={Link}
+                to="/login"
+                color="inherit"
+                sx={{
+                  my: 2,
+                  color: 'black',
+                  display: 'block',
+                  fontStyle: 'border',
+                }}
+              >
+                Присоединиться
+              </Button>
+            )}
+
+            {user.status === 'logged' && user.roleid === 3 && (
+              <Button
+                component={Link}
+                to="/createrequest"
+                color="inherit"
+                sx={{
+                  my: 2,
+                  color: 'black',
+                  display: 'block',
+                  fontStyle: 'border',
+                }}
+              >
+                Создать заявку
+              </Button>
+            )}
+
+            {user.status === 'logged' && (
+              <Button
+                component={Link}
+                to="/search"
+                color="inherit"
+                sx={{
+                  my: 2,
+                  color: 'black',
+                  display: 'block',
+                  fontStyle: 'border',
+                }}
+              >
+                Найти заявки
+              </Button>
+            )}
+
             <Button
               component={Link}
-              to="/login"
+              to="/"
               color="inherit"
               sx={{
                 my: 2,
@@ -172,7 +225,7 @@ export default function NavigationBar(): JSX.Element {
                 fontStyle: 'border',
               }}
             >
-              Присоединиться
+              Контакты
             </Button>
             <Button
               component={Link}
@@ -186,45 +239,6 @@ export default function NavigationBar(): JSX.Element {
               }}
             >
               FAQ
-            </Button>
-            <Button
-              component={Link}
-              to="/createrequest"
-              color="inherit"
-              sx={{
-                my: 2,
-                color: 'black',
-                display: 'block',
-                fontStyle: 'border',
-              }}
-            >
-              Создать заявку
-            </Button>
-            <Button
-              component={Link}
-              to="/search"
-              color="inherit"
-              sx={{
-                my: 2,
-                color: 'black',
-                display: 'block',
-                fontStyle: 'border',
-              }}
-            >
-              Найти заявки
-            </Button>
-            <Button
-              component={Link}
-              to="/"
-              color="inherit"
-              sx={{
-                my: 2,
-                color: 'black',
-                display: 'block',
-                fontStyle: 'border',
-              }}
-            >
-              Контакты
             </Button>
             {/* {pages.map((page) => (
               <Button
@@ -242,78 +256,96 @@ export default function NavigationBar(): JSX.Element {
             ))} */}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 3 }} style={{ opacity: 1 }}>
-                <Avatar style={{backgroundColor:"black"}} alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              <Button
-                component={Link}
-                to="/personarea"
-                color="inherit"
-                sx={{
-                  my: 2,
-                  color: 'black',
-                  display: 'block',
-                  fontStyle: 'border',
-                  textAlign: 'center',
+          {user.status === 'logged' ? (
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title="Open settings">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 3 }} style={{ opacity: 1 }}>
+                  <Avatar
+                    style={{ backgroundColor: 'black' }}
+                    alt="Remy Sharp"
+                    src="/static/images/avatar/2.jpg"
+                  />
+                </IconButton>
+              </Tooltip>
+              <Menu
+                sx={{ mt: '45px' }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
                 }}
-              >
-                Личный кабинет
-              </Button>
-              <Button
-                component={Link}
-                to="/"
-                color="inherit"
-                sx={{
-                  my: 2,
-                  color: 'black',
-                  display: 'block',
-                  fontStyle: 'border',
-                  textAlign: 'center',
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
                 }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
               >
-                Избранное
-              </Button>
-              <Button
-                component={Link}
-                to="/"
-                color="inherit"
-                sx={{
-                  my: 2,
-                  color: 'black',
-                  display: 'block',
-                  fontStyle: 'border',
-                  textAlign: 'center',
-                }}
-              >
-                Выйти
-              </Button>
+                <Button
+                  component={Link}
+                  to="/personarea"
+                  color="inherit"
+                  sx={{
+                    my: 2,
+                    color: 'black',
+                    display: 'block',
+                    fontStyle: 'border',
+                    textAlign: 'center',
+                  }}
+                >
+                  Личный кабинет
+                </Button>
+                <Button
+                  component={Link}
+                  to="/"
+                  color="inherit"
+                  sx={{
+                    my: 2,
+                    color: 'black',
+                    display: 'block',
+                    fontStyle: 'border',
+                    textAlign: 'center',
+                  }}
+                >
+                  Избранное
+                </Button>
+                <Button
+                  component={Link}
+                  to="/"
+                  color="inherit"
+                  sx={{
+                    my: 2,
+                    color: 'black',
+                    display: 'block',
+                    fontStyle: 'border',
+                    textAlign: 'center',
+                  }}
+                >
+                  Выйти
+                </Button>
 
-              {/* {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))} */}
-            </Menu>
-          </Box>
+                {/* {settings.map((setting) => (
+                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                   <Typography textAlign="center">{setting}</Typography>
+                 </MenuItem>
+               ))} */}
+              </Menu>
+            </Box>
+          ) : (
+            <Typography
+              sx={{
+                my: 2,
+                color: 'black',
+                display: 'block',
+                fontStyle: 'border',
+                textAlign: 'center',
+              }}
+            >
+              Гость
+            </Typography>
+          )}
         </Toolbar>
       </Container>
     </AppBar>
