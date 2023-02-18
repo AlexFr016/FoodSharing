@@ -17,16 +17,21 @@ import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import StarIcon from '@mui/icons-material/Star';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
+import { useAppSelector } from '../../../redux/hooks';
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export default function RequestCards(): JSX.Element {
+  const requests = useAppSelector((store) => store.searchRequests.requests);
+  console.log(requests);
+  // const searchRequests = requests.filter((request) => request.Products?.title.includes(input));
+
   return (
     <Container sx={{ py: 6 }} maxWidth="md">
       {/* End hero unit */}
       <Grid container spacing={3}>
-        {cards.map((card) => (
-          <Grid item key={card} xs={12} sm={6} md={4}>
+        {requests.map((request) => (
+          <Grid item key={request.id} xs={12} sm={6} md={4}>
             <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
               <CardMedia
                 component="img"
@@ -39,10 +44,10 @@ export default function RequestCards(): JSX.Element {
               />
               <CardContent sx={{ flexGrow: 1 }}>
                 <Typography gutterBottom variant="h5" component="h2">
-                  Титул Заявки
+                  {request.title}
                 </Typography>
-                <Typography>Автор заявки: [partner name]</Typography>
-                <Typography>Краткое описание заявки</Typography>
+                <Typography>{request.User?.companyName}</Typography>
+                <Typography>{request.description}</Typography>
               </CardContent>
               <CardActions>
                 <Button size="small">Подробнее</Button>
