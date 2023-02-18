@@ -27,17 +27,6 @@ function App(): JSX.Element {
 
   return (
     <Container>
-      <NavigationBar />
-      <Routes>
-        <Route path="/mainpage" element={<MainPage />} />
-        <Route path="/personarea" element={<PersonalAreaPage />} />
-        <Route path="/profile" element={<ProfilePersonPage />} />
-        <Route path="/createrequest" element={<CreateRequestPage />} />
-        <Route path="/search" element={<SearchPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignUpPage />} />
-
-      </Routes>
       {user.status === 'fetching' ? (
         <CircularProgress />
       ) : (
