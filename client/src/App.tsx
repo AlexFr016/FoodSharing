@@ -1,4 +1,4 @@
-import { Container } from '@mui/material';
+import { CircularProgress, Container } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
@@ -13,30 +13,68 @@ import SearchPage from './components/pages/searchPage/SearchPage';
 
 import LoginPage from './components/pages/LoginPage/LoginPage';
 import SignUpPage from './components/pages/SignUpPage/SignUpPage';
-import { useAppDispatch } from './redux/hooks';
+import { useAppDispatch, useAppSelector } from './redux/hooks';
 import { checkAuth } from './redux/userSlice/userReducer';
-
+import PrivateRoute from './components/HOC/PrivateRoute';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
+  const user = useAppSelector((store) => store.user);
+
   useEffect(() => {
-    dispatch(checkAuth())
-  }, [])
+    dispatch(checkAuth());
+  }, []);
 
   return (
     <Container>
-      <NavigationBar />
-      <Routes>
-        <Route path="/mainpage" element={<MainPage />} />
-        <Route path="/personarea" element={<PersonalAreaPage />} />
-        <Route path="/profile" element={<ProfilePersonPage />} />
-        <Route path="/header" element={<HeaderMainPage />} />
-        <Route path="/createrequest" element={<CreateRequestPage />} />
-        <Route path="/search" element={<SearchPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignUpPage />} />
+      {user.status === 'fetching' ? (
+        <CircularProgress />
+      ) : (
+        <>
+          <NavigationBar />
+          <Routes>
+            <Route path="/mainpage" element={<MainPage />} />
 
-      </Routes>
+            <Route
+              element={
+                <PrivateRoute isAllowed={user.status === 'logged'} redirectPath="/mainpage" />
+              }
+            >
+              <Route path="/personarea" element={<PersonalAreaPage />} />
+              <Route path="/profile" element={<ProfilePersonPage />} />
+
+              <Route
+                path="/createrequest"
+                element={
+                  <PrivateRoute
+                    isAllowed={user.status === 'logged' && user.roleid === 3}
+                    redirectPath="/mainpage"
+                  >
+                    <CreateRequestPage />
+                  </PrivateRoute>
+                }
+              />
+
+              <Route path="/search" element={<SearchPage />} />
+            </Route>
+
+            <Route
+              element={
+                <PrivateRoute isAllowed={user.status === 'empty'} redirectPath="/mainpage" />
+              }
+            >
+              <Route
+                element={
+                  <PrivateRoute isAllowed={user.status === 'empty'} redirectPath="/mainpage" />
+                }
+              >
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/signup" element={<SignUpPage />} />
+              </Route>
+            </Route>
+          </Routes>
+        </>
+      )}
     </Container>
   );
 }

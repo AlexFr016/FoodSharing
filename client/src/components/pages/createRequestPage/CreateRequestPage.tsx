@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
@@ -9,6 +9,8 @@ import { MuiFileInput } from 'mui-file-input';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import type { Dayjs } from 'dayjs';
 import dayjs from 'dayjs';
+import { checkAuth } from '../../../redux/userSlice/userReducer';
+import { useAppDispatch } from '../../../redux/hooks';
 
 export default function CreateRequestPage(): JSX.Element {
   const [file, setFile] = useState(null);
