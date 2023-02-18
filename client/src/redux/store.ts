@@ -1,23 +1,23 @@
 import { configureStore } from '@reduxjs/toolkit';
+import createSagaMiddleware from 'redux-saga';
+import searchRequestsSagaWatcher from './sagas';
+import searchRequestsReducer from './searchRequestsSlice/searchRequestsSlice';
 import userReducer from './userSlice/userReducer';
-// import createSagaMiddleware from 'redux-saga';
 
 // create the saga middleware
-// const sagaMiddleware = createSagaMiddleware();
+const sagaMiddleware = createSagaMiddleware();
 
 const store = configureStore({
   reducer: {
     user: userReducer,
+    searchRequests: searchRequestsReducer,
   },
 
-  // middleware: (getDefaultMiddleware) => [
-  //   ...getDefaultMiddleware(),
-  //   sagaMiddleware,
-  // ],
+  middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(), sagaMiddleware],
 });
 
 // then run the saga
-// sagaMiddleware.run(mySagaWather);
+sagaMiddleware.run(searchRequestsSagaWatcher);
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
