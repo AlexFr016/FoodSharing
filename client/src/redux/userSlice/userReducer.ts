@@ -14,8 +14,8 @@ type UserState =
       secondName: string;
       email: string;
       phone: string;
-      hashpass: string;
-      roleId?: number;
+      // hashpass: string;
+      roleid?: number;
       companyName?: string;
       active: boolean;
       description?: string;
@@ -59,18 +59,18 @@ export const loginHandler =
       .catch(console.log);
   };
 
-  export const checkAuth = (): AppThunk => (dispatch) => {
-    axios<BackendUserType>('/auth/check')
-      .then((res) => dispatch(setUser({ ...res.data, status: 'logged' })))
-      .catch(() => {
-        dispatch(setUser({ status: 'empty' }));
-      });
-  };
+export const checkAuth = (): AppThunk => (dispatch) => {
+  axios<BackendUserType>('/api/user/check')
+    .then((res) => dispatch(setUser({ ...res.data, status: 'logged' })))
+    .catch(() => {
+      dispatch(setUser({ status: 'empty' }));
+    });
+};
 
-  export const logoutHandler = (): AppThunk => (dispatch) => {
-    axios('/auth/logout')
-      .then(() => dispatch(logoutUser()))
-      .catch(console.log);
-  };
+export const logoutHandler = (): AppThunk => (dispatch) => {
+  axios('/auth/logout')
+    .then(() => dispatch(logoutUser()))
+    .catch(console.log);
+};
 
 export default userSlice.reducer;

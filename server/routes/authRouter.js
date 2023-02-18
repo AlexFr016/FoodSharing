@@ -58,14 +58,14 @@ authRouter.get('/logout', (req, res) => {
     res.sendStatus(500);
   }
 });
-authRouter.get('/check', async (req, res) => {
+authRouter.get('/check', (req, res) => {
   try {
     if (req.session?.user?.id) {
       return res.json(req.session.user);
     }
     return res.sendStatus(401);
   } catch (error) {
-    res.sendStatus(500)
+    res.sendStatus(500);
   }
 });
 
