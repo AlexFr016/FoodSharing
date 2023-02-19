@@ -55,11 +55,11 @@ export default function RequestPage(): JSX.Element {
           }}
         />
         <Grid container>
-          <Grid item md={6}>
+          <Grid item md={8}>
             <Box
               sx={{
                 position: 'relative',
-                p: { xs: 3, md: 6 },
+                p: { xs: 3, md: 8 },
                 pr: { md: 0 },
               }}
             >
@@ -69,7 +69,7 @@ export default function RequestPage(): JSX.Element {
               <Typography variant="h5" color="inherit" paragraph>
                 {request.User.description}
               </Typography>
-              <Link variant="subtitle1" href="/">
+              <Link variant="h4" href="/">
                 {request.User.companyName}
               </Link>
             </Box>
