@@ -59,11 +59,11 @@ export default function RequestCards({ request }: RequestCardsProps): JSX.Elemen
           <Button size="small">Подробнее</Button>
           {isFav ? (
             <Button onClick={() => dispatch(delFavoriteRequest(request.id))} size="small">
-              <StarIcon fontSize="large" />
+              <StarIcon sx={{ ml: 6 }} fontSize="large" />
             </Button>
           ) : (
             <Button onClick={() => dispatch(addFavoriteRequest(request))} size="small">
-              <StarBorderOutlinedIcon sx={{ ml: 1 }} fontSize="large" />
+              <StarBorderOutlinedIcon sx={{ ml: 6 }} fontSize="large" />
             </Button>
           )}
         </CardActions>
