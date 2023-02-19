@@ -19,7 +19,7 @@ apiFavoritesRouter.route('/').get(async (req, res) => {
           },
         },
       });
-      console.log(JSON.parse(JSON.stringify(allFavoriteRequests)));
+      // console.log(JSON.parse(JSON.stringify(allFavoriteRequests)));
       return res.json(allFavoriteRequests);
     }
     return res.sendStatus(401);

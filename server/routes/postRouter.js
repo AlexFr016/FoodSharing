@@ -10,7 +10,7 @@ postRouter.get('/:id', async (req, res) => {
   try {
     const { id } = req.params;
     const neededRequest = await Request.findOne({ where: { id }, include: [{ model: User }, {model: Product}] });
-    const responseRequest = JSON.parse(JSON.parse(neededRequest))
+    const responseRequest = JSON.parse(JSON.stringify(neededRequest))
     console.log(responseRequest)
     res.send(responseRequest)
   } catch (error) {

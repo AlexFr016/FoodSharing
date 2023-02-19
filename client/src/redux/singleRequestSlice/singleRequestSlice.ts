@@ -3,20 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import type { AppThunk } from '../hooks';
 import type { RootState } from '../store';
-import type { RequestFormType, BackendRequestType } from './requestType';
-
-export type BackendRequestWithUserType = {
-  title: string;
-  lifeTimeStart?: Date;
-  lifeTimeEnd: Date;
-  adress: string;
-  contactPhone: number;
-  contactName: string;
-  description: string;
-  id: number;
-  partnerid: number;
-  statusid: number;
-};
+import type { BackendRequestWithUserType } from './singleRequestsType';
 
 const initialState: BackendRequestWithUserType = {
   title: '',
@@ -29,6 +16,8 @@ const initialState: BackendRequestWithUserType = {
   id: 0,
   partnerid: 0,
   statusid: 0,
+  User: null,
+  Products: [],
 };
 
 export const requestSlice = createSlice({
@@ -44,7 +33,7 @@ export const requestSlice = createSlice({
 export const { setRequest } = requestSlice.actions;
 
 export const getSingleRequest =
-  (id: number): AppThunk =>
+  (id: string): AppThunk =>
   (dispatch) => {
     axios<BackendRequestWithUserType>(`/api/post/${id}`)
       .then((res) => dispatch(setRequest(res.data)))
