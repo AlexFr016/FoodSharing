@@ -17,46 +17,57 @@ import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import StarIcon from '@mui/icons-material/Star';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
-import { useAppSelector } from '../../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
+import type { BackendRequest } from '../../../redux/searchRequestsSlice/searchRequestsType';
+import {
+  addFavoriteRequest,
+  delFavoriteRequest,
+} from '../../../redux/favoritesRequestsSlice/favoritesRequestsSlice';
 
+type RequestCardsProps = {
+  request: BackendRequest;
+};
 
+export default function RequestCards({ request }: RequestCardsProps): JSX.Element {
+  // console.log(request);
+  // const searchrequest = request.filter((request) => request.Products?.title.includes(input));
+  const dispatch = useAppDispatch();
+  const favRequests = useAppSelector((store) => store.favoritesRequests.favorites.Requests);
 
-export default function RequestCards(): JSX.Element {
-  const requests = useAppSelector((store) => store.searchRequests.requests);
-  console.log(requests);
-  // const searchRequests = requests.filter((request) => request.Products?.title.includes(input));
+  const isFav = favRequests.find((favR) => favR.id === request.id);
 
   return (
-    <Container sx={{ py: 6 }} maxWidth="md">
-      {/* End hero unit */}
-      <Grid container spacing={3}>
-        {requests.map((request) => (
-          <Grid item key={request.id} xs={12} sm={6} md={4}>
-            <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-              <CardMedia
-                component="img"
-                sx={{
-                  // 16:9
-                  pt: '6.25%',
-                }}
-                image="https://avatars.mds.yandex.net/i?id=54b9b5936d827c669e972d6fc8a7d1d0-5498032-images-thumbs&n=13&exp=1"
-                alt="random"
-              />
-              <CardContent sx={{ flexGrow: 1 }}>
-                <Typography gutterBottom variant="h5" component="h2">
-                  {request.title}
-                </Typography>
-                <Typography>{request.User?.companyName}</Typography>
-                <Typography>{request.description}</Typography>
-              </CardContent>
-              <CardActions>
-                <Button size="small">Подробнее</Button>
-                <StarBorderOutlinedIcon sx={{ ml: 7 }} fontSize="large" />
-              </CardActions>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
-    </Container>
+    <Grid item xs={12} sm={6} md={4}>
+      <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+        <CardMedia
+          component="img"
+          sx={{
+            // 16:9
+            pt: '6.25%',
+          }}
+          image="https://avatars.mds.yandex.net/i?id=54b9b5936d827c669e972d6fc8a7d1d0-5498032-images-thumbs&n=13&exp=1"
+          alt="random"
+        />
+        <CardContent sx={{ flexGrow: 1 }}>
+          <Typography gutterBottom variant="h5" component="h2">
+            {request.title}
+          </Typography>
+          <Typography>{request.User?.companyName}</Typography>
+          <Typography>{request.description}</Typography>
+        </CardContent>
+        <CardActions>
+          <Button size="small">Подробнее</Button>
+          {isFav ? (
+            <Button onClick={() => dispatch(delFavoriteRequest(request.id))} size="small">
+              <StarIcon fontSize="large" />
+            </Button>
+          ) : (
+            <Button onClick={() => dispatch(addFavoriteRequest(request))} size="small">
+              <StarBorderOutlinedIcon sx={{ ml: 1 }} fontSize="large" />
+            </Button>
+          )}
+        </CardActions>
+      </Card>
+    </Grid>
   );
 }

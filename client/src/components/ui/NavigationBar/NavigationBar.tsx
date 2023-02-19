@@ -215,6 +215,22 @@ export default function NavigationBar(): JSX.Element {
               </Button>
             )}
 
+            {user.status === 'logged' && user.roleid === 1 && (
+              <Button
+                component={Link}
+                to="/favorites"
+                color="inherit"
+                sx={{
+                  my: 2,
+                  color: 'black',
+                  display: 'block',
+                  fontStyle: 'border',
+                }}
+              >
+                Избранное
+              </Button>
+            )}
+
             <Button
               component={Link}
               to="/"

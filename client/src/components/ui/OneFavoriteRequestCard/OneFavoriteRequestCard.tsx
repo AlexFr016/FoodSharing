@@ -17,16 +17,23 @@ import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import StarIcon from '@mui/icons-material/Star';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
-import { useAppSelector } from '../../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import type { FavoriteRequest } from '../../../redux/favoritesRequestsSlice/favoritesRequestsType';
+import { delFavoriteRequest } from '../../../redux/favoritesRequestsSlice/favoritesRequestsSlice';
 
 type OneFavoriteRequestCardProps = {
   request: FavoriteRequest;
 };
 
+// const deleteHandler = (): void => {
+
+// };
+
 export default function OneFavoriteRequestCard({
   request,
 }: OneFavoriteRequestCardProps): JSX.Element {
+  const dispatch = useAppDispatch();
+
   return (
     <Grid item key={request.id} xs={12} sm={6} md={4}>
       <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
@@ -48,7 +55,7 @@ export default function OneFavoriteRequestCard({
         </CardContent>
         <CardActions>
           <Button size="small">Подробнее</Button>
-          <Button size="small">
+          <Button onClick={() => dispatch(delFavoriteRequest(request.id))} size="small">
             <StarIcon sx={{ ml: 7 }} fontSize="large" />
           </Button>
         </CardActions>

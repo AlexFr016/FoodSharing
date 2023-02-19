@@ -12,5 +12,14 @@ export type FavoriteRequest = {
 };
 
 export type FavoriteRequestSlice = {
-  favorites: FavoriteRequest[];
+  favorites: UserFavoriteRequest;
 };
+
+export type UserFavoriteRequest = {
+  id: number;
+  Requests: FavoriteRequest[];
+};
+
+// export type addFavorite = {
+
+// }
