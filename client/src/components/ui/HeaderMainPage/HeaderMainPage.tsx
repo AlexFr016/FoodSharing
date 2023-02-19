@@ -59,12 +59,12 @@ export default function HeaderMainPage(): JSX.Element {
                 >
                   <div style={{ color: 'black', textAlign: 'justify', fontSize: 17 }}>
                     Cоциальный проект, который решает задачу спасения продуктов питания от мусорного
-                    полигона, куда она обычно направляется после истечения срока годности.
+                    полигона, куда они обычно отправляются по истечению срока годности.
                   </div>
                   <br />
                   <p style={{ color: 'black', textAlign: 'justify', fontSize: 17 }}>
-                    Наша задача – помочь бизнесу сэкономить на издержках и распределить продукты до
-                    истечения срока годности между теми, кто в них нуждается.
+                    Наша задача – помочь бизнесу сократить издержки и распределить продукты до
+                    истечения их срока годности между теми, кто в них нуждается.
                   </p>
                 </Typography>
               </CardContent>
@@ -125,20 +125,6 @@ export default function HeaderMainPage(): JSX.Element {
           </Grid>
         </Grid>
 
-        {/* <h1 className="title">My Book</h1> */}
-        {/* <div className="simple">
-          <h2 className="titleBig">Присоединяйтесь и делайте мир лучше вместе с нами!</h2>
-          <div className="line" />
-        </div>
-        <h2 className="title">Выберите книгу с увлекательной историей</h2> */}
-
-        {/* <div className="promoText">
-          Ежедневно в России появляется более 100 новых сайтов.
-          <br />
-          И только наш сайт позволит Вам взять в аренду книги и насладиться
-          увлекательной историей.
-          <br /> В чем секрет? Просто попробуйте <span>Наш</span> сервис!
-        </div> */}
 
         <Link to="/signup" style={{ textDecoration: 'none' }}>
           <button type="button" className="promoBtn" style={{ backgroundColor: '#f68b01' }}>
