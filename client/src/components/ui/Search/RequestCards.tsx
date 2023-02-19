@@ -33,6 +33,7 @@ export default function RequestCards({ request }: RequestCardsProps): JSX.Elemen
   // const searchrequest = request.filter((request) => request.Products?.title.includes(input));
   const dispatch = useAppDispatch();
   const favRequests = useAppSelector((store) => store.favoritesRequests.favorites.Requests);
+  const user = useAppSelector((store) => store.user);
 
   const isFav = favRequests.find((favR) => favR.id === request.id);
 
@@ -57,15 +58,17 @@ export default function RequestCards({ request }: RequestCardsProps): JSX.Elemen
         </CardContent>
         <CardActions>
           <Button component={Link} to={`/request/${request.id}`} size="small">Подробнее</Button>
-          {isFav ? (
-            <Button onClick={() => dispatch(delFavoriteRequest(request.id))} size="small">
-              <StarIcon sx={{ ml: 6 }} fontSize="large" />
-            </Button>
-          ) : (
-            <Button onClick={() => dispatch(addFavoriteRequest(request))} size="small">
-              <StarBorderOutlinedIcon sx={{ ml: 6 }} fontSize="large" />
-            </Button>
-          )}
+          {user.status === 'logged' &&
+            user?.roleid === 1 &&
+            (isFav ? (
+              <Button onClick={() => dispatch(delFavoriteRequest(request.id))} size="small">
+                <StarIcon sx={{ ml: 6 }} fontSize="large" />
+              </Button>
+            ) : (
+              <Button onClick={() => dispatch(addFavoriteRequest(request))} size="small">
+                <StarBorderOutlinedIcon sx={{ ml: 6 }} fontSize="large" />
+              </Button>
+            ))}
         </CardActions>
       </Card>
     </Grid>
