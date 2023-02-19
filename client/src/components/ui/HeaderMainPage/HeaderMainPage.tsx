@@ -125,20 +125,6 @@ export default function HeaderMainPage(): JSX.Element {
           </Grid>
         </Grid>
 
-        {/* <h1 className="title">My Book</h1> */}
-        {/* <div className="simple">
-          <h2 className="titleBig">Присоединяйтесь и делайте мир лучше вместе с нами!</h2>
-          <div className="line" />
-        </div>
-        <h2 className="title">Выберите книгу с увлекательной историей</h2> */}
-
-        {/* <div className="promoText">
-          Ежедневно в России появляется более 100 новых сайтов.
-          <br />
-          И только наш сайт позволит Вам взять в аренду книги и насладиться
-          увлекательной историей.
-          <br /> В чем секрет? Просто попробуйте <span>Наш</span> сервис!
-        </div> */}
 
         <Link to="/signup" style={{ textDecoration: 'none' }}>
           <button type="button" className="promoBtn" style={{ backgroundColor: '#f68b01' }}>

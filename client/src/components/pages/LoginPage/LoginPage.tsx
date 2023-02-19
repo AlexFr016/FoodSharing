@@ -98,7 +98,7 @@ export default function LoginPage(): JSX.Element {
                 sx={{ mt: 3, mb: 2 }}
                 style={{background: '#fafafa'}}
               >
-                Зарегестрироваться
+                Зарегистрироваться
               </Button>
             </Grid>
           </Grid>
