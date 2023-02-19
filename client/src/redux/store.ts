@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
+import favoritesRequestsReducer from './favoritesRequestsSlice/favoritesRequestsSlice';
 import searchRequestsSagaWatcher from './sagas';
 import searchRequestsReducer from './searchRequestsSlice/searchRequestsSlice';
 import userReducer from './userSlice/userReducer';
@@ -11,6 +12,7 @@ const store = configureStore({
   reducer: {
     user: userReducer,
     searchRequests: searchRequestsReducer,
+    favoritesRequests: favoritesRequestsReducer,
   },
 
   middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(), sagaMiddleware],

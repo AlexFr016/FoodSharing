@@ -18,26 +18,24 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import StarIcon from '@mui/icons-material/Star';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
-import type { BackendRequest } from '../../../redux/searchRequestsSlice/searchRequestsType';
-import {
-  addFavoriteRequest,
-  delFavoriteRequest,
-} from '../../../redux/favoritesRequestsSlice/favoritesRequestsSlice';
+import type { FavoriteRequest } from '../../../redux/favoritesRequestsSlice/favoritesRequestsType';
+import { delFavoriteRequest } from '../../../redux/favoritesRequestsSlice/favoritesRequestsSlice';
 
-type RequestCardsProps = {
-  request: BackendRequest;
+type OneFavoriteRequestCardProps = {
+  request: FavoriteRequest;
 };
 
-export default function RequestCards({ request }: RequestCardsProps): JSX.Element {
-  // console.log(request);
-  // const searchrequest = request.filter((request) => request.Products?.title.includes(input));
-  const dispatch = useAppDispatch();
-  const favRequests = useAppSelector((store) => store.favoritesRequests.favorites.Requests);
+// const deleteHandler = (): void => {
 
-  const isFav = favRequests.find((favR) => favR.id === request.id);
+// };
+
+export default function OneFavoriteRequestCard({
+  request,
+}: OneFavoriteRequestCardProps): JSX.Element {
+  const dispatch = useAppDispatch();
 
   return (
-    <Grid item xs={12} sm={6} md={4}>
+    <Grid item key={request.id} xs={12} sm={6} md={4}>
       <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
         <CardMedia
           component="img"
@@ -57,15 +55,9 @@ export default function RequestCards({ request }: RequestCardsProps): JSX.Elemen
         </CardContent>
         <CardActions>
           <Button size="small">Подробнее</Button>
-          {isFav ? (
-            <Button onClick={() => dispatch(delFavoriteRequest(request.id))} size="small">
-              <StarIcon fontSize="large" />
-            </Button>
-          ) : (
-            <Button onClick={() => dispatch(addFavoriteRequest(request))} size="small">
-              <StarBorderOutlinedIcon sx={{ ml: 1 }} fontSize="large" />
-            </Button>
-          )}
+          <Button onClick={() => dispatch(delFavoriteRequest(request.id))} size="small">
+            <StarIcon sx={{ ml: 7 }} fontSize="large" />
+          </Button>
         </CardActions>
       </Card>
     </Grid>

@@ -9,9 +9,7 @@ import store from './redux/store';
 axios.defaults.withCredentials = true;
 axios.defaults.baseURL = 'http://localhost:3001';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement,
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <Provider store={store}>
