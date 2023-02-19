@@ -18,6 +18,7 @@ import { checkAuth } from './redux/userSlice/userReducer';
 import PrivateRoute from './components/HOC/PrivateRoute';
 import FavoritesPage from './components/pages/FavoritesPage/FavoritesPage';
 import { getFavoritesRequestsApi } from './redux/favoritesRequestsSlice/favoritesRequestsSlice';
+import RequestPage from './components/pages/RequestPage/RequestPage';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -44,6 +45,7 @@ function App(): JSX.Element {
             >
               <Route path="/personarea" element={<PersonalAreaPage />} />
               <Route path="/profile" element={<ProfilePersonPage />} />
+              <Route path="/request/:id" element={<RequestPage />} />
 
               <Route
                 path="/createrequest"

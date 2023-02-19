@@ -63,5 +63,6 @@ export const addFavoriteRequest =
       .catch(console.log);
   };
 
+
 // res.status === 200 &&
 export default favoritesRequestsSlice.reducer;
