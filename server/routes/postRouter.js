@@ -19,17 +19,18 @@ postRouter.post('/create', async (req, res) => {
   }
 });
 
-postRouter.post('/newproduct', upload.single('productName'), async (req, res) => {
+postRouter.post('/newproduct/:id', upload.single('productName'), async (req, res) => {
   try {
-    // const { input } = req.body;
+    const { id: requestid } = req.params;
     const img = req?.file?.filename;
-    // console.log({ img, f: req.file, fs: req.body.formData });
+    console.log({ requestid });
     const newProduct = [];
-
+    // const data = []
     parse(img).forEach((el) => {
-      newProduct.push(...el.data);
+      const data = el.data.map((obj) => ({ ...obj, requestid: Number(requestid) }));
+      newProduct.push(...data);
+      console.log({ el, data, newProduct });
     });
-    console.log(newProduct);
     // eslint-disable-next-line no-restricted-syntax, no-undef
     for await (product of newProduct) {
       // eslint-disable-next-line no-undef

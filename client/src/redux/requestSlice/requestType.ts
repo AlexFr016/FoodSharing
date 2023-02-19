@@ -9,14 +9,14 @@ export type RequestFormType = {
 };
 
 export type BackendRequestType = {
-//   title: string;
-//   lifeTimeStart?: Date;
-//   lifeTimeEnd: Date;
-//   adress: string;
-//   contactPhone: number;
-//   contactName: string;
-//   description: string;
+  //   title: string;
+  //   lifeTimeStart?: Date;
+  //   lifeTimeEnd: Date;
+  //   adress: string;
+  //   contactPhone: number;
+  //   contactName: string;
+  //   description: string;
+  id: number;
   partnerid: number;
   statusid: number;
 } & RequestFormType;
-
