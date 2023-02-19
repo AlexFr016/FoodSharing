@@ -11,7 +11,7 @@ postRouter.get('/:id', async (req, res) => {
     const { id } = req.params;
     const neededRequest = await Request.findOne({ where: { id }, include: [{ model: User }, {model: Product}] });
     const responseRequest = JSON.parse(JSON.stringify(neededRequest))
-    console.log(responseRequest)
+    // console.log(responseRequest)
     res.send(responseRequest)
   } catch (error) {
     console.log(error);
