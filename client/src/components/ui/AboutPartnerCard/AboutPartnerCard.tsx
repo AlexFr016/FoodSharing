@@ -9,7 +9,7 @@ export default function AboutPartnerCard(): JSX.Element {
     <Card
       sx={{
         maxWidth: 400,
-        height: 400,
+        height: 590,
         overflowY: 'scroll',
         bgcolor: '#fff',
         borderRadius: 10,
