@@ -1,14 +1,10 @@
 import { Card } from '@mui/material';
-import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
-import { loadOnePartner } from '../../../redux/partnersSlice/onePartnerReducer';
+import React from 'react';
+import { useAppSelector } from '../../../redux/hooks';
 
 export default function AboutPartnerCard(): JSX.Element {
-  const partner = useAppSelector((store) => store.partner);
-  const dispatch = useAppDispatch();
-  const { id } = useParams();
-  useEffect(() => dispatch(loadOnePartner(Number(id))), []);
+  const user = useAppSelector((store) => store.user);
+
   return (
     <Card
       sx={{
@@ -22,7 +18,7 @@ export default function AboutPartnerCard(): JSX.Element {
         marginX: 3,
       }}
     >
-      <h2>{partner.description}</h2>
+      <h2>{user.status === 'logged' && user.roleid === 3 && user.description}</h2>
     </Card>
   );
 }
