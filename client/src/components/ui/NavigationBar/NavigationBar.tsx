@@ -154,9 +154,9 @@ export default function NavigationBar(): JSX.Element {
             >
               О нас
             </Button>
-            {/* <Button
+            <Button
               component={Link}
-              to="/"
+              to="/partners"
               color="inherit"
               sx={{
                 my: 2,
@@ -166,7 +166,7 @@ export default function NavigationBar(): JSX.Element {
               }}
             >
               Наши партнеры
-            </Button> */}
+            </Button>
             {user.status === 'empty' && (
               <Button
                 component={Link}

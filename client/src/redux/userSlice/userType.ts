@@ -12,6 +12,10 @@ export type AuthorizeUserFormType = {
   pass: string;
 };
 
+export type PartnersSliceState = {
+  partners: BackendUserType[];
+};
+
 export type BackendUserType = {
   id: number;
   firstName: string;

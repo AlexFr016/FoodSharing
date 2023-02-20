@@ -5,6 +5,7 @@ const session = require('express-session');
 const store = require('session-file-store');
 const authRouter = require('./routes/authRouter');
 const postRouter = require('./routes/postRouter');
+const partnersRouter = require('./routes/partnersRouter');
 require('dotenv').config();
 
 const PORT = process.env.PORT || 3001;
@@ -31,8 +32,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
+app.use('/partners', partnersRouter);
 app.use('/api/user', authRouter);
-
 app.use('/api/post', postRouter);
 
 app.listen(PORT, () => console.log(`Server has started on PORT ${PORT}`));

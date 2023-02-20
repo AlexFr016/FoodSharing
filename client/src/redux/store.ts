@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import userReducer from './userSlice/userReducer';
+import partnersReducer from './partnersSlice/partnersReducer';
 // import createSagaMiddleware from 'redux-saga';
 
 // create the saga middleware
@@ -8,6 +9,7 @@ import userReducer from './userSlice/userReducer';
 const store = configureStore({
   reducer: {
     user: userReducer,
+    partners: partnersReducer,
   },
 
   // middleware: (getDefaultMiddleware) => [
