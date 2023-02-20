@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 import favoritesRequestsReducer from './favoritesRequestsSlice/favoritesRequestsSlice';
-import searchRequestsSagaWatcher from './sagas';
+import { filterRequestsSagaWatcher, searchRequestsSagaWatcher } from './sagas';
 import searchRequestsReducer from './searchRequestsSlice/searchRequestsSlice';
 import requestReducer from './singleRequestSlice/singleRequestSlice';
 import userReducer from './userSlice/userReducer';
@@ -29,6 +29,7 @@ const store = configureStore({
 
 // then run the saga
 sagaMiddleware.run(searchRequestsSagaWatcher);
+sagaMiddleware.run(filterRequestsSagaWatcher);
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
