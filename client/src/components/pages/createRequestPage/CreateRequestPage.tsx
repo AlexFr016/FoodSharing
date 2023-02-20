@@ -16,7 +16,7 @@ import { checkAuth } from '../../../redux/userSlice/userReducer';
 import { useAppDispatch } from '../../../redux/hooks';
 
 export default function CreateRequestPage(): JSX.Element {
-  const [file, setFile] = useState(null);
+  // const [file, setFile] = useState(null);
   const [requestid, setRequestid] = useState(0);
 
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {

@@ -1,5 +1,6 @@
 import { FormControl, InputAdornment, InputLabel, OutlinedInput } from '@mui/material';
 import React from 'react';
+import Button from '@mui/material-next/Button';
 
 export default function SearchInput(): JSX.Element {
   return (
