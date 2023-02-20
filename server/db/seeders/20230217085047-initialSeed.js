@@ -50,66 +50,66 @@ module.exports = {
           photoPath:
             'https://avatars.mds.yandex.net/i?id=488fb560a1f6dfcee980535198d35928-4960217-images-thumbs&n=13&exp=1',
         },
-        // {
-        //   title: 'Молоко',
-        //   photoPath:
-        //     'https://avatars.mds.yandex.net/i?id=15fbc5c393059d0887944886d01bde2d31f0f73b-8209530-images-thumbs&n=13&exp=1',
-        // },
-        // {
-        //   title: 'Соя',
-        //   photoPath:
-        //     'https://avatars.mds.yandex.net/i?id=15fbc5c393059d0887944886d01bde2d31f0f73b-8209530-images-thumbs&n=13&exp=1',
-        // },
-        // {
-        //   title: 'Зелень',
-        //   photoPath:
-        //     'https://avatars.mds.yandex.net/i?id=15fbc5c393059d0887944886d01bde2d31f0f73b-8209530-images-thumbs&n=13&exp=1',
-        // },
-        // {
-        //   title: 'Фрукты, ягоды',
-        //   photoPath:
-        //     'https://avatars.mds.yandex.net/i?id=15fbc5c393059d0887944886d01bde2d31f0f73b-8209530-images-thumbs&n=13&exp=1',
-        // },
-        // {
-        //   title: 'Грибы',
-        //   photoPath:
-        //     'https://avatars.mds.yandex.net/i?id=15fbc5c393059d0887944886d01bde2d31f0f73b-8209530-images-thumbs&n=13&exp=1',
-        // },
-        // {
-        //   title: 'Жиры, масла',
-        //   photoPath:
-        //     'https://avatars.mds.yandex.net/i?id=15fbc5c393059d0887944886d01bde2d31f0f73b-8209530-images-thumbs&n=13&exp=1',
-        // },
-        // {
-        //   title: 'Орехи, семена, крупы',
-        //   photoPath:
-        //     'https://avatars.mds.yandex.net/i?id=15fbc5c393059d0887944886d01bde2d31f0f73b-8209530-images-thumbs&n=13&exp=1',
-        // },
-        // {
-        //   title: 'Мучное',
-        //   photoPath:
-        //     'https://avatars.mds.yandex.net/i?id=15fbc5c393059d0887944886d01bde2d31f0f73b-8209530-images-thumbs&n=13&exp=1',
-        // },
-        // {
-        //   title: 'Сладости',
-        //   photoPath:
-        //     'https://avatars.mds.yandex.net/i?id=15fbc5c393059d0887944886d01bde2d31f0f73b-8209530-images-thumbs&n=13&exp=1',
-        // },
-        // {
-        //   title: 'Фастфуд',
-        //   photoPath:
-        //     'https://avatars.mds.yandex.net/i?id=15fbc5c393059d0887944886d01bde2d31f0f73b-8209530-images-thumbs&n=13&exp=1',
-        // },
-        // {
-        //   title: 'Напитки, соки',
-        //   photoPath:
-        //     'https://avatars.mds.yandex.net/i?id=15fbc5c393059d0887944886d01bde2d31f0f73b-8209530-images-thumbs&n=13&exp=1',
-        // },
-        // {
-        //   title: 'Другое',
-        //   photoPath:
-        //     'https://avatars.mds.yandex.net/i?id=15fbc5c393059d0887944886d01bde2d31f0f73b-8209530-images-thumbs&n=13&exp=1',
-        // },
+        {
+          title: 'Молоко',
+          photoPath:
+            'https://avatars.mds.yandex.net/i?id=15fbc5c393059d0887944886d01bde2d31f0f73b-8209530-images-thumbs&n=13&exp=1',
+        },
+        {
+          title: 'Соя',
+          photoPath:
+            'https://avatars.mds.yandex.net/i?id=15fbc5c393059d0887944886d01bde2d31f0f73b-8209530-images-thumbs&n=13&exp=1',
+        },
+        {
+          title: 'Зелень',
+          photoPath:
+            'https://avatars.mds.yandex.net/i?id=15fbc5c393059d0887944886d01bde2d31f0f73b-8209530-images-thumbs&n=13&exp=1',
+        },
+        {
+          title: 'Фрукты',
+          photoPath:
+            'https://avatars.mds.yandex.net/i?id=15fbc5c393059d0887944886d01bde2d31f0f73b-8209530-images-thumbs&n=13&exp=1',
+        },
+        {
+          title: 'Грибы',
+          photoPath:
+            'https://avatars.mds.yandex.net/i?id=15fbc5c393059d0887944886d01bde2d31f0f73b-8209530-images-thumbs&n=13&exp=1',
+        },
+        {
+          title: 'Жиры|Масла',
+          photoPath:
+            'https://avatars.mds.yandex.net/i?id=15fbc5c393059d0887944886d01bde2d31f0f73b-8209530-images-thumbs&n=13&exp=1',
+        },
+        {
+          title: 'Орехи|семена|крупы',
+          photoPath:
+            'https://avatars.mds.yandex.net/i?id=15fbc5c393059d0887944886d01bde2d31f0f73b-8209530-images-thumbs&n=13&exp=1',
+        },
+        {
+          title: 'Мучное',
+          photoPath:
+            'https://avatars.mds.yandex.net/i?id=15fbc5c393059d0887944886d01bde2d31f0f73b-8209530-images-thumbs&n=13&exp=1',
+        },
+        {
+          title: 'Сладости',
+          photoPath:
+            'https://avatars.mds.yandex.net/i?id=15fbc5c393059d0887944886d01bde2d31f0f73b-8209530-images-thumbs&n=13&exp=1',
+        },
+        {
+          title: 'Фастфуд',
+          photoPath:
+            'https://avatars.mds.yandex.net/i?id=15fbc5c393059d0887944886d01bde2d31f0f73b-8209530-images-thumbs&n=13&exp=1',
+        },
+        {
+          title: 'Напитки|соки',
+          photoPath:
+            'https://avatars.mds.yandex.net/i?id=15fbc5c393059d0887944886d01bde2d31f0f73b-8209530-images-thumbs&n=13&exp=1',
+        },
+        {
+          title: 'Другое',
+          photoPath:
+            'https://avatars.mds.yandex.net/i?id=15fbc5c393059d0887944886d01bde2d31f0f73b-8209530-images-thumbs&n=13&exp=1',
+        },
       ],
       {},
     );
@@ -209,6 +209,9 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
+    await queryInterface.bulkDelete('Statuses', null, {});
+    await queryInterface.bulkDelete('Users', null, {});
+    await queryInterface.bulkDelete('Categories', null, {});
     await queryInterface.bulkDelete('Roles', null, {});
   },
 };
