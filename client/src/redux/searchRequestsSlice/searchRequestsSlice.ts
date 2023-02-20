@@ -15,7 +15,7 @@ export const searchRequestsSlice = createSlice({
   initialState,
   reducers: {
     setRequests: (state, action: PayloadAction<BackendRequest[]>) => {
-      state.requests = action.payload;
+      state.searchRequests = action.payload;
     },
 
     setSearchRequests: (state, action: PayloadAction<BackendRequest[]>) => {

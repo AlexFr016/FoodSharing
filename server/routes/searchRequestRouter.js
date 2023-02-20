@@ -8,7 +8,7 @@ searchRequestRouter
   .route('/')
   .get(async (req, res) => {
     try {
-      console.log('AAAAAAAAAAAAAAAAAAAAAAAA');
+      // console.log('AAAAAAAAAAAAAAAAAAAAAAAA');
       const allRequests = await Request.findAll({
         order: [['createdAt', 'DESC']],
         include: [
@@ -34,43 +34,48 @@ searchRequestRouter
     }
   })
   .post(async (req, res) => {
-    const { input } = req.body;
+    try {
+      const { input } = req.body;
 
-    const foundRequests = await Request.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ['id', 'companyName'],
-        },
-        {
-          model: Product,
-          attributes: ['title'],
+      const foundRequests = await Request.findAll({
+        include: [
+          {
+            model: User,
+            attributes: ['id', 'companyName'],
+          },
+          {
+            model: Product,
+            attributes: ['title'],
 
-          where: {
-            [Op.or]: [
-              {
-                title: {
-                  [Op.iLike]: `%${input}%`,
+            where: {
+              [Op.or]: [
+                {
+                  title: {
+                    [Op.iLike]: `%${input}%`,
+                  },
                 },
-              },
-              {
-                title: {
-                  [Op.substring]: input,
+                {
+                  title: {
+                    [Op.substring]: input,
+                  },
                 },
-              },
-            ],
+              ],
+            },
+            include: {
+              model: Category,
+              attributes: ['id', 'title'],
+            },
           },
-          include: {
-            model: Category,
-            attributes: ['id', 'title'],
-          },
-        },
-      ],
-    });
+        ],
+      });
+      console.log(JSON.parse(JSON.stringify(foundRequests)));
+      res.json(foundRequests);
+    } catch (error) {
+      console.log(error);
+      res.sendStatus(500);
+    }
 
     // const resa = foundRequest({ title: { [Op.substring]: input } });
-    // console.log(JSON.parse(JSON.stringify(foundRequests)));
-    res.json(foundRequests);
   });
 
 module.exports = searchRequestRouter;
