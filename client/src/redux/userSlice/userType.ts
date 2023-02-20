@@ -12,6 +12,10 @@ export type AuthorizeUserFormType = {
   pass: string;
 };
 
+export type PartnersSliceState = {
+  partners: BackendUserType[];
+};
+
 export type BackendUserType = {
   id: number;
   firstName: string;
@@ -19,11 +23,13 @@ export type BackendUserType = {
   secondName: string;
   email: string;
   phone: string;
+  pathPhoto?: string;
   // hashpass: string;
   roleid?: number;
   companyName?: string;
   active: boolean;
   description?: string;
+  titleLogoPath?: string;
 };
 
 

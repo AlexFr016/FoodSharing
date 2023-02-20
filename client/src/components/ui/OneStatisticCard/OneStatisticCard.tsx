@@ -3,9 +3,9 @@ import React from 'react';
 
 export default function OneStatisticCard(): JSX.Element {
   return (
-    <Card sx={{ width: 400, boxShadow: 10, borderRadius: 10, bgcolor: 'inherit', marginX: 3 }}>
+    <Card sx={{ width: 400, boxShadow: 10, borderRadius: 10, bgcolor: '#fff', marginX: 3 }}>
       <CardContent>
-        <Rating name="size-large" defaultValue={4} size="large" />
+        <Rating name="read-only" defaultValue={4} size="large" readOnly />
         <Typography gutterBottom variant="h5" component="div">
           Спасено еды
         </Typography>

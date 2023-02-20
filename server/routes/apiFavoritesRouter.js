@@ -1,5 +1,5 @@
 const express = require('express');
-const { Op, Sequelize } = require('sequelize');
+// const { Op, Sequelize } = require('sequelize');
 const { Request, User, Favorite } = require('../db/models');
 
 const apiFavoritesRouter = express.Router();
@@ -20,6 +20,7 @@ apiFavoritesRouter.route('/').get(async (req, res) => {
         },
       });
       console.log(JSON.parse(JSON.stringify(allFavoriteRequests)));
+      // console.log(JSON.parse(JSON.stringify(allFavoriteRequests)));
       return res.json(allFavoriteRequests);
     }
     return res.sendStatus(401);

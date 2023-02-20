@@ -15,7 +15,7 @@ searchRequestRouter.route('/').get(async (req, res) => {
         },
       ],
     });
-    console.log(allRequests);
+    // console.log(allRequests);
     res.json(allRequests);
   } catch (error) {
     console.log(error);
@@ -50,7 +50,7 @@ searchRequestRouter.post('/', async (req, res) => {
   });
 
   // const resa = foundRequest ({ title: { [Op.substring]: input } });
-  console.log(foundRequests);
+  // console.log(foundRequests);
   res.json(foundRequests);
 });
 

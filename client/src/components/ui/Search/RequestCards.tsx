@@ -13,7 +13,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
+import { Link, useNavigate } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import StarIcon from '@mui/icons-material/Star';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
@@ -33,6 +33,7 @@ export default function RequestCards({ request }: RequestCardsProps): JSX.Elemen
   // const searchrequest = request.filter((request) => request.Products?.title.includes(input));
   const dispatch = useAppDispatch();
   const favRequests = useAppSelector((store) => store.favoritesRequests.favorites.Requests);
+  const user = useAppSelector((store) => store.user);
 
   const isFav = favRequests.find((favR) => favR.id === request.id);
 
@@ -56,16 +57,20 @@ export default function RequestCards({ request }: RequestCardsProps): JSX.Elemen
           <Typography>{request.description}</Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">Подробнее</Button>
-          {isFav ? (
-            <Button onClick={() => dispatch(delFavoriteRequest(request.id))} size="small">
-              <StarIcon sx={{ ml: 6 }} fontSize="large" />
-            </Button>
-          ) : (
-            <Button onClick={() => dispatch(addFavoriteRequest(request))} size="small">
-              <StarBorderOutlinedIcon sx={{ ml: 6 }} fontSize="large" />
-            </Button>
-          )}
+          <Button component={Link} to={`/request/${request.id}`} size="small">
+            Подробнее
+          </Button>
+          {user.status === 'logged' &&
+            user?.roleid === 1 &&
+            (isFav ? (
+              <Button onClick={() => dispatch(delFavoriteRequest(request.id))} size="small">
+                <StarIcon sx={{ ml: 6 }} fontSize="large" />
+              </Button>
+            ) : (
+              <Button onClick={() => dispatch(addFavoriteRequest(request))} size="small">
+                <StarBorderOutlinedIcon sx={{ ml: 6 }} fontSize="large" />
+              </Button>
+            ))}
         </CardActions>
       </Card>
     </Grid>
