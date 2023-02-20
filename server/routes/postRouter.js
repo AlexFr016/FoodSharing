@@ -9,10 +9,13 @@ const postRouter = express.Router();
 postRouter.get('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const neededRequest = await Request.findOne({ where: { id }, include: [{ model: User }, {model: Product}] });
-    const responseRequest = JSON.parse(JSON.stringify(neededRequest))
+    const neededRequest = await Request.findOne({
+      where: { id },
+      include: [{ model: User }, { model: Product }],
+    });
+    const responseRequest = JSON.parse(JSON.stringify(neededRequest));
     // console.log(responseRequest)
-    res.send(responseRequest)
+    res.send(responseRequest);
   } catch (error) {
     console.log(error);
     res.sendStatus(500);
@@ -49,10 +52,11 @@ postRouter.post('/newproduct/:id', upload.single('productName'), async (req, res
       // eslint-disable-next-line no-undef
       Product.create(product);
     }
+    res.sendStatus(200);
   } catch (error) {
     console.log(error);
+    res.sendStatus(500);
   }
 });
-
 
 module.exports = postRouter;

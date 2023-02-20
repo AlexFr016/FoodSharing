@@ -8,6 +8,7 @@ const searchRequestRouter = require('./routes/searchRequestRouter');
 const postRouter = require('./routes/postRouter');
 const apiFavoritesRouter = require('./routes/apiFavoritesRouter');
 const partnersRouter = require('./routes/partnersRouter');
+const apiSaveRouter = require('./routes/apiSaveRouter');
 require('dotenv').config();
 
 const PORT = process.env.PORT || 3001;
@@ -34,10 +35,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
+app.use(express.static('products'));
+
 app.use('/partners', partnersRouter);
 app.use('/api/user', authRouter);
 app.use('/api/searchRequests', searchRequestRouter);
 app.use('/api/favorites', apiFavoritesRouter);
 app.use('/api/post', postRouter);
+app.use('/api/products', apiSaveRouter);
 
 app.listen(PORT, () => console.log(`Server has started on PORT ${PORT}`));

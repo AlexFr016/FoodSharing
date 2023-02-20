@@ -35,13 +35,14 @@ authRouter.post('/', async (req, res) => {
 authRouter.put('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const { firstName, lastName, secondName, email, phone } = req.body;
+    const { firstName, lastName, secondName, email, phone, companyName } = req.body;
     const editUser = await User.findOne({ where: { id } });
     editUser.firstName = firstName;
     editUser.lastName = lastName;
     editUser.secondName = secondName;
     editUser.email = email;
     editUser.phone = phone;
+    editUser.companyName = companyName;
     await editUser.save();
     res.json(editUser);
   } catch (error) {
@@ -82,7 +83,7 @@ authRouter.get('/check', (req, res) => {
     }
     return res.sendStatus(401);
   } catch (error) {
-    res.sendStatus(500);
+    return res.sendStatus(500);
   }
 });
 

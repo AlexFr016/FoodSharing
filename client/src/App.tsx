@@ -1,12 +1,11 @@
 import { CircularProgress, Container } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import PersonalAreaPage from './components/pages/PersonalAreaPage/PersonalAreaPage';
 import NavigationBar from './components/ui/NavigationBar/NavigationBar';
 import MainPage from './components/pages/mainPage/MainPage';
 import HeaderMainPage from './components/ui/HeaderMainPage/HeaderMainPage';
-import CreateRequestPage from './components/pages/createRequestPage/CreateRequestPage';
 import SearchPage from './components/pages/searchPage/SearchPage';
 import LoginPage from './components/pages/LoginPage/LoginPage';
 import SignUpPage from './components/pages/SignUpPage/SignUpPage';
@@ -18,6 +17,7 @@ import ProfilePartnerPage from './components/pages/ProfilePartnerPage/ProfilePar
 import FavoritesPage from './components/pages/FavoritesPage/FavoritesPage';
 import { getFavoritesRequestsApi } from './redux/favoritesRequestsSlice/favoritesRequestsSlice';
 import RequestPage from './components/pages/RequestPage/RequestPage';
+import CreateRequestPageThoParts from './components/pages/createRequestPage/CreateRequestPageThoParts';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -36,6 +36,7 @@ function App(): JSX.Element {
           <NavigationBar />
           <Routes>
             <Route path="/mainpage" element={<MainPage />} />
+            <Route path="/" element={<Navigate to="/mainpage" />} />
             <Route path="/partners" element={<PartnersPage />} />
             <Route path="/partners/:id" element={<ProfilePartnerPage />} />
 
@@ -54,7 +55,7 @@ function App(): JSX.Element {
                     isAllowed={user.status === 'logged' && user.roleid === 3}
                     redirectPath="/mainpage"
                   >
-                    <CreateRequestPage />
+                    <CreateRequestPageThoParts />
                   </PrivateRoute>
                 }
               />

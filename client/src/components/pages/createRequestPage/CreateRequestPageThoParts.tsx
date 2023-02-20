@@ -4,20 +4,51 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import { Button } from '@mui/material';
+import { Button, Link } from '@mui/material';
 import { MuiFileInput } from 'mui-file-input';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import type { Dayjs } from 'dayjs';
 import dayjs from 'dayjs';
 import axios from 'axios';
+import { saveAs } from 'file-saver';
 import type { BackendRequestType } from '../../../redux/requestSlice/requestType';
 import CreateExcelFile from './CreateExcelFile';
 import { checkAuth } from '../../../redux/userSlice/userReducer';
 import { useAppDispatch } from '../../../redux/hooks';
 
-export default function CreateRequestPage(): JSX.Element {
+export default function CreateRequestPageThoParts(): JSX.Element {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   // const [file, setFile] = useState(null);
   const [requestid, setRequestid] = useState(0);
+  const [requestpush, setRequestPush] = useState(false);
+  // const [file, setFile] = React.useState(null);
+
+  //   const handleChange = (newFile): void => {
+  //     setFile(newFile);
+  //   };
+
+  const getShablon = async (e: React.MouseEvent<HTMLButtonElement>): Promise<void> => {
+    const res = await axios
+      .get<Blob>('api/products/shablon.xlsx', {
+        responseType: 'blob',
+        timeout: 30000,
+      })
+      .then((response) => {
+        // create file link in browser's memory
+        const href = URL.createObjectURL(response.data);
+
+        // create "a" HTML element with href to file & click
+        const link = document.createElement('a');
+        link.href = href;
+        link.setAttribute('download', 'file.xlsx'); // or any other extension
+        document.body.appendChild(link);
+        link.click();
+
+        // clean up "a" element & remove ObjectURL
+        document.body.removeChild(link);
+        URL.revokeObjectURL(href);
+      });
+  };
 
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
@@ -29,10 +60,6 @@ export default function CreateRequestPage(): JSX.Element {
     // dispatch(loginHandler(formInput));
     e.currentTarget.reset();
   };
-
-  //   const handleChange = () => {
-  //     setFile();
-  //   };
 
   return (
     <section className="promo">
@@ -58,6 +85,17 @@ export default function CreateRequestPage(): JSX.Element {
             </Typography>
             {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
             <form onSubmit={(e) => submitHandler(e)}>
+              <Typography
+                variant="h6"
+                gutterBottom
+                fontSize={22}
+                textAlign="center"
+                color="warning.main"
+                sx={{ p: 1, ml: -94 }}
+              >
+                Часть 1. Заполните текстовую часть
+              </Typography>
+
               <Grid container spacing={3}>
                 <Grid item xs={12} sm={7}>
                   <TextField
@@ -69,19 +107,6 @@ export default function CreateRequestPage(): JSX.Element {
                     autoComplete="given-name"
                     variant="standard"
                   />
-                </Grid>
-                <Grid item xs={12} sm={3}>
-                  {/* <MuiFileInput placeholder="Прикрепить логотип" value={file} /> */}
-
-                  {/* <TextField
-                  required
-                  id="lastName"
-                  name="lastName"
-                  label="Last name"
-                  fullWidth
-                  autoComplete="family-name"
-                  variant="standard"
-                /> */}
                 </Grid>
                 <Grid item xs={7}>
                   <TextField
@@ -141,19 +166,53 @@ export default function CreateRequestPage(): JSX.Element {
                     />
                   </Grid>
                 </Grid>
-                {/* <Grid item xs={12} sm={3}>
-                  <MuiFileInput placeholder="Загрузить список продуктов (.xcl)" value={file} />
-                </Grid> */}
               </Grid>
               <br />
               <Grid item xs={3} sm={1}>
-                <Button type="submit" variant="outlined" size="large" sx={{ p: 3, ml: 27 }}>
+                <Button
+                  type="submit"
+                  variant="outlined"
+                  size="large"
+                  sx={{ p: 3, ml: 27 }}
+                  onClick={() => setRequestPush(true)}
+                >
                   Отправить заявку
                 </Button>
               </Grid>
             </form>
             <br />
-            <CreateExcelFile requestid={requestid} />
+
+            {requestpush && requestid !== 0 ? (
+              <>
+                <Typography
+                  variant="h6"
+                  gutterBottom
+                  fontSize={22}
+                  textAlign="center"
+                  color="warning.main"
+                  sx={{ p: 1, ml: -71 }}
+                >
+                  Часть 2. Прикрепите список продуктов
+                  <Button
+                    variant="contained"
+                    color="inherit"
+                    size="small"
+                    // startIcon={<GetAppIcon />}
+                    // component={Link}
+                    // eslint-disable-next-line @typescript-eslint/no-misused-promises
+                    onClick={(e) => getShablon(e)}
+                    // href="/"
+                    // download="1.xlsx"
+                    // type="file"
+                  >
+                    (скачать шаблон)
+                  </Button>
+                </Typography>
+                <CreateExcelFile requestid={requestid} />
+              </>
+            ) : (
+              <p />
+            )}
           </div>
         </div>
       </div>
