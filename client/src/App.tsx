@@ -15,6 +15,9 @@ import { checkAuth } from './redux/userSlice/userReducer';
 import PrivateRoute from './components/HOC/PrivateRoute';
 import PartnersPage from './components/pages/PartnersPage/PartnersPage';
 import ProfilePartnerPage from './components/pages/ProfilePartnerPage/ProfilePartnerPage';
+import FavoritesPage from './components/pages/FavoritesPage/FavoritesPage';
+import { getFavoritesRequestsApi } from './redux/favoritesRequestsSlice/favoritesRequestsSlice';
+import RequestPage from './components/pages/RequestPage/RequestPage';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -42,6 +45,7 @@ function App(): JSX.Element {
               }
             >
               <Route path="/personarea" element={<PersonalAreaPage />} />
+              <Route path="/request/:id" element={<RequestPage />} />
 
               <Route
                 path="/createrequest"
@@ -71,6 +75,18 @@ function App(): JSX.Element {
                 <Route path="/signup" element={<SignUpPage />} />
               </Route>
             </Route>
+
+            <Route
+              path="/favorites"
+              element={
+                <PrivateRoute
+                  isAllowed={user.status === 'logged' && user.roleid === 1}
+                  redirectPath="/mainpage"
+                >
+                  <FavoritesPage />
+                </PrivateRoute>
+              }
+            />
           </Routes>
         </>
       )}

@@ -17,13 +17,14 @@ import { useAppDispatch } from '../../../redux/hooks';
 
 export default function CreateRequestPage(): JSX.Element {
   const [file, setFile] = useState(null);
+  const [requestid, setRequestid] = useState(0);
 
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     const res = await axios.post<BackendRequestType>('/api/post/create', {
       input: Object.fromEntries(new FormData(e.currentTarget)),
     });
-    console.log({ post: res.data });
+    setRequestid(res.data.id);
 
     // dispatch(loginHandler(formInput));
     e.currentTarget.reset();
@@ -58,7 +59,7 @@ export default function CreateRequestPage(): JSX.Element {
             {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
             <form onSubmit={(e) => submitHandler(e)}>
               <Grid container spacing={3}>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={7}>
                   <TextField
                     required
                     id="firstName"
@@ -70,7 +71,7 @@ export default function CreateRequestPage(): JSX.Element {
                   />
                 </Grid>
                 <Grid item xs={12} sm={3}>
-                  <MuiFileInput placeholder="Прикрепить логотип" value={file} />
+                  {/* <MuiFileInput placeholder="Прикрепить логотип" value={file} /> */}
 
                   {/* <TextField
                   required
@@ -82,7 +83,7 @@ export default function CreateRequestPage(): JSX.Element {
                   variant="standard"
                 /> */}
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={7}>
                   <TextField
                     required
                     id="address1"
@@ -98,7 +99,7 @@ export default function CreateRequestPage(): JSX.Element {
                     id="datetime-local"
                     label="Срок действия заявки"
                     type="datetime-local"
-                    name='lifeTimeEnd'
+                    name="lifeTimeEnd"
                     defaultValue="2017-05-24T10:30"
                     sx={{ width: 250 }}
                     InputLabelProps={{
@@ -106,7 +107,7 @@ export default function CreateRequestPage(): JSX.Element {
                     }}
                   />
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={7}>
                   <TextField
                     required
                     id="city"
@@ -117,7 +118,8 @@ export default function CreateRequestPage(): JSX.Element {
                     variant="standard"
                   />
                 </Grid>
-                <Grid item xs={12} sm={6}>
+
+                <Grid item xs={12} sm={7}>
                   <TextField
                     required
                     id="city"
@@ -127,29 +129,31 @@ export default function CreateRequestPage(): JSX.Element {
                     autoComplete="shipping address-level2"
                     variant="standard"
                   />
-                  <Grid item xs={12} sm={6}>
-                  <TextField
-                    required
-                    id="city"
-                    name="contactName"
-                    label="Контактное лицо"
-                    fullWidth
-                    autoComplete="shipping address-level2"
-                    variant="standard"
-                  />
-                </Grid>
+                  <Grid item xs={12} sm={13}>
+                    <TextField
+                      required
+                      id="city"
+                      name="contactName"
+                      label="Контактное лицо"
+                      fullWidth
+                      autoComplete="shipping address-level2"
+                      variant="standard"
+                    />
+                  </Grid>
                 </Grid>
                 {/* <Grid item xs={12} sm={3}>
                   <MuiFileInput placeholder="Загрузить список продуктов (.xcl)" value={file} />
                 </Grid> */}
               </Grid>
+              <br />
               <Grid item xs={3} sm={1}>
-                <Button type="submit" variant="outlined" size="large" sx={{ p: 3, ml: 25 }}>
+                <Button type="submit" variant="outlined" size="large" sx={{ p: 3, ml: 27 }}>
                   Отправить заявку
                 </Button>
               </Grid>
             </form>
-            <CreateExcelFile />
+            <br />
+            <CreateExcelFile requestid={requestid} />
           </div>
         </div>
       </div>

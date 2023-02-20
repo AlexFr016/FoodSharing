@@ -23,9 +23,13 @@ export type BackendUserType = {
   secondName: string;
   email: string;
   phone: string;
+  pathPhoto?: string;
   // hashpass: string;
   roleid?: number;
   companyName?: string;
   active: boolean;
   description?: string;
+  titleLogoPath?: string;
 };
+
+

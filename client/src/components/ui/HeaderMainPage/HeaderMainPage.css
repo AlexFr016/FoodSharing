@@ -142,3 +142,19 @@ h2.title {
   margin: 0 auto;
   margin-top: 13px;
 }
+
+
+.conteinyr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.upper .lower {
+  display: flex;
+  flex-direction: row;
+}
+
+.lower {
+  flex-direction: column;
+}

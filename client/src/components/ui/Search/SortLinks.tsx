@@ -24,3 +24,4 @@ export default function SortLinks(): JSX.Element {
     </Box>
   );
 }
+

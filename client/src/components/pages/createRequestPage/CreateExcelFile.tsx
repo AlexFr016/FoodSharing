@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { MuiFileInput } from 'mui-file-input';
 import axios from 'axios';
 
-export default function CreateExcelFile(): JSX.Element {
+export default function CreateExcelFile({ requestid }: { requestid: number }): JSX.Element {
   const [file, setFile] = useState<FileList | null>();
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
     console.log(e.currentTarget.files);
@@ -13,7 +13,7 @@ export default function CreateExcelFile(): JSX.Element {
     e.preventDefault();
     const formData: FormData = new FormData();
     formData.append('productName', file[0]);
-    const res = await axios.post<string>('/api/post/newproduct', formData);
+    const res = await axios.post<string>(`/api/post/newproduct/${requestid}`, formData);
     console.log({ post: res.data });
 
     // dispatch(loginHandler(formInput));
@@ -34,8 +34,8 @@ export default function CreateExcelFile(): JSX.Element {
         </Grid>
 
         <Grid item xs={3} sm={1}>
-          <Button type="submit" variant="outlined" size="large" sx={{ p: 3, ml: 25 }}>
-            Отправить форму
+          <Button type="submit" variant="outlined" size="small" sx={{ p: 3, ml: -5 }}>
+            Прикрепить cписок продуктов
           </Button>
         </Grid>
       </Grid>
