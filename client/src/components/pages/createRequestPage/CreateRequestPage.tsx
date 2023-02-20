@@ -16,7 +16,8 @@ import { checkAuth } from '../../../redux/userSlice/userReducer';
 import { useAppDispatch } from '../../../redux/hooks';
 
 export default function CreateRequestPage(): JSX.Element {
-  const [file, setFile] = useState(null);
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  // const [file, setFile] = useState(null);
   const [requestid, setRequestid] = useState(0);
 
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
@@ -69,19 +70,6 @@ export default function CreateRequestPage(): JSX.Element {
                     autoComplete="given-name"
                     variant="standard"
                   />
-                </Grid>
-                <Grid item xs={12} sm={3}>
-                  {/* <MuiFileInput placeholder="Прикрепить логотип" value={file} /> */}
-
-                  {/* <TextField
-                  required
-                  id="lastName"
-                  name="lastName"
-                  label="Last name"
-                  fullWidth
-                  autoComplete="family-name"
-                  variant="standard"
-                /> */}
                 </Grid>
                 <Grid item xs={7}>
                   <TextField
@@ -141,9 +129,6 @@ export default function CreateRequestPage(): JSX.Element {
                     />
                   </Grid>
                 </Grid>
-                {/* <Grid item xs={12} sm={3}>
-                  <MuiFileInput placeholder="Загрузить список продуктов (.xcl)" value={file} />
-                </Grid> */}
               </Grid>
               <br />
               <Grid item xs={3} sm={1}>

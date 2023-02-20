@@ -1,7 +1,7 @@
 import { CircularProgress, Container } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import PersonalAreaPage from './components/pages/PersonalAreaPage/PersonalAreaPage';
 import ProfilePersonPage from './components/pages/ProfilePersonPage/ProfilePersonPage';
 import NavigationBar from './components/ui/NavigationBar/NavigationBar';
@@ -16,6 +16,8 @@ import SignUpPage from './components/pages/SignUpPage/SignUpPage';
 import { useAppDispatch, useAppSelector } from './redux/hooks';
 import { checkAuth } from './redux/userSlice/userReducer';
 import PrivateRoute from './components/HOC/PrivateRoute';
+import FavoritesPage from './components/pages/FavoritesPage/FavoritesPage';
+import { getFavoritesRequestsApi } from './redux/favoritesRequestsSlice/favoritesRequestsSlice';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -34,6 +36,7 @@ function App(): JSX.Element {
           <NavigationBar />
           <Routes>
             <Route path="/mainpage" element={<MainPage />} />
+            <Route path="/" element={<Navigate to="/mainpage" />} />
 
             <Route
               element={
@@ -72,6 +75,18 @@ function App(): JSX.Element {
                 <Route path="/signup" element={<SignUpPage />} />
               </Route>
             </Route>
+
+            <Route
+              path="/favorites"
+              element={
+                <PrivateRoute
+                  isAllowed={user.status === 'logged' && user.roleid === 1}
+                  redirectPath="/mainpage"
+                >
+                  <FavoritesPage />
+                </PrivateRoute>
+              }
+            />
           </Routes>
         </>
       )}

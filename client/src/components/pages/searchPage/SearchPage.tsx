@@ -4,13 +4,14 @@ import RequestCards from '../../ui/Search/RequestCards';
 import BodySearch from '../../ui/Search/BodySearch';
 import { useAppDispatch } from '../../../redux/hooks';
 import { getRequestsApi } from '../../../redux/searchRequestsSlice/searchRequestsSlice';
+import { getFavoritesRequestsApi } from '../../../redux/favoritesRequestsSlice/favoritesRequestsSlice';
 
 export default function SearchPage(): JSX.Element {
-  // const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
 
-  // useEffect(() => {
-  //   dispatch(getRequestsApi());
-  // });
+  useEffect(() => {
+    dispatch(getFavoritesRequestsApi());
+  }, []);
 
   return (
     <>

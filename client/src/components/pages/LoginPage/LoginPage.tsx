@@ -14,6 +14,7 @@ import { ButtonGroup } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../../redux/hooks';
 import { loginHandler } from '../../../redux/userSlice/userReducer';
+import { getFavoritesRequestsApi } from '../../../redux/favoritesRequestsSlice/favoritesRequestsSlice';
 
 export default function LoginPage(): JSX.Element {
   const [formInput, setFormInput] = useState({
@@ -53,13 +54,13 @@ export default function LoginPage(): JSX.Element {
                 label="Email Address"
                 name="email"
                 onChange={changeHandler}
-                style={{background: '#fafafa'}}
+                style={{ background: '#fafafa' }}
               />
             </Grid>
             <Grid item xs={15}>
               <TextField
                 value={formInput.pass}
-                style={{background: '#fafafa'}}
+                style={{ background: '#fafafa' }}
                 required
                 fullWidth
                 name="pass"
@@ -79,7 +80,7 @@ export default function LoginPage(): JSX.Element {
             <Grid item xs={5}>
               <Button
                 // component={Link}
-                style={{background: '#fafafa'}}
+                style={{ background: '#fafafa' }}
                 // to="/"
                 type="submit"
                 // fullWidth
@@ -96,7 +97,7 @@ export default function LoginPage(): JSX.Element {
                 // fullWidth
                 variant="outlined"
                 sx={{ mt: 3, mb: 2 }}
-                style={{background: '#fafafa'}}
+                style={{ background: '#fafafa' }}
               >
                 Зарегистрироваться
               </Button>

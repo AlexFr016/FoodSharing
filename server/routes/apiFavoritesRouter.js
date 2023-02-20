@@ -1,58 +1,67 @@
 const express = require('express');
 const { Op, Sequelize } = require('sequelize');
-const { Request, Product, User } = require('../db/models');
+const { Request, User, Favorite } = require('../db/models');
 
 const apiFavoritesRouter = express.Router();
 
 apiFavoritesRouter.route('/').get(async (req, res) => {
   try {
-    const allRequests = await Request.findAll({
-      order: [['createdAt', 'DESC']],
-      include: [
-        {
-          model: User,
-          attributes: ['companyName'],
+    const id = req.session?.user?.id;
+    if (id) {
+      const allFavoriteRequests = await User.findOne({
+        where: { id },
+        attributes: ['id'],
+        include: {
+          model: Request,
+          include: {
+            model: User,
+            attributes: ['companyName'],
+          },
         },
-      ],
-    });
-    console.log(allRequests);
-    res.json(allRequests);
+      });
+      console.log(JSON.parse(JSON.stringify(allFavoriteRequests)));
+      return res.json(allFavoriteRequests);
+    }
+    return res.sendStatus(401);
   } catch (error) {
     console.log(error);
-    res.sendStatus(500);
+    return res.sendStatus(500);
   }
 });
 
-// searchRequestRouter.post('/', async (req, res) => {
-//   const { input } = req.body;
+apiFavoritesRouter.post('/:id', async (req, res) => {
+  try {
+    const requestid = req.params.id;
+    const userid = req.session?.user?.id;
 
-//   const foundRequests = await Request.findAll({
-//     include: [
-//       {
-//         model: Product,
-//         attributes: ['title'],
-//         where: {
-//           [Op.or]: [
-//             {
-//               title: {
-//                 [Op.iLike]: `%${input}%`,
-//               },
-//             },
-//             {
-//               title: {
-//                 [Op.substring]: input,
-//               },
-//             },
-//           ],
-//         },
-//       },
+    if (userid) {
+      await Favorite.create({ userid, requestid });
+      return res.sendStatus(200);
+    }
+    return res.sendStatus(401);
+  } catch (error) {
+    console.log(error);
+    return res.sendStatus(500);
+  }
+});
 
-//     ],
-//   });
+apiFavoritesRouter.delete('/:id', async (req, res) => {
+  try {
+    const requestid = req.params.id;
+    const userid = req.session?.user?.id;
 
-// const resa = foundRequest ({ title: { [Op.substring]: input } });
-//   console.log(foundRequests);
-//   res.json(foundRequests);
-// });
+    await Favorite.destroy({
+      where: {
+        requestid,
+        userid,
+      },
+    });
+
+    return res.sendStatus(200);
+  } catch (error) {
+    console.log(error);
+    return res.sendStatus(500);
+  }
+});
 
 module.exports = apiFavoritesRouter;
