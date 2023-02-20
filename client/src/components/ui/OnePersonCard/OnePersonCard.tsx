@@ -66,7 +66,7 @@ export default function OnePersonCard(): JSX.Element {
             <CardActions sx={{ justifyContent: 'center' }}>
               <Button
                 variant="contained"
-                size="small"
+                size="medium"
                 sx={{ bgcolor: '#F8C621' }}
                 onClick={() => setEdit(true)}
               >
@@ -79,6 +79,7 @@ export default function OnePersonCard(): JSX.Element {
             <Grid container>
               <Grid item xs={15}>
                 <TextField
+                  sx={{ width: 320 }}
                   id="standard-basic"
                   label="Standard"
                   variant="standard"
@@ -88,6 +89,7 @@ export default function OnePersonCard(): JSX.Element {
               </Grid>
               <Grid item xs={15}>
                 <TextField
+                  sx={{ width: 320 }}
                   id="standard-basic"
                   label="Standard"
                   variant="standard"
@@ -97,6 +99,7 @@ export default function OnePersonCard(): JSX.Element {
               </Grid>
               <Grid item xs={15}>
                 <TextField
+                  sx={{ width: 320 }}
                   id="standard-basic"
                   label="Standard"
                   variant="standard"
@@ -107,6 +110,7 @@ export default function OnePersonCard(): JSX.Element {
               {user.status === 'logged' && user.roleid === 3 && (
                 <Grid item xs={15}>
                   <TextField
+                    sx={{ width: 320 }}
                     id="standard-basic"
                     label="Standard"
                     variant="standard"
@@ -116,10 +120,20 @@ export default function OnePersonCard(): JSX.Element {
                 </Grid>
               )}
               <Grid item xs={15}>
-                <TextField id="standard-basic" label="Standard" variant="standard" />
+                <TextField
+                  sx={{ width: 320 }}
+                  id="standard-basic"
+                  label="Standard"
+                  variant="standard"
+                />
               </Grid>
               <Grid item xs={15}>
-                <TextField id="standard-basic" label="Standard" variant="standard" />
+                <TextField
+                  sx={{ width: 320 }}
+                  id="standard-basic"
+                  label="Standard"
+                  variant="standard"
+                />
               </Grid>
             </Grid>
             <CardActions sx={{ justifyContent: 'center', mt: 3 }}>
