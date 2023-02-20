@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 import type { BackendUserType } from '../../../redux/userSlice/userType';
 import { useAppDispatch } from '../../../redux/hooks';
-import { loadOnePartner } from '../../../redux/partnersSlice/partnersReducer';
+import { loadOnePartner } from '../../../redux/partnersSlice/onePartnerReducer';
 
 type PartnerPropsType = {
   partner: BackendUserType;

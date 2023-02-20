@@ -125,7 +125,6 @@ export default function HeaderMainPage(): JSX.Element {
           </Grid>
         </Grid>
 
-
         <Link to="/signup" style={{ textDecoration: 'none' }}>
           <button type="button" className="promoBtn" style={{ backgroundColor: '#f68b01' }}>
             Сделать мир лучше!

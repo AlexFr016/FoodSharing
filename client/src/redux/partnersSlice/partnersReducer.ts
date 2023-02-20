@@ -15,13 +15,10 @@ const partnersSlice = createSlice({
     setPartners: (state, action: PayloadAction<BackendUserType[]>) => {
       state.partners = action.payload;
     },
-    setOnePartner: (state, action: PayloadAction<BackendUserType['id']>) => {
-      state.partners = state.partners.filter((partner) => partner.id === action.payload);
-    },
   },
 });
 
-export const { setPartners, setOnePartner } = partnersSlice.actions;
+export const { setPartners } = partnersSlice.actions;
 export default partnersSlice.reducer;
 
 export const loadPartners = (): AppThunk => (dispatch) => {
@@ -29,11 +26,3 @@ export const loadPartners = (): AppThunk => (dispatch) => {
     .then((res) => dispatch(setPartners(res.data)))
     .catch(console.log);
 };
-
-export const loadOnePartner =
-  (id: number): AppThunk =>
-  (dispatch) => {
-    axios<BackendUserType>(`/partners/${id}`)
-      .then((res) => dispatch(setOnePartner(res.data.id)))
-      .catch(console.log);
-  };

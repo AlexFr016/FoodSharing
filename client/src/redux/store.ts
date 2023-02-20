@@ -6,6 +6,7 @@ import searchRequestsReducer from './searchRequestsSlice/searchRequestsSlice';
 import requestReducer from './singleRequestSlice/singleRequestSlice';
 import userReducer from './userSlice/userReducer';
 import partnersReducer from './partnersSlice/partnersReducer';
+import onePartnerReducer from './partnersSlice/onePartnerReducer';
 // import createSagaMiddleware from 'redux-saga';
 
 // create the saga middleware
@@ -15,6 +16,7 @@ const store = configureStore({
   reducer: {
     user: userReducer,
     partners: partnersReducer,
+    partner: onePartnerReducer,
     searchRequests: searchRequestsReducer,
     favoritesRequests: favoritesRequestsReducer,
     request: requestReducer,
