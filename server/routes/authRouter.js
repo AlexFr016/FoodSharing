@@ -32,6 +32,23 @@ authRouter.post('/', async (req, res) => {
     res.sendStatus(500);
   }
 });
+authRouter.put('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { firstName, lastName, secondName, email, phone } = req.body;
+    const editUser = await User.findOne({ where: { id } });
+    editUser.firstName = firstName;
+    editUser.lastName = lastName;
+    editUser.secondName = secondName;
+    editUser.email = email;
+    editUser.phone = phone;
+    await editUser.save();
+    res.json(editUser);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+});
 authRouter.post('/auth', async (req, res) => {
   try {
     const { email, pass } = req.body;

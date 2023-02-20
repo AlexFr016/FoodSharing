@@ -1,15 +1,7 @@
-import {
-  Button,
-  ButtonGroup,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Typography,
-} from '@mui/material';
+import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 import React from 'react';
 
-export default function OneFavoriteCard(): JSX.Element {
+export default function OnePartnerRequestCard(): JSX.Element {
   return (
     <Card sx={{ maxWidth: 320, boxShadow: 10, borderRadius: 10, bgcolor: '#fff', marginX: 3 }}>
       <CardMedia
@@ -21,13 +13,8 @@ export default function OneFavoriteCard(): JSX.Element {
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Партнер
+          Название заявки
         </Typography>
-        <CardActions>
-          <ButtonGroup>
-            <Button size="small">Отменить подписку</Button>
-          </ButtonGroup>
-        </CardActions>
       </CardContent>
     </Card>
   );
