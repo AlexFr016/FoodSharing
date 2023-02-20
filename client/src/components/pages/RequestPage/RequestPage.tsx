@@ -76,6 +76,17 @@ export default function RequestPage(): JSX.Element {
           </Grid>
         </Grid>
       </Paper>
+      <Grid container>
+        <Typography variant="h6" color="inherit" paragraph>
+          Информация о заявке: {request.description}
+        </Typography>
+        <Typography variant="h6" color="inherit" paragraph>
+          Контактное лицо: {request.contactName}
+        </Typography>
+        <Typography variant="body1" color="inherit" paragraph>
+          Тел: {request.contactPhone}
+        </Typography>
+      </Grid>
       <ProdTable request={request} />
     </>
   );

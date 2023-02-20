@@ -3,12 +3,13 @@ import React from 'react';
 import { useAppSelector } from '../../../redux/hooks';
 
 export default function AboutPartnerCard(): JSX.Element {
-  const partner = useAppSelector((store) => store.partners.partners[0]);
+  const user = useAppSelector((store) => store.user);
+
   return (
     <Card
       sx={{
         maxWidth: 400,
-        height: 400,
+        height: 590,
         overflowY: 'scroll',
         bgcolor: '#fff',
         borderRadius: 10,
@@ -17,7 +18,7 @@ export default function AboutPartnerCard(): JSX.Element {
         marginX: 3,
       }}
     >
-      <h2>{partner.description}</h2>
+      <h2>{user.status === 'logged' && user.roleid === 3 && user.description}</h2>
     </Card>
   );
 }

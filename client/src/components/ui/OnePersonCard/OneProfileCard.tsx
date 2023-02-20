@@ -1,11 +1,14 @@
 import { Card, CardContent, CardMedia, Typography } from '@mui/material';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
-import { loadOnePartner } from '../../../redux/partnersSlice/partnersReducer';
+import { loadOnePartner } from '../../../redux/partnersSlice/onePartnerReducer';
 
 export default function OneProfileCard(): JSX.Element {
-  const partner = useAppSelector((store) => store.partners.partners[0]);
-
+  const partner = useAppSelector((store) => store.partner);
+  const dispatch = useAppDispatch();
+  const { id } = useParams();
+  useEffect(() => dispatch(loadOnePartner(Number(id))), []);
   return (
     <Card
       sx={{

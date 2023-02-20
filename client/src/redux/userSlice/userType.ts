@@ -31,5 +31,3 @@ export type BackendUserType = {
   description?: string;
   titleLogoPath?: string;
 };
-
-

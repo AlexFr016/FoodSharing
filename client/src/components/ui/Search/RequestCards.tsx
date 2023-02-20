@@ -53,7 +53,10 @@ export default function RequestCards({ request }: RequestCardsProps): JSX.Elemen
           <Typography gutterBottom variant="h5" component="h2">
             {request.title}
           </Typography>
-          <Typography>{request.User?.companyName}</Typography>
+          <Typography>
+            {' '}
+            от: <Link to={`/partners/${request.partnerid}`}>{request.User?.companyName}</Link>
+          </Typography>
           <Typography>{request.description}</Typography>
         </CardContent>
         <CardActions>

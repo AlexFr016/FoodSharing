@@ -18,26 +18,21 @@ const MenuProps = {
   },
 };
 
-const names = ['Мясо', 'Рыба', 'Морепродукты', 'Яйца', 'и т.д.'];
+type PlaceHolderCategoryProps = {
+  categories: string[];
+};
 
-// function getStyles(name: string, personName: readonly string[], theme: Theme) {
-//   return {
-//     fontWeight:
-//       personName.indexOf(name) === -1
-//         ? theme.typography.fontWeightRegular
-//         : theme.typography.fontWeightMedium,
-//   };
-// }
+// const names = ['Мясо', 'Рыба', 'Морепродукты', 'Яйца', 'и т.д.'];
 
-export default function PlaceHolderCategory(): JSX.Element {
+export default function PlaceHolderCategory({ categories }: PlaceHolderCategoryProps): JSX.Element {
   const theme = useTheme();
-  const [personName, setPersonName] = React.useState<string[]>([]);
+  const [categoryName, setCategoryName] = React.useState<string[]>(categories);
 
-  const handleChange = (event: SelectChangeEvent<typeof personName>): void => {
+  const handleChange = (event: SelectChangeEvent<typeof categoryName>): void => {
     const {
       target: { value },
     } = event;
-    setPersonName(
+    setCategoryName(
       // On autofill we get a stringified value.
       typeof value === 'string' ? value.split(',') : value,
     );
@@ -49,7 +44,7 @@ export default function PlaceHolderCategory(): JSX.Element {
         <Select
           multiple
           displayEmpty
-          value={personName}
+          value={categoryName}
           onChange={handleChange}
           input={<OutlinedInput />}
           renderValue={(selected) => {
@@ -65,7 +60,7 @@ export default function PlaceHolderCategory(): JSX.Element {
           <MenuItem disabled value="">
             <em>Категория продукта...</em>
           </MenuItem>
-          {names.map((name) => (
+          {categories.map((name) => (
             <MenuItem key={name} value={name}>
               {name}
             </MenuItem>
@@ -76,4 +71,13 @@ export default function PlaceHolderCategory(): JSX.Element {
   );
 }
 
-// style={getStyles(name, personName, theme)}
+// style={getStyles(name, categoryName, theme)}
+
+// function getStyles(name: string, categoryName: readonly string[], theme: Theme) {
+//   return {
+//     fontWeight:
+//       categoryName.indexOf(name) === -1
+//         ? theme.typography.fontWeightRegular
+//         : theme.typography.fontWeightMedium,
+//   };
+// }

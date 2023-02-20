@@ -7,8 +7,19 @@ import RequestCards from './RequestCards';
 import SortLinks from './SortLinks';
 
 export default function BodySearch(): JSX.Element {
-  const requests = useAppSelector((store) => store.searchRequests.requests);
+  const requests = useAppSelector((store) => store.searchRequests.searchRequests);
   const user = useAppSelector((store) => store.user);
+
+  const getCategoryList = (): string[] =>
+    Array.from(
+      new Set(
+        requests
+          .map((request): string[] =>
+            request.Products.map((product): string => product?.Category?.title),
+          )
+          .flat(),
+      ),
+    );
 
   return (
     <Container>
@@ -16,7 +27,7 @@ export default function BodySearch(): JSX.Element {
         <Grid item xs={12} sm={4}>
           <Typography variant="h5">Поиск по фильтрам:</Typography>
           <CssBaseline />
-          <PlaceHolderCategory />
+          <PlaceHolderCategory categories={getCategoryList()} />
 
           <Typography variant="h5">По скидке:</Typography>
           <CheckBoxes />
