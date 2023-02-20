@@ -25,4 +25,10 @@ export type UserCompany = {
 
 export type BackendProductsTitle = {
   title: string;
+  Category: BackendCategory;
+};
+
+export type BackendCategory = {
+  id: number;
+  title: string;
 };

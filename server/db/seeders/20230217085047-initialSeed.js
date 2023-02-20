@@ -167,7 +167,7 @@ module.exports = {
           alternativePhone: '+79013245678',
           companyName: 'ВкусВилл',
           titleLogoPath:
-            'https://avatars.mds.yandex.net/i?id=7a5d5939f9159ffe25740f274fc328e2fc274426-8244093-images-thumbs&n=13&exp=1',
+            'https://img.artlebedev.ru/everything/vkusvill/store/process/vkusvill-store-process-21.jpg',
           active: false,
           description:
             'Российская розничная сеть супермаркетов и собственная торговая марка продуктов, позиционируемых как «продукты для здорового питания»',
@@ -183,9 +183,8 @@ module.exports = {
           pathPhoto:
             'https://avatars.mds.yandex.net/i?id=55dfbbf4e0b932c8eed195a403a74ea3fcd2962e-8497168-images-thumbs&n=13&exp=1',
           alternativePhone: '+79013245678',
-          companyName: 'У дома',
-          titleLogoPath:
-            'https://avatars.mds.yandex.net/i?id=639133271cfbf2454a67a5d626a4b223aa3ed251-8506348-images-thumbs&n=13&exp=1',
+          companyName: 'Перекресток',
+          titleLogoPath: 'https://www.mikhaylovsky.com/wp-content/gallery/2018-06-04/08.jpg',
           active: false,
           description:
             'Концепция специализированных магазинов с заводским отделом Колбасы и Деликатесы, который дополняют отделы: Охлажденное мясо и Мясные полуфабрикаты, Молоко, Замороженные полуфабрикаты, Кондитерские изделия и Пекарня пользуется растущим спросом среди покупателей, не конкурирует с федеральными сетями, а дополняет их ассортимент.',
