@@ -12,13 +12,17 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import type { BackendRequestWithUserType, ProductType } from '../../../redux/singleRequestSlice/singleRequestsType';
+import { ThemeProvider, createTheme } from '@mui/system';
+import type {
+  BackendRequestWithUserType,
+  ProductType,
+} from '../../../redux/singleRequestSlice/singleRequestsType';
+
+
 
 type TablePropsType = {
   request: BackendRequestWithUserType;
 };
-
-
 
 function Row(props: { prod: ProductType }): JSX.Element {
   const { prod } = props;
@@ -32,20 +36,20 @@ function Row(props: { prod: ProductType }): JSX.Element {
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
-        <TableCell component="th" scope="row">
+        <TableCell sx={{ fontWeight: 'bold', fontSize: 20, color: 'black'}} component="th" scope="row">
           {prod.title}
         </TableCell>
-        <TableCell align="right">{prod.price}</TableCell>
-        <TableCell align="right">{prod.count}</TableCell>
+        <TableCell sx={{ fontWeight: 'bold', fontSize: 20, color: 'black'}} align="right">{prod.price}</TableCell>
+        <TableCell sx={{ fontWeight: 'bold', fontSize: 20, color: 'black'}} align="right">{prod.count}</TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
-              <Typography variant="h6" gutterBottom component="div">
+              <Typography sx={{ fontWeight: 'bold', fontSize: 20, color: 'black'}} variant="h6" gutterBottom component="div">
                 Описание
               </Typography>
-              <p>{prod.description}</p>
+              <Typography sx={{ fontWeight: 'bold', fontSize: 19, color: 'black'}} >{prod.description}</Typography>
             </Box>
           </Collapse>
         </TableCell>
@@ -54,17 +58,18 @@ function Row(props: { prod: ProductType }): JSX.Element {
   );
 }
 
+// sx={{ fontWeight: 'bold', fontSize: 28, color: 'black'}}
 
-export default function ProdTable({request}: TablePropsType): JSX.Element {
+export default function ProdTable({ request }: TablePropsType): JSX.Element {
   return (
-    <TableContainer component={Paper}>
+    <TableContainer sx={{ bgcolor: '#DCDCDC', opacity: 0.68 }} component={Paper}>
       <Table aria-label="collapsible table">
         <TableHead>
           <TableRow>
             <TableCell />
-            <TableCell>Название продукта</TableCell>
-            <TableCell align="right">Цена</TableCell>
-            <TableCell align="right">Количество&nbsp;(у.е.)</TableCell>
+            <TableCell sx={{ fontWeight: 'bold', fontSize: 28, color: 'black'}} >Название продукта</TableCell>
+            <TableCell sx={{ fontWeight: 'bold', fontSize: 28, color: 'black'}} align="right">Цена</TableCell>
+            <TableCell sx={{ fontWeight: 'bold', fontSize: 28, color: 'black'}} align="right">Количество&nbsp;(у.е.)</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
