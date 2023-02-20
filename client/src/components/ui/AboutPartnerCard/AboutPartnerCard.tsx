@@ -1,9 +1,14 @@
 import { Card } from '@mui/material';
-import React from 'react';
-import { useAppSelector } from '../../../redux/hooks';
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
+import { loadOnePartner } from '../../../redux/partnersSlice/onePartnerReducer';
 
 export default function AboutPartnerCard(): JSX.Element {
-  const partner = useAppSelector((store) => store.partners.partners[0]);
+  const partner = useAppSelector((store) => store.partner);
+  const dispatch = useAppDispatch();
+  const { id } = useParams();
+  useEffect(() => dispatch(loadOnePartner(Number(id))), []);
   return (
     <Card
       sx={{
