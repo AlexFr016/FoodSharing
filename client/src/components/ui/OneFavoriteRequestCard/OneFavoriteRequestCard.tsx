@@ -13,10 +13,11 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
+// import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import StarIcon from '@mui/icons-material/Star';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
+import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import type { FavoriteRequest } from '../../../redux/favoritesRequestsSlice/favoritesRequestsType';
 import { delFavoriteRequest } from '../../../redux/favoritesRequestsSlice/favoritesRequestsSlice';
@@ -54,7 +55,9 @@ export default function OneFavoriteRequestCard({
           <Typography>{request.description}</Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">Подробнее</Button>
+          <Button component={Link} to={`/request/${request.id}`} size="small">
+            Подробнее
+          </Button>
           <Button onClick={() => dispatch(delFavoriteRequest(request.id))} size="small">
             <StarIcon sx={{ ml: 7 }} fontSize="large" />
           </Button>

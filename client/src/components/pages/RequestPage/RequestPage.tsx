@@ -28,6 +28,14 @@ export default function RequestPage(): JSX.Element {
     dispatch(getSingleRequest(id));
     // console.log(request)
   }, []);
+
+  const dateParser = (date: string): string => {
+    if (date !== null) {
+      const dateArr = date.split('T')[0].split('-')
+      return `${dateArr[2]}-ого ${dateArr[1]} ${dateArr[0]} г.`
+    }
+  }
+
   return (
     <>
       <Paper
@@ -63,22 +71,25 @@ export default function RequestPage(): JSX.Element {
                 pr: { md: 0 },
               }}
             >
-              <Typography component="h1" variant="h3" color="inherit" gutterBottom>
+              <Typography component="h2" variant="h4" color="inherit" gutterBottom>
                 {request.title}
               </Typography>
               <Typography variant="h5" color="inherit" paragraph>
                 {request.User.description}
               </Typography>
-              <Link variant="h4" href="/">
+              <Link variant="h5" href="/">
                 {request.User.companyName}
               </Link>
             </Box>
           </Grid>
         </Grid>
       </Paper>
-      <Grid container>
+      <Grid container style={{display: 'flex', flexDirection: 'column'}}>
         <Typography variant="h6" color="inherit" paragraph>
           Информация о заявке: {request.description}
+        </Typography>
+        <Typography variant="h6" color="inherit" paragraph>
+          {dateParser(request.lifeTimeStart)} - {dateParser(request.lifeTimeEnd)}
         </Typography>
         <Typography variant="h6" color="inherit" paragraph>
           Контактное лицо: {request.contactName}
