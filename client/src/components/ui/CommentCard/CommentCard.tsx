@@ -7,6 +7,6 @@ type CommentCardPropsType = {
 
 export default function CommentCard({comment}: CommentCardPropsType): JSX.Element {
   return (
-  <div>CommentCard{comment.User.firstName}</div>
+  <div>CommentCard{comment.body}</div>
   );
 }

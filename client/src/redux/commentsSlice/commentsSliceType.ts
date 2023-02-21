@@ -1,11 +1,15 @@
 import type { BackendUserType } from '../userSlice/userType';
 
+// export type CommentedUserType = {
+
+
+// }
+
 export type CommentType = {
-  id: number;
+  id: string;
   body: string;
   authorid: number;
   userid: number;
-  User: BackendUserType;
 };
 
 export type CommentSliceType = {

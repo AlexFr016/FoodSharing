@@ -6,10 +6,10 @@ const commentsRouter = express.Router();
 commentsRouter.get('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    console.log(id);
-    const comments = await Comment.findAll({ where: { userid: id }, include: { model: User } });
-    const prettyComments = JSON.parse(JSON.stringify(comments));
-    res.json(prettyComments).sendStatus(200);
+    const comments = await User.findAll({ where: { id }, include: 'UserComments' });
+    const prettyComments = JSON.parse(JSON.stringify(comments[0].UserComments));
+    console.log(prettyComments);
+    res.json(prettyComments);
   } catch (error) {
     console.log(error);
     res.sendStatus(500);
@@ -23,7 +23,7 @@ commentsRouter.post('/:id', async (req, res) => {
     console.log(id);
     const comment = await Comment.create({ where: { authorid, body, userid: id } });
     const prettyComment = JSON.parse(JSON.stringify(comment));
-    res.json(prettyComment).sendStatus(200);
+    res.json(prettyComment);
   } catch (error) {
     console.log(error);
     res.sendStatus(500);
