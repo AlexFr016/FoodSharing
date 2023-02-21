@@ -9,6 +9,7 @@ const postRouter = require('./routes/postRouter');
 const apiFavoritesRouter = require('./routes/apiFavoritesRouter');
 const partnersRouter = require('./routes/partnersRouter');
 const apiSaveRouter = require('./routes/apiSaveRouter');
+const commentsRouter = require('./routes/commentsRouter');
 const partnerRequestsRouter = require('./routes/partnerRequestsRouter');
 require('dotenv').config();
 
@@ -45,6 +46,7 @@ app.use('/api/searchRequests', searchRequestRouter);
 app.use('/api/favorites', apiFavoritesRouter);
 app.use('/api/post', postRouter);
 app.use('/api/products', apiSaveRouter);
+app.use('/api/comments', commentsRouter)
 app.use('/api/requests', partnerRequestsRouter);
 
 app.listen(PORT, () => console.log(`Server has started on PORT ${PORT}`));
