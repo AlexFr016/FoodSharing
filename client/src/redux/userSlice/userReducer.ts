@@ -19,6 +19,8 @@ type UserState =
       companyName?: string;
       active: boolean;
       description?: string;
+      pathPhoto?: string;
+      titleLogoPath?: string;
       status: 'logged';
     }
   | { status: 'empty' };
@@ -33,10 +35,26 @@ export const userSlice = createSlice({
   reducers: {
     setUser: (state, action: PayloadAction<UserState>) => action.payload,
     logoutUser: (state) => ({ status: 'empty' }),
+    updateUser: (state, action: PayloadAction<BackendUserType>) => {
+      if (state.status === 'logged' && state.id === action.payload.id) {
+        return {
+          ...state,
+          firstName: action.payload.firstName,
+          secondName: action.payload.secondName,
+          lastName: action.payload.lastName,
+          email: action.payload.email,
+          phone: action.payload.phone,
+          companyName: action.payload.companyName,
+          description: action.payload.description,
+          pathPhoto: action.payload.pathPhoto,
+          titleLogoPath: action.payload.titleLogoPath,
+        };
+      }
+    },
   },
 });
 
-export const { setUser, logoutUser } = userSlice.actions;
+export const { setUser, logoutUser, updateUser } = userSlice.actions;
 
 export const selectUser = (state: RootState): UserState => state.user;
 
