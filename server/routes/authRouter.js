@@ -35,15 +35,29 @@ authRouter.post('/', async (req, res) => {
 authRouter.put('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const { firstName, lastName, secondName, email, phone, companyName } = req.body;
+    const {
+      firstName,
+      lastName,
+      secondName,
+      email,
+      phone,
+      companyName,
+      description,
+      pathPhoto,
+      titleLogoPath,
+    } = req.body;
     const editUser = await User.findOne({ where: { id } });
     editUser.firstName = firstName;
     editUser.lastName = lastName;
     editUser.secondName = secondName;
     editUser.email = email;
     editUser.phone = phone;
+    editUser.description = description;
+    editUser.pathPhoto = pathPhoto;
+    editUser.titleLogoPath = titleLogoPath;
     editUser.companyName = companyName;
     await editUser.save();
+    req.session.user = editUser;
     res.json(editUser);
   } catch (error) {
     console.log(error);
