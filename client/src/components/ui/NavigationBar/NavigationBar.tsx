@@ -137,7 +137,7 @@ export default function NavigationBar(): JSX.Element {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            FoodSher
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
@@ -233,7 +233,7 @@ export default function NavigationBar(): JSX.Element {
 
             <Button
               component={Link}
-              to="/"
+              to="/contacts"
               color="inherit"
               sx={{
                 my: 2,
@@ -246,7 +246,7 @@ export default function NavigationBar(): JSX.Element {
             </Button>
             <Button
               component={Link}
-              to="/"
+              to="/map"
               color="inherit"
               sx={{
                 my: 2,
@@ -255,7 +255,7 @@ export default function NavigationBar(): JSX.Element {
                 fontStyle: 'border',
               }}
             >
-              FAQ
+              Карта
             </Button>
             {/* {pages.map((page) => (
               <Button

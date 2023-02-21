@@ -2,6 +2,7 @@ import { CircularProgress, Container, CssBaseline, Grid, Typography } from '@mui
 import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import CheckBoxes from './CheckBoxes';
+import CheckboxesGroup from './CheckboxesGroup';
 import PlaceHolderCategory from './PlaceHolderCategory';
 import RequestCards from './RequestCards';
 import SortLinks from './SortLinks';
@@ -21,21 +22,32 @@ export default function BodySearch(): JSX.Element {
       ),
     );
 
+  const getCompanyList = (): string[] =>
+    Array.from(new Set(requests.map((request): string => request?.User?.companyName)));
+
   return (
     <Container>
-      <Grid container spacing={2}>
-        <Grid item xs={12} sm={4}>
-          <Typography variant="h5">Поиск по фильтрам:</Typography>
+      <Grid container spacing={8}>
+        <Grid item xs={12} sm={3}>
+          <Typography style={{ marginTop: '55px' }} variant="h5">
+            Поиск по фильтрам:
+          </Typography>
           <CssBaseline />
+          <Typography variant="h6" style={{ marginTop: '30px' }}>
+            По категориям:
+          </Typography>
           <PlaceHolderCategory categories={getCategoryList()} />
-
-          <Typography variant="h5">По скидке:</Typography>
-          <CheckBoxes />
-          <Typography variant="h5">По рейтингу:</Typography>
+          <Typography variant="h6" style={{ marginTop: '15px', marginBottom: '15px' }}>
+            По партнерам:
+          </Typography>
+          <CheckBoxes partners={getCompanyList()} />
+          {/* новый чекбокс */}
+          {/* <CheckboxesGroup partners={getCompanyList()} /> */}
+          {/* <Typography variant="h5">По рейтингу:</Typography> */}
         </Grid>
-        <Grid item xs={12} sm={8}>
+        <Grid item xs={12} sm={9}>
           <SortLinks />
-          <Container sx={{ py: 6 }} maxWidth="md">
+          <Container sx={{ py: 4 }} maxWidth="md">
             {requests.length === 0 ? (
               <CircularProgress />
             ) : (

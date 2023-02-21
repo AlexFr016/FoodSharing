@@ -10,11 +10,14 @@ import {
   Typography,
 } from '@mui/material';
 import { Box } from '@mui/system';
+import axios from 'axios';
 import React, { useState } from 'react';
-import { useAppSelector } from '../../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
+import { loginHandler, updateUser } from '../../../redux/userSlice/userReducer';
 
 export default function OnePersonCard(): JSX.Element {
   const user = useAppSelector((store) => store.user);
+  const dispatch = useAppDispatch();
   const [edit, setEdit] = useState(false);
   const [inputs, setInputs] = useState({
     firstName: user.status === 'logged' && user.firstName,
@@ -23,10 +26,23 @@ export default function OnePersonCard(): JSX.Element {
     email: user.status === 'logged' && user.email,
     phone: user.status === 'logged' && user.phone,
     companyName: user.status === 'logged' && user.companyName,
+    description: user.status === 'logged' && user.description,
+    pathPhoto: user.status === 'logged' && user.pathPhoto,
+    titleLogoPath: user.status === 'logged' && user.titleLogoPath,
+    id: user.status === 'logged' && user.id,
+    active: user.status === 'logged' && user.active,
   });
 
   const changeHadler = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const updateHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    e.preventDefault();
+    axios
+      .put(`api/user/${user.status === 'logged' && user.id}`, inputs)
+      .then(() => setEdit(false))
+      .catch(console.log);
   };
 
   return (
@@ -75,14 +91,15 @@ export default function OnePersonCard(): JSX.Element {
             </CardActions>
           </>
         ) : (
-          <Box component="form" sx={{ mt: 2, mb: 2 }}>
+          <Box component="form" sx={{ mt: 3, mb: 3 }} onSubmit={updateHandler}>
             <Grid container>
               <Grid item xs={15}>
                 <TextField
                   sx={{ width: 320 }}
                   id="standard-basic"
-                  label="Standard"
+                  label="Имя"
                   variant="standard"
+                  name="firstName"
                   value={inputs.firstName}
                   onChange={changeHadler}
                 />
@@ -91,8 +108,9 @@ export default function OnePersonCard(): JSX.Element {
                 <TextField
                   sx={{ width: 320 }}
                   id="standard-basic"
-                  label="Standard"
+                  label="Отчество"
                   variant="standard"
+                  name="secondName"
                   value={inputs.secondName}
                   onChange={changeHadler}
                 />
@@ -101,8 +119,9 @@ export default function OnePersonCard(): JSX.Element {
                 <TextField
                   sx={{ width: 320 }}
                   id="standard-basic"
-                  label="Standard"
+                  label="Фамилия"
                   variant="standard"
+                  name="lastName"
                   value={inputs.lastName}
                   onChange={changeHadler}
                 />
@@ -112,8 +131,9 @@ export default function OnePersonCard(): JSX.Element {
                   <TextField
                     sx={{ width: 320 }}
                     id="standard-basic"
-                    label="Standard"
+                    label="Компания"
                     variant="standard"
+                    name="companyName"
                     value={inputs.companyName}
                     onChange={changeHadler}
                   />
@@ -123,22 +143,28 @@ export default function OnePersonCard(): JSX.Element {
                 <TextField
                   sx={{ width: 320 }}
                   id="standard-basic"
-                  label="Standard"
+                  label="Номер телефона"
                   variant="standard"
+                  name="phone"
+                  value={inputs.phone}
+                  onChange={changeHadler}
                 />
               </Grid>
               <Grid item xs={15}>
                 <TextField
                   sx={{ width: 320 }}
                   id="standard-basic"
-                  label="Standard"
+                  label="email"
                   variant="standard"
+                  name="email"
+                  value={inputs.email}
+                  onChange={changeHadler}
                 />
               </Grid>
             </Grid>
-            <CardActions sx={{ justifyContent: 'center', mt: 3 }}>
+            <CardActions sx={{ justifyContent: 'center', mt: 2 }}>
               <ButtonGroup variant="contained" aria-label="outlined primary button group">
-                <Button size="small" type="submit">
+                <Button size="small" type="submit" onClick={() => dispatch(updateUser(inputs))}>
                   Сохранить
                 </Button>
                 <Button size="small" onClick={() => setEdit(false)}>
