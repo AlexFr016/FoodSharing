@@ -36,6 +36,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
 app.use(express.static('products'));
+app.use(express.static('public'));
 
 app.use('/partners', partnersRouter);
 app.use('/api/user', authRouter);
