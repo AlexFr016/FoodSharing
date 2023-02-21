@@ -9,9 +9,10 @@ export default function SortLinks(): JSX.Element {
   return (
     <Box
       sx={{
+        marginLeft: '110px',
         typography: 'body1',
         '& > :not(style) + :not(style)': {
-          ml: 6,
+          ml: 10,
         },
       }}
       onClick={preventDefault}
@@ -24,4 +25,3 @@ export default function SortLinks(): JSX.Element {
     </Box>
   );
 }
-
