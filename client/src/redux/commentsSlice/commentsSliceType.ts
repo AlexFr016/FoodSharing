@@ -10,6 +10,10 @@ export type CommentType = {
   body: string;
   authorid: number;
   userid: number;
+  firstName: string;
+  secondName: string;
+  lastName: string;
+  pathPhoto: string;
 };
 
 export type CommentSliceType = {

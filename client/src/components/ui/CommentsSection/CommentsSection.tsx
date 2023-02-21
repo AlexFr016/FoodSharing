@@ -12,6 +12,7 @@ import CommentCard from '../CommentCard/CommentCard';
 export default function CommentsSection(): JSX.Element {
   const { id } = useParams();
   const commetns = useAppSelector((store) => store.comments);
+  const [dynamicComentsState, setDynamicComentsState] = useState(false)
   const user = useAppSelector((store) => store.user);
   // let userId;
   // if (user.status === 'logged') {
@@ -24,14 +25,15 @@ export default function CommentsSection(): JSX.Element {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(setAllComments(id));
-  }, []);
+  }, [dynamicComentsState]);
   const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setInputData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
   const submitHandler = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     dispatch(addOneComment(id, inputData));
-    console.log(id, inputData);
+    setDynamicComentsState((prev) => !prev)
+    // console.log(id, inputData);
   };
   return (
     <>

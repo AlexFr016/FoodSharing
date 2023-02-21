@@ -25,7 +25,8 @@ commentsRouter.get('/:id', async (req, res) => {
         pathPhoto: realAuthor.pathPhoto,
       });
     }
-    console.log(normalDataArr);
+    // console.log(normalDataArr);
+    // const readableDataArr = normalDataArr.reverse()
     res.json(normalDataArr);
   } catch (error) {
     console.log(error);
