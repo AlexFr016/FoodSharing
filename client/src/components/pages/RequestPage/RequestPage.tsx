@@ -18,7 +18,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { getSingleRequest } from '../../../redux/singleRequestSlice/singleRequestSlice';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
-import ProdTable from '../../ui/ProdTable/ProdTable';
+import  ProdTable  from '../../ui/ProdTable/ProdTable';
 
 export default function RequestPage(): JSX.Element {
   const request = useAppSelector((store) => store.request);
@@ -31,10 +31,10 @@ export default function RequestPage(): JSX.Element {
 
   const dateParser = (date: string): string => {
     if (date !== null) {
-      const dateArr = date.split('T')[0].split('-')
-      return `${dateArr[2]}-ого ${dateArr[1]} ${dateArr[0]} г.`
+      const dateArr = date.split('T')[0].split('-');
+      return `${dateArr[2]}-ого ${dateArr[1]} ${dateArr[0]} г.`;
     }
-  }
+  };
 
   return (
     <>
@@ -43,7 +43,7 @@ export default function RequestPage(): JSX.Element {
           position: 'relative',
           backgroundColor: 'grey.800',
           color: '#fff',
-          mb: 4,
+          mb: 0,
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center',
@@ -77,14 +77,15 @@ export default function RequestPage(): JSX.Element {
               <Typography variant="h5" color="inherit" paragraph>
                 {request.User.description}
               </Typography>
-              <Link variant="h5" href="/">
+              <Link variant="h5" href={`/partners/${request.partnerid}`}>
                 {request.User.companyName}
               </Link>
             </Box>
           </Grid>
         </Grid>
       </Paper>
-      <Grid container style={{display: 'flex', flexDirection: 'column'}}>
+      <Box sx={{bgcolor: '#DCDCDC', opacity: 0.68 }}> 
+      <Grid container style={{ display: 'flex', flexDirection: 'column' }}>
         <Typography variant="h6" color="inherit" paragraph>
           Информация о заявке: {request.description}
         </Typography>
@@ -98,6 +99,7 @@ export default function RequestPage(): JSX.Element {
           Тел: {request.contactPhone}
         </Typography>
       </Grid>
+      </Box>
       <ProdTable request={request} />
     </>
   );
