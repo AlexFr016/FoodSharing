@@ -20,7 +20,7 @@ export default function CreateExcelFile({ requestid }: { requestid: number }): J
     axios
       .post<string>(`/api/post/newproduct/${requestid}`, formData)
       .then((res) => {
-        navigate('/mainpage');
+        navigate(`/request/${requestid}`);
       })
       .catch((error) => console.log(error));
   };
