@@ -2,6 +2,7 @@ import { Button, Grid } from '@mui/material';
 import React, { useState } from 'react';
 import { MuiFileInput } from 'mui-file-input';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function CreateExcelFile({ requestid }: { requestid: number }): JSX.Element {
   const [file, setFile] = useState<FileList | null>();
@@ -9,16 +10,21 @@ export default function CreateExcelFile({ requestid }: { requestid: number }): J
     console.log(e.currentTarget.files);
     setFile(e.currentTarget.files);
   };
-  const submitHandler = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+
+  const navigate = useNavigate();
+
+  const submitHandler = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     const formData: FormData = new FormData();
     formData.append('productName', file[0]);
-    const res = await axios.post<string>(`/api/post/newproduct/${requestid}`, formData);
-    console.log({ post: res.data });
-
-    // dispatch(loginHandler(formInput));
-    e.currentTarget.reset();
+    axios
+      .post<string>(`/api/post/newproduct/${requestid}`, formData)
+      .then((res) => {
+        navigate(`/request/${requestid}`);
+      })
+      .catch((error) => console.log(error));
   };
+
   return (
     // eslint-disable-next-line @typescript-eslint/no-misused-promises
     <form onSubmit={(e) => submitHandler(e)}>
@@ -34,8 +40,14 @@ export default function CreateExcelFile({ requestid }: { requestid: number }): J
         </Grid>
 
         <Grid item xs={3} sm={1}>
-          <Button type="submit" variant="outlined" size="small" sx={{ p: 3, ml: -5 }}>
-            Прикрепить cписок продуктов
+          <Button
+            type="submit"
+            variant="outlined"
+            size="small"
+            sx={{ p: 3, ml: -5 }}
+            // onClick={(e) => submitRedirect(e)}
+          >
+            Прикрепить cписок
           </Button>
         </Grid>
       </Grid>

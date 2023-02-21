@@ -13,8 +13,8 @@ export type ProductType = {
 
 export type BackendRequestWithUserType = {
   title: string;
-  lifeTimeStart?: Date;
-  lifeTimeEnd: Date;
+  lifeTimeStart?: string;
+  lifeTimeEnd: string;
   adress: string;
   contactPhone: number;
   contactName: string;

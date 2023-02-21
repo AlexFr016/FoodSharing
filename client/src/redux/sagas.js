@@ -6,16 +6,28 @@ import { setRequests } from './searchRequestsSlice/searchRequestsSlice';
 
 //import Api from '...';
 
-const axiosCall = (input) => axios.post('/api/searchRequests', { input });
+const axiosSearchRequests = (input) => axios.post('/api/searchRequests', { input });
+
+const axiosFilterRequests = (input) => axios.post('/api/searchRequests/filter', { input });
 
 // worker Saga: will be fired on USER_FETCH_REQUESTED actions
-function* fetchRequestsOnProductName(action) {
+function* fetchSearchRequestsOnProductName(action) {
   try {
     yield delay(900);
-    const res = yield call(axiosCall, action.payload);
+    const res = yield call(axiosSearchRequests, action.payload);
     yield put(setRequests(res.data));
   } catch (e) {
     yield put({ type: 'SEARCH_REQUESTS_ON_PRODUCT_NAME', message: e.message });
+  }
+}
+
+function* fetchFilterRequestsOnCategoryProduct(action) {
+  try {
+    yield delay(900);
+    const res = yield call(axiosFilterRequests, action.payload);
+    yield put(setRequests(res.data));
+  } catch (e) {
+    yield put({ type: 'FILTER_REQUESTS_ON_CATEGORIES_PRODUCTS', message: e.message });
   }
 }
 
@@ -23,8 +35,12 @@ function* fetchRequestsOnProductName(action) {
   Starts fetchUser on each dispatched `USER_FETCH_REQUESTED` action.
   Allows concurrent fetches of user.
 */
-function* searchRequestsSagaWatcher() {
-  yield takeLatest('SEARCH_REQUESTS_ON_PRODUCT_NAME', fetchRequestsOnProductName);
+export function* filterRequestsSagaWatcher() {
+  yield takeLatest('FILTER_REQUESTS_ON_CATEGORIES_PRODUCTS', fetchFilterRequestsOnCategoryProduct);
+}
+
+export function* searchRequestsSagaWatcher() {
+  yield takeLatest('SEARCH_REQUESTS_ON_PRODUCT_NAME', fetchSearchRequestsOnProductName);
 }
 
 /*
@@ -38,4 +54,4 @@ function* searchRequestsSagaWatcher() {
 //   yield takeLatest('USER_FETCH_REQUESTED', fetchUser);
 // }
 
-export default searchRequestsSagaWatcher;
+//export default  searchRequestsSagaWatcher ;

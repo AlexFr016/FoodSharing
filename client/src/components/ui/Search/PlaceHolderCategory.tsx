@@ -6,6 +6,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import type { SelectChangeEvent } from '@mui/material/Select';
 import Select from '@mui/material/Select';
+import { useAppDispatch } from '../../../redux/hooks';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -25,6 +26,7 @@ type PlaceHolderCategoryProps = {
 // const names = ['Мясо', 'Рыба', 'Морепродукты', 'Яйца', 'и т.д.'];
 
 export default function PlaceHolderCategory({ categories }: PlaceHolderCategoryProps): JSX.Element {
+  const dispatch = useAppDispatch();
   const theme = useTheme();
   const [categoryName, setCategoryName] = React.useState<string[]>(categories);
 
@@ -32,12 +34,19 @@ export default function PlaceHolderCategory({ categories }: PlaceHolderCategoryP
     const {
       target: { value },
     } = event;
+    // console.log(value);
     setCategoryName(
       // On autofill we get a stringified value.
       typeof value === 'string' ? value.split(',') : value,
     );
+    // вот тут вызов sagi  на фильтр
+    const input = value.toString();
+    dispatch({ type: 'FILTER_REQUESTS_ON_CATEGORIES_PRODUCTS', payload: input });
   };
 
+  React.useEffect(() => {
+    setCategoryName([]);
+  }, []);
   return (
     <div>
       <FormControl sx={{ m: 1, width: 300, mt: 3 }}>
@@ -51,7 +60,19 @@ export default function PlaceHolderCategory({ categories }: PlaceHolderCategoryP
             if (selected.length === 0) {
               return <em>Категория продукта...</em>;
             }
-
+            console.log('SELECTED:', selected);
+            console.log('categories:', categories);
+            if (selected[0] !== categories[0] && categories.length === 1) {
+              return categories.join(', ');
+            }
+            // if (
+            //   categories.length !== selected.length &&
+            //   categories.length !== 1 &&
+            //   selected.length !== 1
+            // ) {
+            //   selected = [];
+            // }
+            // selected.length !== categories.length ||
             return selected.join(', ');
           }}
           MenuProps={MenuProps}

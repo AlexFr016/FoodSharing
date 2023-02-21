@@ -78,4 +78,82 @@ searchRequestRouter
     // const resa = foundRequest({ title: { [Op.substring]: input } });
   });
 
+searchRequestRouter.route('/filter').post(async (req, res) => {
+  try {
+    const { input } = req.body;
+    let foundRequests;
+
+    console.log('IAMHERE IAMHERE IAMHERE 324345464:', input);
+
+    if (input !== '') {
+      const arr = input.split(',');
+
+      const foundIdRequests = await Product.findAll({
+        attributes: ['requestid'],
+        include: {
+          model: Category,
+          where: {
+            title: {
+              [Op.in]: arr,
+            },
+          },
+          attributes: [],
+        },
+      });
+
+      const idReq = foundIdRequests.map((reqId) => reqId.requestid);
+
+      foundRequests = await Request.findAll({
+        where: {
+          id: {
+            [Op.in]: idReq,
+          },
+        },
+        include: [
+          {
+            model: User,
+            attributes: ['id', 'companyName'],
+          },
+          {
+            model: Product,
+            attributes: ['title'],
+
+            include: {
+              model: Category,
+              attributes: ['id', 'title'],
+            },
+          },
+        ],
+      });
+    } else {
+      foundRequests = await Request.findAll({
+        include: [
+          {
+            model: User,
+            attributes: ['id', 'companyName'],
+          },
+          {
+            model: Product,
+            attributes: ['title'],
+
+            include: {
+              model: Category,
+              attributes: ['id', 'title'],
+            },
+          },
+        ],
+      });
+    }
+
+    // console.log(foundRequests);
+
+    console.log(JSON.parse(JSON.stringify(foundRequests)));
+    res.json(foundRequests);
+    // res.json([]);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+});
+
 module.exports = searchRequestRouter;
