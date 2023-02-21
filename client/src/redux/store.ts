@@ -8,6 +8,7 @@ import userReducer from './userSlice/userReducer';
 import partnersReducer from './partnersSlice/partnersReducer';
 import onePartnerReducer from './partnersSlice/onePartnerReducer';
 import updateUserReducer from './userSlice/updateUserReducer';
+import commentsReducer from './commentsSlice/commentsSlice';
 // import createSagaMiddleware from 'redux-saga';
 
 // create the saga middleware
@@ -22,6 +23,7 @@ const store = configureStore({
     favoritesRequests: favoritesRequestsReducer,
     request: requestReducer,
     updateUser: updateUserReducer,
+    comments: commentsReducer,
   },
 
   middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(), sagaMiddleware],

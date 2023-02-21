@@ -24,7 +24,7 @@ export const commentsSlice = createSlice({
 export const { setComments, addComment } = commentsSlice.actions;
 
 export const setAllComments =
-  (id: number): AppThunk =>
+  (id: string): AppThunk =>
   (dispatch) => {
     axios<CommentType[]>(`/api/comments/${id}`)
       .then((res) => dispatch(setComments(res.data)))
@@ -32,7 +32,7 @@ export const setAllComments =
   };
 
 export const addOneComment =
-  (id: number, inputData: CommentFormType): AppThunk =>
+  (id: string, inputData: CommentFormType): AppThunk =>
   (dispatch) => {
     axios
       .post<CommentType>(`/api/comments/${id}`, inputData)
