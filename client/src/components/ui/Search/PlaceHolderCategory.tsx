@@ -49,7 +49,7 @@ export default function PlaceHolderCategory({ categories }: PlaceHolderCategoryP
   }, []);
   return (
     <div>
-      <FormControl sx={{ m: 1, width: 300, mt: 3 }}>
+      <FormControl sx={{ width: 300, mt: 2 }}>
         <Select
           multiple
           displayEmpty
