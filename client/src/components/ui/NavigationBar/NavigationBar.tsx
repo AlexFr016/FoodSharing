@@ -331,7 +331,10 @@ export default function NavigationBar(): JSX.Element {
                 <Button
                   component={Link}
                   to="/mainpage"
-                  onClick={() => dispatch(logoutHandler())}
+                  onClick={() => {
+                    handleCloseUserMenu();
+                    dispatch(logoutHandler());
+                  }}
                   color="inherit"
                   sx={{
                     my: 2,
