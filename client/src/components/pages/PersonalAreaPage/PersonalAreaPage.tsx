@@ -6,7 +6,6 @@ import AboutPartnerCard from '../../ui/AboutPartnerCard/AboutPartnerCard';
 import OneFavoriteCard from '../../ui/OneFavoriteCard/OneFavoriteCard';
 import OnePersonCard from '../../ui/OnePersonCard/OnePersonCard';
 import OnePartnerPersonRequestCard from '../../ui/OneRequestCard/OnePartnerPersonRequestCard';
-import OnePartnerRequestCard from '../../ui/OneRequestCard/OnePartnerRequestCard';
 import OneStatisticCard from '../../ui/OneStatisticCard/OneStatisticCard';
 
 export default function PersonalAreaPage(): JSX.Element {

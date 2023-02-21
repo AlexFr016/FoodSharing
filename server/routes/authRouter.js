@@ -57,6 +57,7 @@ authRouter.put('/:id', async (req, res) => {
     editUser.titleLogoPath = titleLogoPath;
     editUser.companyName = companyName;
     await editUser.save();
+    req.session.user = editUser;
     res.json(editUser);
   } catch (error) {
     console.log(error);
