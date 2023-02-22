@@ -5,7 +5,6 @@ import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import {
   getActivePartnerRequests,
   getUnactivePartnerRequests,
-  updatePartnerStatusRequest,
 } from '../../../redux/partnerRequestsSlice/partnerRequestsReducer';
 import AboutPartnerCard from '../../ui/AboutPartnerCard/AboutPartnerCard';
 import OneFavoriteCard from '../../ui/OneFavoriteCard/OneFavoriteCard';
