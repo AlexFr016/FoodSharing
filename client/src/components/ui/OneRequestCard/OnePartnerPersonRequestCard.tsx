@@ -1,12 +1,4 @@
-import {
-  Button,
-  ButtonGroup,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Typography,
-} from '@mui/material';
+import { Button, Card, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
 import React from 'react';
 import { useAppDispatch } from '../../../redux/hooks';
 import {
@@ -17,55 +9,73 @@ import type { PartnerRequest } from '../../../redux/partnerRequestsSlice/partner
 
 type PartnerRequestPropsType = {
   partnerRequest: PartnerRequest;
+  render: number;
+  setRender: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export default function OnePartnerPersonRequestCard({
   partnerRequest,
+  setRender,
+  render,
 }: PartnerRequestPropsType): JSX.Element {
   const dispatch = useAppDispatch();
 
   return (
     <Card
-      sx={{ height: 300, width: 320, boxShadow: 10, borderRadius: 10, bgcolor: '#fff', marginX: 3 }}
+      sx={{
+        height: 300,
+        width: 320,
+        boxShadow: 10,
+        borderRadius: 6,
+        bgcolor: 'rgba(220, 220, 220, 0.68)',
+      }}
     >
       <CardMedia
         component="img"
         alt="favorite"
-        height="120"
+        height="140"
         image={partnerRequest.User.titleLogoPath}
-        sx={{ padding: '1em 1em 0 1em', objectFit: 'cover' }}
+        sx={{ objectFit: 'cover' }}
       />
       <CardContent>
-        <Typography
-          gutterBottom
-          variant="h5"
-          component="div"
-          sx={{ alignItems: 'center', height: 60 }}
-        >
+        <Typography gutterBottom variant="h5" component="div" sx={{ height: 60 }}>
           {partnerRequest.title}
         </Typography>
       </CardContent>
       <CardActions sx={{ justifyContent: 'center', mb: 3 }}>
-        <ButtonGroup variant="contained" aria-label="outlined primary button group">
-          {partnerRequest.statusid === 1 ? (
-            <Button
-              size="small"
-              onClick={() => dispatch(updatePartnerStatusRequest(partnerRequest.id, 3))}
-            >
-              Закрыть
-            </Button>
-          ) : (
-            <Button
-              size="small"
-              onClick={() => dispatch(updatePartnerStatusRequest(partnerRequest.id, 1))}
-            >
-              Восстановить
-            </Button>
-          )}
-          <Button size="small" onClick={() => dispatch(deletePartnerRequest(partnerRequest.id))}>
-            Удалить
+        {partnerRequest.statusid === 1 ? (
+          <Button
+            size="small"
+            sx={{ bgcolor: '#f9bf3b', color: '#fff' }}
+            onClick={() => {
+              dispatch(updatePartnerStatusRequest(partnerRequest.id, 3));
+              setRender(render + 1);
+            }}
+          >
+            Закрыть
           </Button>
-        </ButtonGroup>
+        ) : (
+          <Button
+            size="small"
+            sx={{ bgcolor: '#f9bf3b', color: '#fff' }}
+            onClick={() => {
+              dispatch(updatePartnerStatusRequest(partnerRequest.id, 1));
+              setRender(render + 1);
+            }}
+          >
+            Восстановить
+          </Button>
+        )}
+        <Button
+          sx={{ bgcolor: '#f9bf3b', color: '#fff' }}
+          size="small"
+          onClick={() => {
+            dispatch(deletePartnerRequest(partnerRequest.id));
+            setRender(render + 1);
+          }}
+        >
+          Удалить
+        </Button>
       </CardActions>
     </Card>
   );

@@ -24,10 +24,10 @@ const partnersRequestsSlice = createSlice({
     delPartnerRequest: (state, action: PayloadAction<PartnerRequest['id']>) => {
       state.partnerRequests.filter((request) => request.id !== action.payload);
     },
-    updateStatusRequest: (state, action: PayloadAction<PartnerRequest['statusid']>) => {
+    updateStatusRequest: (state, action: PayloadAction<PartnerRequest>) => {
       state.partnerRequests.map((request): number => {
-        if (request.statusid !== action.payload) {
-          request.statusid = action.payload;
+        if (request.id === action.payload.id && request.statusid !== action.payload.statusid) {
+          request.statusid = action.payload.statusid;
         }
         return request.statusid;
       });
@@ -35,7 +35,7 @@ const partnersRequestsSlice = createSlice({
   },
 });
 
-export const { setActiveRequests, setUnactiveRequests, delPartnerRequest } =
+export const { setActiveRequests, setUnactiveRequests, delPartnerRequest, updateStatusRequest } =
   partnersRequestsSlice.actions;
 
 export default partnersRequestsSlice.reducer;
@@ -66,6 +66,6 @@ export const updatePartnerStatusRequest =
   (dispatch) => {
     axios
       .put<PartnerRequest>(`/api/requests/${id}`, { statusid: status })
-      .then((res) => dispatch(delPartnerRequest(res.data.statusid)))
+      .then((res) => dispatch(updateStatusRequest(res.data)))
       .catch(console.log);
   };
