@@ -15,7 +15,8 @@
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-import": "^2.27.5",
     "prettier": "^2.8.4",
-    "sequelize-cli": "^6.6.0"
+    "sequelize-cli": "^6.6.0",
+    "@pbe/react-yandex-maps": "1.1.8"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",

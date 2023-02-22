@@ -20,6 +20,7 @@ import RequestPage from './components/pages/RequestPage/RequestPage';
 import CreateRequestPageThoParts from './components/pages/createRequestPage/CreateRequestPageThoParts';
 import ContactPage from './components/ui/ContactPage/ContactPage';
 import MapRequestPage from './components/pages/MapRequestPage/MapRequestPage';
+import NewMapPage from './components/pages/MapRequestPage/NewMapPage';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -33,8 +34,8 @@ function App(): JSX.Element {
     <Container>
       {user.status === 'fetching' ? (
         <CircularProgress />
-        ) : (
-          <>
+      ) : (
+        <>
           <NavigationBar />
           <Routes>
             <Route path="/mainpage" element={<MainPage />} />
@@ -42,8 +43,7 @@ function App(): JSX.Element {
             <Route path="/partners" element={<PartnersPage />} />
             <Route path="/partners/:id" element={<ProfilePartnerPage />} />
             <Route path="/contacts" element={<ContactPage />} />
-            <Route path="/map" element={<MapRequestPage />} />
-           
+            <Route path="/map" element={<NewMapPage />} />
 
             <Route
               element={
