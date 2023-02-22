@@ -93,6 +93,9 @@ export default function RequestPage(): JSX.Element {
           {dateParser(request.lifeTimeStart)} - {dateParser(request.lifeTimeEnd)}
         </Typography>
         <Typography variant="h6" color="inherit" paragraph>
+          Адрес: {request.adress}
+        </Typography>
+        <Typography variant="h6" color="inherit" paragraph>
           Контактное лицо: {request.contactName}
         </Typography>
         <Typography variant="body1" color="inherit" paragraph>
