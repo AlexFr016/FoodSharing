@@ -14,7 +14,7 @@ export default function PartnersPage(): JSX.Element {
   return (
     <Grid container sx={{ justifyContent: 'center' }}>
       {partners.map((partner) => (
-        <OnePersonProfileCard partner={partner} key={partner.id} />
+        <OnePersonProfileCard  partner={partner} key={partner.id} />
       ))}
     </Grid>
   );
