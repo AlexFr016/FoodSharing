@@ -51,7 +51,12 @@ export default function OneFavoriteRequestCard({
           {/* <Typography gutterBottom variant="h5" component="h2">
             {request.title}
           </Typography> */}
-          {request.statusid === 3 && <Typography> Заявка закрыта </Typography>}
+          {request.statusid === 3 && (
+            <Typography variant="h5">
+              {' '}
+              <b>Заявка закрыта</b>{' '}
+            </Typography>
+          )}
           <Typography>
             {' '}
             от: <Link to={`/partners/${request.partnerid}`}>{request.User?.companyName}</Link>
@@ -60,9 +65,16 @@ export default function OneFavoriteRequestCard({
           <Typography>{request.description}</Typography>
         </CardContent>
         <CardActions>
-          <Button component={Link} to={`/request/${request.id}`} size="small">
-            Подробнее
-          </Button>
+          {request.statusid === 3 ? (
+            <Button disabled component={Link} to={`/request/${request.id}`} size="small">
+              Подробнее
+            </Button>
+          ) : (
+            <Button component={Link} to={`/request/${request.id}`} size="small">
+              Подробнее
+            </Button>
+          )}
+
           <Button onClick={() => dispatch(delFavoriteRequest(request.id))} size="small">
             <StarIcon sx={{ ml: 7 }} fontSize="large" />
           </Button>
