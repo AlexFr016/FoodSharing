@@ -28,28 +28,16 @@ export default function TopSearchLine(): JSX.Element {
       <Grid container spacing={2}>
         <Grid item xs={12} sm={12}>
           <FormControl fullWidth sx={{ m: 1 }}>
-            {/* <InputLabel htmlFor="outlined-adornment-amount">Продукт</InputLabel> */}
-            {/* <OutlinedInput
-              value={input}
-              onChange={changeHandler}
-              id="outlined-adornment-amount"
-              startAdornment={<InputAdornment position="start" />}
-              label="Search"
-            /> */}
             <TextField
               id="outlined-basic"
               label="Введите название продукта..."
               variant="outlined"
               value={input}
               onChange={changeHandler}
+              style={{ background: '#fafafa', opacity: 0.8 }}
             />
           </FormControl>
         </Grid>
-        {/* <Grid item xs={12} sm={2}>
-          <Button disabled={false} sx={{ mt: 1.5 }} size="large" variant="filled">
-            Поиск
-          </Button>
-        </Grid> */}
       </Grid>
     </Container>
   );

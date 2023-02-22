@@ -15,7 +15,12 @@ export default function ProfilePartnerPage(): JSX.Element {
       }}
     >
       <Grid
-        style={{ display: 'flex', justifyContent: 'center', padding: '50px', alignItems: 'center' }}
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          padding: '50px',
+          alignItems: 'center',
+        }}
       >
         <OneProfileCard />
         <Grid>

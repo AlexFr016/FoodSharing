@@ -13,7 +13,7 @@ export default function AboutPartnerProfileCard(): JSX.Element {
     <Card
       sx={{
         maxWidth: 400,
-        height: 400,
+        height: 515,
         overflowY: 'scroll',
         bgcolor: '#DCDCDC',
         opacity: 0.68,

@@ -29,8 +29,8 @@ export default function BodySearch(): JSX.Element {
     <Container>
       <Grid container spacing={8}>
         <Grid item xs={12} sm={3}>
-          <Typography style={{ marginTop: '55px' }} variant="h5">
-            Поиск по фильтрам:
+          <Typography style={{ marginTop: '55px', color: 'black', fontWeight: 700 }} variant="h5">
+            Поиск
           </Typography>
           <CssBaseline />
           <Typography variant="h6" style={{ marginTop: '30px' }}>
