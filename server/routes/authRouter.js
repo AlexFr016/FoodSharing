@@ -69,12 +69,12 @@ authRouter.post('/auth', async (req, res) => {
     const { email, pass } = req.body;
     const foundUser = await User.findOne({ where: { email }, include: Role });
     if (!(foundUser && (await bcrypt.compare(pass, foundUser.hashpass)))) {
-      res.sendStatus(401).send('Неправльно введен пароль');
+     return res.sendStatus(401).send('Неправльно введен пароль');
     }
     const newUser = JSON.parse(JSON.stringify(foundUser));
     delete newUser.hashpass;
     req.session.user = newUser;
-    res.json(newUser);
+    return res.json(newUser);
   } catch (error) {
     console.log(error);
     res.sendStatus(500);
@@ -84,10 +84,10 @@ authRouter.get('/logout', (req, res) => {
   try {
     res.clearCookie('user_sid');
     req.session.destroy();
-    res.sendStatus(200);
+  return res.sendStatus(200);
   } catch (error) {
     console.log(error);
-    res.sendStatus(500);
+  return res.sendStatus(500);
   }
 });
 authRouter.get('/check', (req, res) => {

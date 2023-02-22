@@ -1,4 +1,4 @@
-import type { UserCompany } from '../searchRequestsSlice/searchRequestsType';
+import type { BackendUserType } from '../userSlice/userType';
 
 export type PartnerRequests = {
   partnerRequests: PartnerRequest[];
@@ -12,5 +12,5 @@ export type PartnerRequest = {
   description: string;
   partnerid: number;
   statusid: number;
-  User: UserCompany;
+  User: BackendUserType;
 };
