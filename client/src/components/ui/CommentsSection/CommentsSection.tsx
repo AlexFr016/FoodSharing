@@ -38,7 +38,7 @@ export default function CommentsSection(): JSX.Element {
   return (
     <>
       <Box onSubmit={(e) => submitHandler(e)} component="form">
-        <TextField type='text' onChange={inputChangeHandler} value={inputData.body} name="body" />
+        <TextField style={{ background: '#fafafa' }} type='text' onChange={inputChangeHandler} value={inputData.body} name="body" />
         <Button type="submit" >Отправить отзыв</Button>
       </Box>
       {commetns.comments.map((comment) => (
