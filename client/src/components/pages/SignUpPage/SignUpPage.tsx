@@ -70,6 +70,7 @@ export default function SignUpPage(): JSX.Element {
                 label="First Name"
                 autoFocus
                 onChange={changeHandler}
+                style={{ background: '#fafafa' }}
               />
             </Grid>
             <Grid item xs={15} sm={4}>
@@ -82,6 +83,7 @@ export default function SignUpPage(): JSX.Element {
                 name="lastName"
                 autoComplete="family-name"
                 onChange={changeHandler}
+                style={{ background: '#fafafa' }}
               />
             </Grid>
             <Grid item xs={15} sm={4}>
@@ -94,6 +96,7 @@ export default function SignUpPage(): JSX.Element {
                 name="secondName"
                 autoComplete="family-name"
                 onChange={changeHandler}
+                style={{ background: '#fafafa' }}
               />
             </Grid>
             <Grid item xs={15}>
@@ -105,6 +108,7 @@ export default function SignUpPage(): JSX.Element {
                 variant="outlined"
                 fullWidth
                 onChange={changeHandler}
+                style={{ background: '#fafafa' }}
               />
             </Grid>
             <Grid item xs={15}>
@@ -117,6 +121,7 @@ export default function SignUpPage(): JSX.Element {
                 name="email"
                 autoComplete="email"
                 onChange={changeHandler}
+                style={{ background: '#fafafa' }}
               />
             </Grid>
             <Grid item xs={15}>
@@ -130,6 +135,7 @@ export default function SignUpPage(): JSX.Element {
                 id="password"
                 autoComplete="new-password"
                 onChange={changeHandler}
+                style={{ background: '#fafafa' }}
               />
             </Grid>
             <Grid item xs={15}>
@@ -143,6 +149,7 @@ export default function SignUpPage(): JSX.Element {
                 id="password"
                 autoComplete="new-password"
                 onChange={changeHandler}
+                style={{ background: '#fafafa' }}
               />
             </Grid>
           </Grid>

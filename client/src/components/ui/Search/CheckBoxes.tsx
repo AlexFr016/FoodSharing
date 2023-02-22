@@ -3,17 +3,22 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 
-export default function CheckBoxes(): JSX.Element {
+type CheckBoxesProps = {
+  partners: string[];
+};
+
+export default function CheckBoxes({ partners }: CheckBoxesProps): JSX.Element {
   return (
     <FormGroup>
-      <FormControlLabel
-        control={<Checkbox sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }} defaultChecked />}
-        label="со скидкой"
-      />
-      <FormControlLabel
-        control={<Checkbox sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }} size="small" />}
-        label="бесплатные"
-      />
+      {partners.map((partner) => (
+        <FormControlLabel
+          key={partner}
+          control={<Checkbox sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }} />}
+          label={partner}
+        />
+      ))}
     </FormGroup>
   );
 }
+
+// defaultChecked
