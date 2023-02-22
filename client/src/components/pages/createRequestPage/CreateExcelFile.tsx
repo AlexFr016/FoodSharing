@@ -45,6 +45,8 @@ export default function CreateExcelFile({ requestid }: { requestid: number }): J
             variant="outlined"
             size="small"
             sx={{ p: 3, ml: -5 }}
+            className="promoBtn"
+                  style={{ backgroundColor: '#f68b01' }}
             // onClick={(e) => submitRedirect(e)}
           >
             Прикрепить cписок

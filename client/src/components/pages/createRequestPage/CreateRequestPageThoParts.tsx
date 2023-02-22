@@ -170,6 +170,8 @@ export default function CreateRequestPageThoParts(): JSX.Element {
               <br />
               <Grid item xs={3} sm={1}>
                 <Button
+                  className="promoBtn"
+                  style={{ backgroundColor: '#f68b01' }}
                   type="submit"
                   variant="outlined"
                   size="large"
@@ -194,6 +196,7 @@ export default function CreateRequestPageThoParts(): JSX.Element {
                 >
                   Часть 2. Прикрепите список продуктов
                   <Button
+                  
                     variant="contained"
                     color="inherit"
                     size="small"
