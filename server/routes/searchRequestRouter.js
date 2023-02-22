@@ -156,4 +156,51 @@ searchRequestRouter.route('/filter').post(async (req, res) => {
   }
 });
 
+searchRequestRouter.route('/filter-partners').post(async (req, res) => {
+  try {
+    const { input } = req.body;
+
+    const data = input.split('|');
+    const idsArr = data[0].split(',');
+    const partners = data[1].split(',');
+
+    // console.log();
+    // let foundRequests;
+
+    const foundRequests = await Request.findAll({
+      where: {
+        id: {
+          [Op.in]: idsArr,
+        },
+      },
+      include: [
+        {
+          model: User,
+          attributes: ['id', 'companyName'],
+          where: {
+            companyName: {
+              [Op.in]: partners,
+            },
+          },
+        },
+        {
+          model: Product,
+          attributes: ['title'],
+
+          include: {
+            model: Category,
+            attributes: ['id', 'title'],
+          },
+        },
+      ],
+    });
+
+    console.log(JSON.parse(JSON.stringify(foundRequests)));
+    res.json(foundRequests);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+});
+
 module.exports = searchRequestRouter;
