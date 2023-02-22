@@ -10,6 +10,8 @@ const axiosSearchRequests = (input) => axios.post('/api/searchRequests', { input
 
 const axiosFilterRequests = (input) => axios.post('/api/searchRequests/filter', { input });
 
+// const axiosFilterByPartnerRequests = (input) => axios.post('/api/searchRequests/filter-partners', { input });
+
 // worker Saga: will be fired on USER_FETCH_REQUESTED actions
 function* fetchSearchRequestsOnProductName(action) {
   try {
@@ -31,6 +33,16 @@ function* fetchFilterRequestsOnCategoryProduct(action) {
   }
 }
 
+// function* fetchFilterRequestsByPartner(action) {
+//   try {
+//     yield delay(700);
+//     const res = yield call(axiosFilterByPartnerRequests, action.payload);
+//     yield put(setRequests(res.data));
+//   } catch (e) {
+//     yield put({ type: 'SEARCH_REQUESTS_ON_PARTNER', message: e.message });
+//   }
+// }
+
 /*
   Starts fetchUser on each dispatched `USER_FETCH_REQUESTED` action.
   Allows concurrent fetches of user.
@@ -42,6 +54,10 @@ export function* filterRequestsSagaWatcher() {
 export function* searchRequestsSagaWatcher() {
   yield takeLatest('SEARCH_REQUESTS_ON_PRODUCT_NAME', fetchSearchRequestsOnProductName);
 }
+
+// export function* filterRequestsByPartnerSagaWatcher() {
+//   yield takeLatest('SEARCH_REQUESTS_ON_PARTNER', fetchFilterRequestsByPartner);
+// }
 
 /*
   Alternatively you may use takeLatest.

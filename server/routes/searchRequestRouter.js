@@ -68,7 +68,7 @@ searchRequestRouter
           },
         ],
       });
-      //console.log(JSON.parse(JSON.stringify(foundRequests)));
+      // console.log(JSON.parse(JSON.stringify(foundRequests)));
       res.json(foundRequests);
     } catch (error) {
       console.log(error);
@@ -83,7 +83,7 @@ searchRequestRouter.route('/filter').post(async (req, res) => {
     const { input } = req.body;
     let foundRequests;
 
-    //console.log(input);
+    // console.log(input);
 
     if (input !== '') {
       const arr = input.split(',');
