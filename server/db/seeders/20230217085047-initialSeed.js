@@ -9,6 +9,9 @@ module.exports = {
     const hashpassModer = await bcrypt.hash('4', 10);
     const hashpassPartner2 = await bcrypt.hash('5', 10);
 
+    const hashpassDen = await bcrypt.hash('6', 10);
+    const hashpassElbrusRoma = await bcrypt.hash('7', 10);
+
     await queryInterface.bulkInsert(
       'Roles',
       [
@@ -110,6 +113,11 @@ module.exports = {
           photoPath:
             'https://avatars.mds.yandex.net/i?id=15fbc5c393059d0887944886d01bde2d31f0f73b-8209530-images-thumbs&n=13&exp=1',
         },
+        {
+          title: 'Салаты и закуски',
+          photoPath:
+            'https://avatars.mds.yandex.net/i?id=15fbc5c393059d0887944886d01bde2d31f0f73b-8209530-images-thumbs&n=13&exp=1',
+        },
       ],
       {},
     );
@@ -168,7 +176,7 @@ module.exports = {
           companyName: 'ВкусВилл',
           titleLogoPath:
             'https://img.artlebedev.ru/everything/vkusvill/store/process/vkusvill-store-process-21.jpg',
-          active: false,
+          active: true,
           description:
             'Российская розничная сеть супермаркетов и собственная торговая марка продуктов, позиционируемых как «продукты для здорового питания»',
           roleid: 3,
@@ -185,7 +193,7 @@ module.exports = {
           alternativePhone: '+79013245678',
           companyName: 'Перекресток',
           titleLogoPath: 'https://www.mikhaylovsky.com/wp-content/gallery/2018-06-04/08.jpg',
-          active: false,
+          active: true,
           description:
             'Концепция специализированных магазинов с заводским отделом Колбасы и Деликатесы, который дополняют отделы: Охлажденное мясо и Мясные полуфабрикаты, Молоко, Замороженные полуфабрикаты, Кондитерские изделия и Пекарня пользуется растущим спросом среди покупателей, не конкурирует с федеральными сетями, а дополняет их ассортимент.',
           roleid: 3,
@@ -202,6 +210,34 @@ module.exports = {
           alternativePhone: '+79013245678',
           active: false,
           roleid: 4,
+        },
+        {
+          email: 'den@gmail.com',
+          hashpass: hashpassDen,
+          firstName: 'Денис',
+          lastName: 'Петров',
+          secondName: 'Евгеньевич',
+          phone: '+7929786345',
+          pathPhoto: 'http://localhost:3000/image/Four.jpeg',
+          alternativePhone: '+79013245678',
+          active: false,
+          roleid: 1,
+        },
+        {
+          email: 'elbrus.shop@gmail.com',
+          hashpass: hashpassElbrusRoma,
+          firstName: 'Роман',
+          lastName: 'Эльбрусов',
+          secondName: 'Эльбрусович',
+          phone: '+79012323456',
+          pathPhoto: 'http://localhost:3000/image/Two.jpeg',
+          alternativePhone: '+79013245678',
+          companyName: 'Эльбрус shop',
+          titleLogoPath: 'https://jigidi-images.s3.amazonaws.com/puzzles/WGGOE19VR05DR4MW.jpg',
+          active: true,
+          description:
+            'Свежие продукты для IT-шников и не только. Каждый день радуем Вас выпечкой, овощами, кондитеркой, борщами.  Сделай get-запрос на наши полки и мы запушим в тебя витамины и минералы',
+          roleid: 3,
         },
       ],
       {},

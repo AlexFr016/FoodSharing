@@ -22,7 +22,7 @@ export default function BodySearch(): JSX.Element {
       ),
     );
 
-  const getCompanyList = (): string[] =>
+  const getPartnersList = (): string[] =>
     Array.from(new Set(requests.map((request): string => request?.User?.companyName)));
 
   return (
@@ -40,9 +40,9 @@ export default function BodySearch(): JSX.Element {
           <Typography variant="h6" style={{ marginTop: '15px', marginBottom: '15px' }}>
             По партнерам:
           </Typography>
-          <CheckBoxes partners={getCompanyList()} />
+          {/* <CheckBoxes partners={getPartnersList()} /> */}
           {/* новый чекбокс */}
-          {/* <CheckboxesGroup partners={getCompanyList()} /> */}
+          <CheckboxesGroup partners={getPartnersList()} />
           {/* <Typography variant="h5">По рейтингу:</Typography> */}
         </Grid>
         <Grid item xs={12} sm={9}>

@@ -1,4 +1,4 @@
-import { Container, Grid } from '@mui/material';
+import { Container, Grid, Typography } from '@mui/material';
 import React from 'react';
 import AboutPartnerProfileCard from '../../ui/AboutPartnerCard/AboutPartnerProfileCard';
 import CommentsSection from '../../ui/CommentsSection/CommentsSection';
@@ -19,14 +19,11 @@ export default function ProfilePartnerPage(): JSX.Element {
       >
         <OneProfileCard />
         <Grid>
-          <OneStatisticCard />
+          {/* <OneStatisticCard /> */}
           <AboutPartnerProfileCard />
         </Grid>
       </Grid>
-      <Grid sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        <OnePartnerRequestCard />
-        <OnePartnerRequestCard />
-      </Grid>
+      <Typography>Отзывы:</Typography>
       <CommentsSection />
     </Container>
   );
