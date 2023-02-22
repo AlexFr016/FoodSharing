@@ -18,6 +18,8 @@ import FavoritesPage from './components/pages/FavoritesPage/FavoritesPage';
 import { getFavoritesRequestsApi } from './redux/favoritesRequestsSlice/favoritesRequestsSlice';
 import RequestPage from './components/pages/RequestPage/RequestPage';
 import CreateRequestPageThoParts from './components/pages/createRequestPage/CreateRequestPageThoParts';
+import ContactPage from './components/ui/ContactPage/ContactPage';
+import MapRequestPage from './components/pages/MapRequestPage/MapRequestPage';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -31,14 +33,17 @@ function App(): JSX.Element {
     <Container>
       {user.status === 'fetching' ? (
         <CircularProgress />
-      ) : (
-        <>
+        ) : (
+          <>
           <NavigationBar />
           <Routes>
             <Route path="/mainpage" element={<MainPage />} />
             <Route path="/" element={<Navigate to="/mainpage" />} />
             <Route path="/partners" element={<PartnersPage />} />
             <Route path="/partners/:id" element={<ProfilePartnerPage />} />
+            <Route path="/contacts" element={<ContactPage />} />
+            <Route path="/map" element={<MapRequestPage />} />
+           
 
             <Route
               element={

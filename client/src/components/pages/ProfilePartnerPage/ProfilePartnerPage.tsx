@@ -1,6 +1,7 @@
 import { Container, Grid } from '@mui/material';
 import React from 'react';
 import AboutPartnerProfileCard from '../../ui/AboutPartnerCard/AboutPartnerProfileCard';
+import CommentsSection from '../../ui/CommentsSection/CommentsSection';
 import OneProfileCard from '../../ui/OnePersonCard/OneProfileCard';
 import OnePartnerRequestCard from '../../ui/OneRequestCard/OnePartnerRequestCard';
 import OneStatisticCard from '../../ui/OneStatisticCard/OneStatisticCard';
@@ -26,6 +27,7 @@ export default function ProfilePartnerPage(): JSX.Element {
         <OnePartnerRequestCard />
         <OnePartnerRequestCard />
       </Grid>
+      <CommentsSection />
     </Container>
   );
 }
