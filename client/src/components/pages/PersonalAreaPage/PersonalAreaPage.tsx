@@ -17,7 +17,7 @@ export default function PersonalAreaPage(): JSX.Element {
   const dispatch = useAppDispatch();
   const [activeL, setActiveL] = useState(true);
   const [activeR, setActiveR] = useState(false);
-  const [render, setRender] = useState(0);
+  const [render, setRender] = useState(1);
 
   useEffect(() => {
     if (activeL) dispatch(getActivePartnerRequests());
