@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, CardActions, Grid } from '@mui/material';
+import { Button, ButtonGroup, CardActions, createTheme, Grid } from '@mui/material';
 import { Container } from '@mui/system';
 import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
@@ -10,7 +10,15 @@ import AboutPartnerCard from '../../ui/AboutPartnerCard/AboutPartnerCard';
 import OneFavoriteCard from '../../ui/OneFavoriteCard/OneFavoriteCard';
 import OnePersonCard from '../../ui/OnePersonCard/OnePersonCard';
 import OnePartnerPersonRequestCard from '../../ui/OneRequestCard/OnePartnerPersonRequestCard';
-import OneStatisticCard from '../../ui/OneStatisticCard/OneStatisticCard';
+
+const theme = createTheme({
+  palette: {
+    action: {
+      disabledBackground: 'green',
+      disabled: 'white',
+    },
+  },
+});
 
 export default function PersonalAreaPage(): JSX.Element {
   const user = useAppSelector((store) => store.user);
@@ -18,11 +26,13 @@ export default function PersonalAreaPage(): JSX.Element {
   const dispatch = useAppDispatch();
   const [activeL, setActiveL] = useState(true);
   const [activeR, setActiveR] = useState(false);
+  const [render, setRender] = useState(0);
+  console.log('>>>>>>>>>>', render);
 
   useEffect(() => {
     if (activeL) dispatch(getActivePartnerRequests());
     if (activeR) dispatch(getUnactivePartnerRequests());
-  }, [activeL, activeR, dispatch]);
+  }, [render, activeL, activeR, dispatch]);
 
   const changeActiveHandlerR = (): void => {
     setActiveL(false);
@@ -50,10 +60,7 @@ export default function PersonalAreaPage(): JSX.Element {
         }}
       >
         {user.status === 'logged' && <OnePersonCard />}
-        <Grid>
-          <OneStatisticCard />
-          {user.status === 'logged' && user.roleid === 3 && <AboutPartnerCard />}
-        </Grid>
+        <Grid>{user.status === 'logged' && user.roleid === 3 && <AboutPartnerCard />}</Grid>
       </Grid>
       {user.status === 'logged' && user.roleid === 3 && (
         <>
@@ -67,27 +74,41 @@ export default function PersonalAreaPage(): JSX.Element {
           >
             <CardActions sx={{ justifyContent: 'center', mb: 3 }}>
               <ButtonGroup variant="contained" aria-label="outlined primary button group">
-                <Button size="medium" onClick={changeActiveHandlerL} disabled={activeL}>
+                <Button
+                  size="medium"
+                  onClick={changeActiveHandlerL}
+                  sx={{ bgcolor: '#f9bf3b', color: '#fff' }}
+                  disabled={activeL}
+                  classes={theme}
+                >
                   Действующие заявки
                 </Button>
-                <Button size="medium" onClick={changeActiveHandlerR} disabled={activeR}>
+                <Button
+                  sx={{ bgcolor: '#f9bf3b', color: '#fff' }}
+                  size="medium"
+                  onClick={changeActiveHandlerR}
+                  disabled={activeR}
+                >
                   Архив заявок
                 </Button>
               </ButtonGroup>
             </CardActions>
           </Grid>
           <Grid
+            container
+            columns={19}
             sx={{
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-              padding: 4,
             }}
           >
             {partnerRequests.map((partnerRequest) => (
-              <Grid>
+              <Grid item xs={6} sx={{ padding: 4 }}>
                 <OnePartnerPersonRequestCard
                   partnerRequest={partnerRequest}
+                  render={render}
+                  setRender={setRender}
                   key={partnerRequest.id}
                 />
               </Grid>

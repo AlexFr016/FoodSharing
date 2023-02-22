@@ -49,18 +49,18 @@ export default function OnePersonCard(): JSX.Element {
     <Card
       sx={{
         maxWidth: 400,
-        borderRadius: 10,
+        borderRadius: 6,
         boxShadow: 10,
-        bgcolor: '#fff',
+        bgcolor: 'rgba(220, 220, 220, 0.68)',
         height: 700,
         marginX: 3,
       }}
     >
       <CardMedia
-        sx={{ height: 300, objectFit: 'cover' }}
+        sx={{ height: 300, objectFit: 'contain' }}
         component="img"
         alt="partner photo"
-        image="https://virtus-img.cdnvideo.ru/images/as-is/plain/15/150f5599-d4d4-473f-9000-ca6d1a9491c5.jpg@jpg"
+        image={user.status === 'logged' && user.pathPhoto}
       />
       <CardContent sx={{ textAlign: 'center', fontFamily: 'monospace' }}>
         {!edit && user.status === 'logged' ? (
@@ -79,12 +79,12 @@ export default function OnePersonCard(): JSX.Element {
             <Typography gutterBottom variant="h5" component="div">
               {user.phone}
             </Typography>
-            <CardActions sx={{ justifyContent: 'center' }}>
+            <CardActions sx={{ justifyContent: 'center', mt: 10 }}>
               <Button
                 variant="contained"
                 size="medium"
-                sx={{ bgcolor: '#F8C621' }}
                 onClick={() => setEdit(true)}
+                sx={{ bgcolor: '#f9bf3b', color: '#fff' }}
               >
                 Редактировать профиль
               </Button>
@@ -163,14 +163,21 @@ export default function OnePersonCard(): JSX.Element {
               </Grid>
             </Grid>
             <CardActions sx={{ justifyContent: 'center', mt: 2 }}>
-              <ButtonGroup variant="contained" aria-label="outlined primary button group">
-                <Button size="small" type="submit" onClick={() => dispatch(updateUser(inputs))}>
-                  Сохранить
-                </Button>
-                <Button size="small" onClick={() => setEdit(false)}>
-                  Отмена
-                </Button>
-              </ButtonGroup>
+              <Button
+                size="small"
+                sx={{ bgcolor: '#f9bf3b', color: '#fff' }}
+                type="submit"
+                onClick={() => dispatch(updateUser(inputs))}
+              >
+                Сохранить
+              </Button>
+              <Button
+                size="small"
+                sx={{ bgcolor: '#f9bf3b', color: '#fff' }}
+                onClick={() => setEdit(false)}
+              >
+                Отмена
+              </Button>
             </CardActions>
           </Box>
         )}
