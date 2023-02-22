@@ -35,8 +35,6 @@ export default function CheckboxesGroup({ partners }: CheckBoxesProps): JSX.Elem
     initialPartners();
   }, [partners]);
 
-
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setState({
       ...state,
@@ -51,7 +49,7 @@ export default function CheckboxesGroup({ partners }: CheckBoxesProps): JSX.Elem
     const ids = requests.map((el) => el.id);
 
     dispatch({
-      type: 'SEARCH_REQUESTS_ON_PRODUCT_NAME',
+      type: 'SEARCH_REQUESTS_ON_PARTNER',
       payload: `${ids.toString()}|${checkedArr.toString()}`,
     });
   };

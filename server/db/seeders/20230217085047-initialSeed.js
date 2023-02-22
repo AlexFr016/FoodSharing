@@ -11,6 +11,7 @@ module.exports = {
 
     const hashpassDen = await bcrypt.hash('6', 10);
     const hashpassElbrusRoma = await bcrypt.hash('7', 10);
+    const hashpassAlik = await bcrypt.hash('8', 10);
 
     await queryInterface.bulkInsert(
       'Roles',
@@ -237,6 +238,24 @@ module.exports = {
           active: true,
           description:
             'Свежие продукты для IT-шников и не только. Каждый день радуем Вас выпечкой, овощами, кондитеркой, борщами.  Сделай get-запрос на наши полки и мы запушим в тебя витамины и минералы',
+          roleid: 3,
+        },
+        {
+          email: 'alik.shop@gmail.com',
+          hashpass: hashpassAlik,
+          firstName: 'Андрей',
+          lastName: 'Соколов',
+          secondName: 'Артёмович',
+          phone: '+79012323456',
+          pathPhoto:
+            'https://avatars.mds.yandex.net/i?id=ed2e4ab3933ee8b1f471649ea4d4dd845253c9ce-5023294-images-thumbs&n=13',
+          alternativePhone: '+79014565678',
+          companyName: 'Алик',
+          titleLogoPath:
+            'https://avatars.mds.yandex.net/get-altay/214458/2a000001628b218f46ea978707009da0a72a/XXL',
+          active: true,
+          description:
+            'Интернет магазин Алик предлагает к вашему столу свежие фрукты, овощи, ягоды, грибы и зелень недорого в широчайшем ассортименте. Продажа овощей и фруктов в Москве — это основное направление деятельности нашей компании. ',
           roleid: 3,
         },
       ],
