@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, CardActions, createTheme, Grid } from '@mui/material';
+import { Button, ButtonGroup, CardActions, Grid } from '@mui/material';
 import { Container } from '@mui/system';
 import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
@@ -11,15 +11,6 @@ import OneFavoriteCard from '../../ui/OneFavoriteCard/OneFavoriteCard';
 import OnePersonCard from '../../ui/OnePersonCard/OnePersonCard';
 import OnePartnerPersonRequestCard from '../../ui/OneRequestCard/OnePartnerPersonRequestCard';
 
-const theme = createTheme({
-  palette: {
-    action: {
-      disabledBackground: 'green',
-      disabled: 'white',
-    },
-  },
-});
-
 export default function PersonalAreaPage(): JSX.Element {
   const user = useAppSelector((store) => store.user);
   const partnerRequests = useAppSelector((store) => store.partnerRequests.partnerRequests);
@@ -27,12 +18,11 @@ export default function PersonalAreaPage(): JSX.Element {
   const [activeL, setActiveL] = useState(true);
   const [activeR, setActiveR] = useState(false);
   const [render, setRender] = useState(0);
-  console.log('>>>>>>>>>>', render);
 
   useEffect(() => {
     if (activeL) dispatch(getActivePartnerRequests());
     if (activeR) dispatch(getUnactivePartnerRequests());
-  }, [render, activeL, activeR, dispatch]);
+  }, [activeL, activeR, dispatch, render]);
 
   const changeActiveHandlerR = (): void => {
     setActiveL(false);
@@ -77,17 +67,16 @@ export default function PersonalAreaPage(): JSX.Element {
                 <Button
                   size="medium"
                   onClick={changeActiveHandlerL}
-                  sx={{ bgcolor: '#f9bf3b', color: '#fff' }}
                   disabled={activeL}
-                  classes={theme}
+                  sx={{ bgcolor: '#F68B02', color: '#fff' }}
                 >
                   Действующие заявки
                 </Button>
                 <Button
-                  sx={{ bgcolor: '#f9bf3b', color: '#fff' }}
                   size="medium"
                   onClick={changeActiveHandlerR}
                   disabled={activeR}
+                  sx={{ bgcolor: '#F68B02', color: '#fff' }}
                 >
                   Архив заявок
                 </Button>
@@ -96,19 +85,19 @@ export default function PersonalAreaPage(): JSX.Element {
           </Grid>
           <Grid
             container
-            columns={19}
             sx={{
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
+              padding: 4,
             }}
           >
             {partnerRequests.map((partnerRequest) => (
-              <Grid item xs={6} sx={{ padding: 4 }}>
+              <Grid item xs={4} sx={{ mb: 2 }}>
                 <OnePartnerPersonRequestCard
-                  partnerRequest={partnerRequest}
                   render={render}
                   setRender={setRender}
+                  partnerRequest={partnerRequest}
                   key={partnerRequest.id}
                 />
               </Grid>

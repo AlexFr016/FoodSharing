@@ -15,13 +15,22 @@ export default function CommentCard({ comment }: CommentCardPropsType): JSX.Elem
     }
   };
   return (
-    <Card sx={{bgcolor: '#DCDCDC', opacity: 0.68, borderRadius: 10 }} style={{display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '5px', width: '35rem'}}>
-      <Avatar style={{marginLeft: '10px'}} src={comment.pathPhoto} alt='avatar'/>
-      <Grid style={{display: 'flex', flexDirection: 'column', marginLeft: '10px'}}> 
-      <Typography >
-        {comment.firstName} {comment.lastName} {dateParser(comment.createdAt)}
-      </Typography>
-      <Typography>{comment.body}</Typography>
+    <Card
+      sx={{ bgcolor: '#DCDCDC', opacity: 0.68, borderRadius: 10 }}
+      style={{
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: '5px',
+        width: '35rem',
+      }}
+    >
+      <Avatar style={{ marginLeft: '10px' }} src={comment.pathPhoto} alt="avatar" />
+      <Grid style={{ display: 'flex', flexDirection: 'column', marginLeft: '10px' }}>
+        <Typography>
+          {comment.firstName} {comment.lastName} {dateParser(comment.createdAt)}
+        </Typography>
+        <Typography>{comment.body}</Typography>
       </Grid>
     </Card>
   );
