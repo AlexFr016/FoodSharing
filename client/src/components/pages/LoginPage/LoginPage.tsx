@@ -43,6 +43,7 @@ export default function LoginPage(): JSX.Element {
         <Typography component="h1" variant="h5">
           Заполните ваши данные:
         </Typography>
+        
         <Box onSubmit={(e) => submitHandler(e)} component="form" noValidate sx={{ mt: 2 }}>
           <Grid container spacing={2}>
             <Grid item xs={15}>
