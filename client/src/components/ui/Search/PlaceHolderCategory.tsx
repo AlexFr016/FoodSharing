@@ -60,8 +60,8 @@ export default function PlaceHolderCategory({ categories }: PlaceHolderCategoryP
             if (selected.length === 0) {
               return <em>Категория продукта...</em>;
             }
-            console.log('SELECTED:', selected);
-            console.log('categories:', categories);
+            // console.log('SELECTED:', selected);
+            // console.log('categories:', categories);
             if (selected[0] !== categories[0] && categories.length === 1) {
               return categories.join(', ');
             }
