@@ -1,6 +1,5 @@
 import {
   Button,
-  ButtonGroup,
   Card,
   CardActions,
   CardContent,
@@ -13,7 +12,7 @@ import { Box } from '@mui/system';
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
-import { loginHandler, updateUser } from '../../../redux/userSlice/userReducer';
+import { updateUser } from '../../../redux/userSlice/userReducer';
 
 export default function OnePersonCard(): JSX.Element {
   const user = useAppSelector((store) => store.user);
@@ -84,7 +83,7 @@ export default function OnePersonCard(): JSX.Element {
                 variant="contained"
                 size="medium"
                 onClick={() => setEdit(true)}
-                sx={{ bgcolor: '#f9bf3b', color: '#fff' }}
+                sx={{ bgcolor: '#F68B02', color: '#fff' }}
               >
                 Редактировать профиль
               </Button>
@@ -165,7 +164,7 @@ export default function OnePersonCard(): JSX.Element {
             <CardActions sx={{ justifyContent: 'center', mt: 2 }}>
               <Button
                 size="small"
-                sx={{ bgcolor: '#f9bf3b', color: '#fff' }}
+                sx={{ bgcolor: '#F68B02', color: '#fff' }}
                 type="submit"
                 onClick={() => dispatch(updateUser(inputs))}
               >
@@ -173,7 +172,7 @@ export default function OnePersonCard(): JSX.Element {
               </Button>
               <Button
                 size="small"
-                sx={{ bgcolor: '#f9bf3b', color: '#fff' }}
+                sx={{ bgcolor: '#F68B02', color: '#fff' }}
                 onClick={() => setEdit(false)}
               >
                 Отмена

@@ -37,10 +37,20 @@ export default function CommentsSection(): JSX.Element {
   };
   return (
     <>
-      <Box onSubmit={(e) => submitHandler(e)} component="form" style={{display: 'flex', flexDirection: 'row', borderTopRightRadius: '10px', borderBottomRightRadius: '10px'}}>
+      <Box
+        sx={{ justifyContent: 'center' }}
+        onSubmit={(e) => submitHandler(e)}
+        component="form"
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          borderTopRightRadius: '10px',
+          borderBottomRightRadius: '10px',
+        }}
+      >
         <TextField
-          style={{ background: '#fafafa', width: '24rem', height: '3rem' }}
-          sx={{ borderTopLeftRadius: 10, borderBotomLeftRadius: 10 }}
+          style={{ background: '#fafafa', width: '24rem', height: '2rem' }}
+          sx={{ borderTopLeftRadius: 10, borderBotomLeftRadius: 10, mb: 3 }}
           type="text"
           onChange={inputChangeHandler}
           value={inputData.body}
@@ -50,11 +60,22 @@ export default function CommentsSection(): JSX.Element {
             disableUnderline: true,
           }}
         />
-        <Button style={{backgroundColor: '#f9bf3b', height: '3rem', borderRadius: '10px'}} variant="contained" type="submit">Отправить отзыв</Button>
+        <Button
+          style={{ backgroundColor: '#f9bf3b', height: '2rem', borderRadius: '0px 10px 10px 0px ' }}
+          variant="contained"
+          type="submit"
+        >
+          Отправить отзыв
+        </Button>
       </Box>
-      {commetns.comments.map((comment) => (
-        <CommentCard key={comment.id} comment={comment} />
-      ))}
+      <Grid container sx={{ justifyContent: 'center' }}>
+        {commetns.comments.map((comment) => (
+          <Grid>
+            {' '}
+            <CommentCard key={comment.id} comment={comment} />
+          </Grid>
+        ))}
+      </Grid>
     </>
   );
 }
