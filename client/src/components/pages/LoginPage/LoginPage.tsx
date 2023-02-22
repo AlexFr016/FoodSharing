@@ -76,28 +76,31 @@ export default function LoginPage(): JSX.Element {
             variant="contained"
             aria-label="outlined primary button group"
           > */}
-          <Grid sx={{ mt: 3, mb: 2 }} container spacing={1}>
+          <Grid sx={{ mt: 3, mb: 2 }} container spacing={0}>
             <Grid item xs={5}>
               <Button
+                size="large"
+                className="promoBtn"
                 // component={Link}
-                style={{ background: '#fafafa' }}
+                style={{ backgroundColor: '#f68b01', color: 'white', marginLeft: '30px' }}
                 // to="/"
                 type="submit"
                 // fullWidth
                 variant="outlined"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{ mt: 1, mb: 2 }}
               >
                 Войти
               </Button>
             </Grid>
             <Grid item xs={5}>
               <Button
+                size="large"
                 component={Link}
                 to="/signup"
                 // fullWidth
                 variant="outlined"
-                sx={{ mt: 3, mb: 2 }}
-                style={{ background: '#fafafa' }}
+                sx={{ mt: 1, mb: 2 }}
+                style={{ backgroundColor: '#f68b01', color: 'white', marginRight: '80px' }}
               >
                 Зарегистрироваться
               </Button>
