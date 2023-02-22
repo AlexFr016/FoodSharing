@@ -44,7 +44,7 @@ export const { setRequest } = requestSlice.actions;
 export const getSingleRequest =
   (id: string): AppThunk =>
   (dispatch) => {
-    // console.log(id)
+    // console.log('---------->', id);
     axios<BackendRequestWithUserType>(`/api/post/${id}`)
       .then((res) => dispatch(setRequest(res.data)))
       .catch(console.log);

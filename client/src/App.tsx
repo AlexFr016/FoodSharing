@@ -33,8 +33,8 @@ function App(): JSX.Element {
     <Container>
       {user.status === 'fetching' ? (
         <CircularProgress />
-        ) : (
-          <>
+      ) : (
+        <>
           <NavigationBar />
           <Routes>
             <Route path="/mainpage" element={<MainPage />} />
@@ -43,7 +43,6 @@ function App(): JSX.Element {
             <Route path="/partners/:id" element={<ProfilePartnerPage />} />
             <Route path="/contacts" element={<ContactPage />} />
             <Route path="/map" element={<MapRequestPage />} />
-           
 
             <Route
               element={

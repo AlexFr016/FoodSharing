@@ -153,17 +153,20 @@ export default function SignUpPage(): JSX.Element {
               />
             </Grid>
           </Grid>
-          <Button
-            // component={Link}
-            // to="/mainpage"
-            type="submit"
-            className="promoBtn"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-          >
-            Зарегистрироваться!
-          </Button>
+          <Grid item xs={5}>
+            <Button
+              // component={Link}
+              // to="/mainpage"
+              size="large"
+              type="submit"
+              className="promoBtn"
+              style={{ backgroundColor: '#f68b01', color: 'white', marginLeft: '450px' }}
+              variant="outlined"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Зарегистрироваться!
+            </Button>
+          </Grid>
         </Box>
       </Box>
     </Container>

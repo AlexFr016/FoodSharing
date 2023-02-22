@@ -15,18 +15,19 @@ export default function OneProfileCard(): JSX.Element {
         maxWidth: 400,
         borderRadius: 10,
         boxShadow: 10,
-        bgcolor: '#fff',
+        bgcolor: 'rgba(220, 220, 220, 0.68)',
+        
         height: 515,
         marginX: 3,
       }}
     >
       <CardMedia
-        sx={{ height: 250, objectFit: 'cover' }}
+        sx={{ height: 250, objectFit: 'contain' }}
         component="img"
         alt="partner photo"
-        image="https://virtus-img.cdnvideo.ru/images/as-is/plain/15/150f5599-d4d4-473f-9000-ca6d1a9491c5.jpg@jpg"
+        image={partner.pathPhoto}
       />
-      <CardContent sx={{ textAlign: 'center', fontFamily: 'monospace' }}>
+      <CardContent sx={{ textAlign: 'center', fontFamily: 'monospace', opacity: 0.68 }}>
         <Typography gutterBottom variant="h5" component="div">
           {[partner.firstName, ' ', partner.secondName, ' ', partner.lastName]}
         </Typography>
