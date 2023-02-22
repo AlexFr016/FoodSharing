@@ -51,6 +51,7 @@ export default function PlaceHolderCategory({ categories }: PlaceHolderCategoryP
     <div>
       <FormControl sx={{ width: 300, mt: 2 }}>
         <Select
+          style={{ background: '#fafafa', opacity: 0.7, marginLeft: '0px' }}
           multiple
           displayEmpty
           value={categoryName}
@@ -58,7 +59,7 @@ export default function PlaceHolderCategory({ categories }: PlaceHolderCategoryP
           input={<OutlinedInput />}
           renderValue={(selected) => {
             if (selected.length === 0) {
-              return <em>Категория продукта...</em>;
+              return <em style={{ fontFamily: 'revert-layer' }}>Категория продукта...</em>;
             }
             console.log('SELECTED:', selected);
             console.log('categories:', categories);
@@ -78,7 +79,7 @@ export default function PlaceHolderCategory({ categories }: PlaceHolderCategoryP
           MenuProps={MenuProps}
           inputProps={{ 'aria-label': 'Without label' }}
         >
-          <MenuItem disabled value="">
+          <MenuItem disabled value="" style={{ color: '#fafafa' }}>
             <em>Категория продукта...</em>
           </MenuItem>
           {categories.map((name) => (

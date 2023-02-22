@@ -96,7 +96,7 @@ export default function CreateRequestPageThoParts(): JSX.Element {
                 Часть 1. Заполните текстовую часть
               </Typography>
 
-              <Grid container spacing={3}>
+              <Grid container spacing={2}>
                 <Grid item xs={12} sm={7}>
                   <TextField
                     required
@@ -106,17 +106,9 @@ export default function CreateRequestPageThoParts(): JSX.Element {
                     fullWidth
                     autoComplete="given-name"
                     variant="standard"
-                  />
-                </Grid>
-                <Grid item xs={7}>
-                  <TextField
-                    required
-                    id="address1"
-                    name="description"
-                    label="Краткое описание заявки"
-                    fullWidth
-                    autoComplete="shipping address-line1"
-                    variant="standard"
+                    inputProps={{
+                      style: { backgroundColor: '#FFFAFA', opacity: 0.7, height: '30px' },
+                    }}
                   />
                 </Grid>
                 <Grid item xs={3}>
@@ -130,8 +122,26 @@ export default function CreateRequestPageThoParts(): JSX.Element {
                     InputLabelProps={{
                       shrink: true,
                     }}
+                    inputProps={{
+                      style: { backgroundColor: '#FFFAFA', opacity: 0.7, height: '30px' },
+                    }}
                   />
                 </Grid>
+                <Grid item xs={7}>
+                  <TextField
+                    required
+                    id="address1"
+                    name="description"
+                    label="Краткое описание заявки"
+                    fullWidth
+                    autoComplete="shipping address-line1"
+                    variant="standard"
+                    inputProps={{
+                      style: { backgroundColor: '#FFFAFA', opacity: 0.7, height: '30px' },
+                    }}
+                  />
+                </Grid>
+
                 <Grid item xs={12} sm={7}>
                   <TextField
                     required
@@ -141,6 +151,9 @@ export default function CreateRequestPageThoParts(): JSX.Element {
                     fullWidth
                     autoComplete="shipping address-level2"
                     variant="standard"
+                    inputProps={{
+                      style: { backgroundColor: '#FFFAFA', opacity: 0.7, height: '30px' },
+                    }}
                   />
                 </Grid>
 
@@ -153,9 +166,13 @@ export default function CreateRequestPageThoParts(): JSX.Element {
                     fullWidth
                     autoComplete="shipping address-level2"
                     variant="standard"
+                    inputProps={{
+                      style: { backgroundColor: '#FFFAFA', opacity: 0.7, height: '30px' },
+                    }}
                   />
                   <Grid item xs={12} sm={13}>
                     <TextField
+                      style={{ marginTop: '10px' }}
                       required
                       id="city"
                       name="contactName"
@@ -163,6 +180,9 @@ export default function CreateRequestPageThoParts(): JSX.Element {
                       fullWidth
                       autoComplete="shipping address-level2"
                       variant="standard"
+                      inputProps={{
+                        style: { backgroundColor: '#FFFAFA', opacity: 0.7, height: '30px' },
+                      }}
                     />
                   </Grid>
                 </Grid>
@@ -171,11 +191,11 @@ export default function CreateRequestPageThoParts(): JSX.Element {
               <Grid item xs={3} sm={1}>
                 <Button
                   className="promoBtn"
-                  style={{ backgroundColor: '#f68b01' }}
+                  style={{ backgroundColor: '#f68b01', textAlign: 'center', marginTop: '10px' }}
                   type="submit"
                   variant="outlined"
                   size="large"
-                  sx={{ p: 3, ml: 27 }}
+                  sx={{ p: 3, ml: 22 }}
                   onClick={() => setRequestPush(true)}
                 >
                   Отправить заявку
@@ -196,7 +216,6 @@ export default function CreateRequestPageThoParts(): JSX.Element {
                 >
                   Часть 2. Прикрепите список продуктов
                   <Button
-                  
                     variant="contained"
                     color="inherit"
                     size="small"
