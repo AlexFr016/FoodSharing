@@ -1,7 +1,11 @@
-import { Grid } from '@mui/material';
+import { Button, ButtonGroup, CardActions, Grid } from '@mui/material';
 import { Container } from '@mui/system';
-import React from 'react';
-import { useAppSelector } from '../../../redux/hooks';
+import React, { useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
+import {
+  getActivePartnerRequests,
+  getUnactivePartnerRequests,
+} from '../../../redux/partnerRequestsSlice/partnerRequestsReducer';
 import AboutPartnerCard from '../../ui/AboutPartnerCard/AboutPartnerCard';
 import OneFavoriteCard from '../../ui/OneFavoriteCard/OneFavoriteCard';
 import OnePersonCard from '../../ui/OnePersonCard/OnePersonCard';
@@ -10,6 +14,26 @@ import OneStatisticCard from '../../ui/OneStatisticCard/OneStatisticCard';
 
 export default function PersonalAreaPage(): JSX.Element {
   const user = useAppSelector((store) => store.user);
+  const partnerRequests = useAppSelector((store) => store.partnerRequests.partnerRequests);
+  const dispatch = useAppDispatch();
+  const [activeL, setActiveL] = useState(true);
+  const [activeR, setActiveR] = useState(false);
+
+  useEffect(() => {
+    if (activeL) dispatch(getActivePartnerRequests());
+    if (activeR) dispatch(getUnactivePartnerRequests());
+  }, [activeL, activeR, dispatch]);
+
+  const changeActiveHandlerR = (): void => {
+    setActiveL(false);
+    setActiveR(true);
+  };
+
+  const changeActiveHandlerL = (): void => {
+    setActiveL(true);
+    setActiveR(false);
+  };
+
   return (
     <Container
       fixed
@@ -39,6 +63,20 @@ export default function PersonalAreaPage(): JSX.Element {
             Мои заявки
           </Grid>
           <Grid
+            sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: 30 }}
+          >
+            <CardActions sx={{ justifyContent: 'center', mb: 3 }}>
+              <ButtonGroup variant="contained" aria-label="outlined primary button group">
+                <Button size="medium" onClick={changeActiveHandlerL} disabled={activeL}>
+                  Действующие заявки
+                </Button>
+                <Button size="medium" onClick={changeActiveHandlerR} disabled={activeR}>
+                  Архив заявок
+                </Button>
+              </ButtonGroup>
+            </CardActions>
+          </Grid>
+          <Grid
             sx={{
               display: 'flex',
               justifyContent: 'center',
@@ -46,8 +84,14 @@ export default function PersonalAreaPage(): JSX.Element {
               padding: 4,
             }}
           >
-            <OnePartnerPersonRequestCard />
-            <OnePartnerPersonRequestCard />
+            {partnerRequests.map((partnerRequest) => (
+              <Grid>
+                <OnePartnerPersonRequestCard
+                  partnerRequest={partnerRequest}
+                  key={partnerRequest.id}
+                />
+              </Grid>
+            ))}
           </Grid>
         </>
       )}
