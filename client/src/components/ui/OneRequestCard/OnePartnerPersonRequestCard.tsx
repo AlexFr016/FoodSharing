@@ -38,7 +38,7 @@ export default function OnePartnerPersonRequestCard({
         sx={{ objectFit: 'cover' }}
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div" sx={{ height: 60 }}>
+        <Typography gutterBottom variant="h5" component="div" sx={{ height: 60, display: 'flex' }}>
           {partnerRequest.title}
         </Typography>
       </CardContent>
@@ -46,10 +46,10 @@ export default function OnePartnerPersonRequestCard({
         {partnerRequest.statusid === 1 ? (
           <Button
             size="small"
-            sx={{ bgcolor: '#f9bf3b', color: '#fff' }}
+            sx={{ bgcolor: '#F68B02', color: '#fff' }}
             onClick={() => {
-              dispatch(updatePartnerStatusRequest(partnerRequest.id, 3));
               setRender(render + 1);
+              dispatch(updatePartnerStatusRequest(partnerRequest.id, 3));
             }}
           >
             Закрыть
@@ -57,21 +57,21 @@ export default function OnePartnerPersonRequestCard({
         ) : (
           <Button
             size="small"
-            sx={{ bgcolor: '#f9bf3b', color: '#fff' }}
+            sx={{ bgcolor: '#F68B02', color: '#fff' }}
             onClick={() => {
-              dispatch(updatePartnerStatusRequest(partnerRequest.id, 1));
               setRender(render + 1);
+              dispatch(updatePartnerStatusRequest(partnerRequest.id, 1));
             }}
           >
             Восстановить
           </Button>
         )}
         <Button
-          sx={{ bgcolor: '#f9bf3b', color: '#fff' }}
+          sx={{ bgcolor: '#F68B02', color: '#fff' }}
           size="small"
           onClick={() => {
-            dispatch(deletePartnerRequest(partnerRequest.id));
             setRender(render + 1);
+            dispatch(deletePartnerRequest(partnerRequest.id));
           }}
         >
           Удалить

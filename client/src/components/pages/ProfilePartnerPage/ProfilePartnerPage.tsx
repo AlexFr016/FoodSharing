@@ -28,7 +28,9 @@ export default function ProfilePartnerPage(): JSX.Element {
           <AboutPartnerProfileCard />
         </Grid>
       </Grid>
-      <Typography>Отзывы:</Typography>
+      <Grid container sx={{ justifyContent: 'center', marginX: -30 }}>
+        <Typography sx={{ fontSize: 20 }}>Отзывы:</Typography>
+      </Grid>
       <CommentsSection />
     </Container>
   );
