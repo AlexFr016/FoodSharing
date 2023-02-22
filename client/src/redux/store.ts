@@ -7,6 +7,7 @@ import requestReducer from './singleRequestSlice/singleRequestSlice';
 import userReducer from './userSlice/userReducer';
 import partnersReducer from './partnersSlice/partnersReducer';
 import onePartnerReducer from './partnersSlice/onePartnerReducer';
+import commentsReducer from './commentsSlice/commentsSlice';
 import partnerRequestsReducer from './partnerRequestsSlice/partnerRequestsReducer';
 // import createSagaMiddleware from 'redux-saga';
 
@@ -21,6 +22,7 @@ const store = configureStore({
     searchRequests: searchRequestsReducer,
     favoritesRequests: favoritesRequestsReducer,
     request: requestReducer,
+    comments: commentsReducer,
     partnerRequests: partnerRequestsReducer,
   },
 

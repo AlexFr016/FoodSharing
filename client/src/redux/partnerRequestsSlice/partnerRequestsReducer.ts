@@ -12,22 +12,60 @@ const partnersRequestsSlice = createSlice({
   name: 'requests',
   initialState,
   reducers: {
-    setRequests: (state, action: PayloadAction<PartnerRequests>) => action.payload,
+    setActiveRequests: (state, action: PayloadAction<PartnerRequest[]>) => {
+      state.partnerRequests = action.payload;
+    },
+    setUnactiveRequests: (state, action: PayloadAction<PartnerRequest[]>) => {
+      state.partnerRequests = action.payload;
+    },
     addPartnerRequest: (state, action: PayloadAction<PartnerRequest>) => {
       state.partnerRequests.unshift(action.payload);
     },
     delPartnerRequest: (state, action: PayloadAction<PartnerRequest['id']>) => {
       state.partnerRequests.filter((request) => request.id !== action.payload);
     },
+    updateStatusRequest: (state, action: PayloadAction<PartnerRequest['statusid']>) => {
+      state.partnerRequests.map((request): number => {
+        if (request.statusid !== action.payload) {
+          request.statusid = action.payload;
+        }
+        return request.statusid;
+      });
+    },
   },
 });
 
-export const { setRequests } = partnersRequestsSlice.actions;
+export const { setActiveRequests, setUnactiveRequests, delPartnerRequest } =
+  partnersRequestsSlice.actions;
 
 export default partnersRequestsSlice.reducer;
 
-export const getPartnerRequests = (): AppThunk => (dispatch) => {
-  axios<PartnerRequests>('/api/requests')
-    .then((res) => dispatch(setRequests(res.data)))
+export const getActivePartnerRequests = (): AppThunk => (dispatch) => {
+  axios<PartnerRequest[]>('/api/requests/actives')
+    .then((res) => dispatch(setActiveRequests(res.data)))
     .catch(console.log);
 };
+
+export const getUnactivePartnerRequests = (): AppThunk => (dispatch) => {
+  axios<PartnerRequest[]>('/api/requests/unactives')
+    .then((res) => dispatch(setUnactiveRequests(res.data)))
+    .catch(console.log);
+};
+
+export const deletePartnerRequest =
+  (id: number): AppThunk =>
+  (dispatch) => {
+    axios
+      .delete<PartnerRequest>(`/api/requests/${id}`)
+      .then((res) => dispatch(delPartnerRequest(res.data.id)))
+      .catch(console.log);
+  };
+
+export const updatePartnerStatusRequest =
+  (id: number, status: number): AppThunk =>
+  (dispatch) => {
+    axios
+      .put<PartnerRequest>(`/api/requests/${id}`, { statusid: status })
+      .then((res) => dispatch(delPartnerRequest(res.data.statusid)))
+      .catch(console.log);
+  };
