@@ -24,19 +24,19 @@ export default function OnePersonProfileCard({ partner }: PartnerPropsType): JSX
         borderRadius: 10,
         boxShadow: 10,
         
-        bgcolor: '#DCDCDC',
+        bgcolor: 'rgba(220, 220, 220, 0.68)',
         height: 515,
         marginX: 3,
         mt: 8,
       }}
     >
       <CardMedia
-        sx={{ height: 250, objectFit: 'cover',  }}
+        sx={{ height: 250, objectFit: 'contain',  }}
         component="img"
         alt="partner photo"
-        image="https://virtus-img.cdnvideo.ru/images/as-is/plain/15/150f5599-d4d4-473f-9000-ca6d1a9491c5.jpg@jpg"
+        image={partner.pathPhoto}
       />
-      <CardContent sx={{ textAlign: 'center', fontFamily: 'monospace', mt: 2, opacity: 0.68, }}>
+      <CardContent sx={{ textAlign: 'center', fontFamily: 'monospace', mt: 2, bgcolor: 'rgba(220, 220, 220, 0.68)'}}>
         <Typography gutterBottom variant="h5" component="div">
           {partner.companyName}
         </Typography>

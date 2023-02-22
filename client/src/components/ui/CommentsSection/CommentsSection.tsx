@@ -12,7 +12,7 @@ import CommentCard from '../CommentCard/CommentCard';
 export default function CommentsSection(): JSX.Element {
   const { id } = useParams();
   const commetns = useAppSelector((store) => store.comments);
-  const [dynamicComentsState, setDynamicComentsState] = useState(false)
+  const [dynamicComentsState, setDynamicComentsState] = useState(false);
   const user = useAppSelector((store) => store.user);
   // let userId;
   // if (user.status === 'logged') {
@@ -32,14 +32,25 @@ export default function CommentsSection(): JSX.Element {
   const submitHandler = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     dispatch(addOneComment(id, inputData));
-    setDynamicComentsState((prev) => !prev)
+    setDynamicComentsState((prev) => !prev);
     // console.log(id, inputData);
   };
   return (
     <>
-      <Box onSubmit={(e) => submitHandler(e)} component="form">
-        <TextField style={{ background: '#fafafa' }} type='text' onChange={inputChangeHandler} value={inputData.body} name="body" />
-        <Button type="submit" >Отправить отзыв</Button>
+      <Box onSubmit={(e) => submitHandler(e)} component="form" style={{display: 'flex', flexDirection: 'row', borderTopRightRadius: '10px', borderBottomRightRadius: '10px'}}>
+        <TextField
+          style={{ background: '#fafafa', width: '24rem', height: '3rem' }}
+          sx={{ borderTopLeftRadius: 10, borderBotomLeftRadius: 10 }}
+          type="text"
+          onChange={inputChangeHandler}
+          value={inputData.body}
+          name="body"
+          variant="standard"
+          InputProps={{
+            disableUnderline: true,
+          }}
+        />
+        <Button style={{backgroundColor: '#f9bf3b', height: '3rem', borderRadius: '10px'}} variant="contained" type="submit">Отправить отзыв</Button>
       </Box>
       {commetns.comments.map((comment) => (
         <CommentCard key={comment.id} comment={comment} />
