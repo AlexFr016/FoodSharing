@@ -48,8 +48,13 @@ export default function OneFavoriteRequestCard({
           alt="random"
         />
         <CardContent sx={{ flexGrow: 1 }}>
-          <Typography gutterBottom variant="h5" component="h2">
+          {/* <Typography gutterBottom variant="h5" component="h2">
             {request.title}
+          </Typography> */}
+          {request.statusid === 3 && <Typography> Заявка закрыта </Typography>}
+          <Typography>
+            {' '}
+            от: <Link to={`/partners/${request.partnerid}`}>{request.User?.companyName}</Link>
           </Typography>
           <Typography>{request.User?.companyName}</Typography>
           <Typography>{request.description}</Typography>
