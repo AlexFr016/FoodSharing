@@ -6,47 +6,75 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormHelperText from '@mui/material/FormHelperText';
 import Checkbox from '@mui/material/Checkbox';
+import { check } from 'prettier';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 
 type CheckBoxesProps = {
   partners: string[];
 };
 
+type Partner = {
+  [index: string]: boolean;
+};
+
 export default function CheckboxesGroup({ partners }: CheckBoxesProps): JSX.Element {
-  const [state, setState] = React.useState({
-    gilad: true,
-    jason: false,
-    antoine: false,
-  });
+  const [state, setState] = React.useState({});
+  // const [checkedPartners, setCheckedPartners] = React.useState([]);
+  const dispatch = useAppDispatch();
+  const requests = useAppSelector((store) => store.searchRequests.searchRequests);
+
+  const initialPartners = (): void => {
+    const obj: Partner = {};
+    partners.forEach((partner) => {
+      obj[partner] = false;
+    });
+    setState(obj);
+  };
+
+  React.useEffect(() => {
+    initialPartners();
+  }, [partners]);
+
+
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setState({
       ...state,
       [event.target.name]: event.target.checked,
     });
-  };
+    const arr = (Object.keys(state) as (keyof typeof state)[]).filter((key, index) => state[key]);
 
-  const { gilad, jason, antoine } = state;
-  // const error = [gilad, jason, antoine].filter((v) => v).length !== 2;
+    const checkedArr = event.target.checked
+      ? [...arr, event.target.name]
+      : arr.filter((el) => el !== event.target.name);
+
+    const ids = requests.map((el) => el.id);
+
+    dispatch({
+      type: 'SEARCH_REQUESTS_ON_PRODUCT_NAME',
+      payload: `${ids.toString()}|${checkedArr.toString()}`,
+    });
+  };
 
   return (
     <Box sx={{ display: 'flex' }}>
-      <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
-        <FormLabel component="legend">Assign responsibility</FormLabel>
+      <FormControl component="fieldset" variant="standard">
         <FormGroup>
-          <FormControlLabel
-            control={<Checkbox checked={gilad} onChange={handleChange} name="gilad" />}
-            label="Gilad Gray"
-          />
-          <FormControlLabel
-            control={<Checkbox checked={jason} onChange={handleChange} name="jason" />}
-            label="Jason Killian"
-          />
-          <FormControlLabel
-            control={<Checkbox checked={antoine} onChange={handleChange} name="antoine" />}
-            label="Antoine Llorca"
-          />
+          {(Object.keys(state) as (keyof typeof state)[]).map((key, index) => (
+            <FormControlLabel
+              key={key}
+              control={
+                <Checkbox
+                  sx={{ '& .MuiSvgIcon-root': { fontSize: 32 } }}
+                  checked={state[key]}
+                  onChange={handleChange}
+                  name={key}
+                />
+              }
+              label={key}
+            />
+          ))}
         </FormGroup>
-        <FormHelperText>Be careful</FormHelperText>
       </FormControl>
     </Box>
   );

@@ -110,6 +110,11 @@ module.exports = {
           photoPath:
             'https://avatars.mds.yandex.net/i?id=15fbc5c393059d0887944886d01bde2d31f0f73b-8209530-images-thumbs&n=13&exp=1',
         },
+        {
+          title: 'Салаты и закуски',
+          photoPath:
+            'https://avatars.mds.yandex.net/i?id=15fbc5c393059d0887944886d01bde2d31f0f73b-8209530-images-thumbs&n=13&exp=1',
+        },
       ],
       {},
     );
