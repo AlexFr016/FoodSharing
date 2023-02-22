@@ -15,7 +15,8 @@ export default function OneProfileCard(): JSX.Element {
         maxWidth: 400,
         borderRadius: 10,
         boxShadow: 10,
-        bgcolor: '#fff',
+        bgcolor: '#DCDCDC',
+        
         height: 515,
         marginX: 3,
       }}
@@ -26,7 +27,7 @@ export default function OneProfileCard(): JSX.Element {
         alt="partner photo"
         image="https://virtus-img.cdnvideo.ru/images/as-is/plain/15/150f5599-d4d4-473f-9000-ca6d1a9491c5.jpg@jpg"
       />
-      <CardContent sx={{ textAlign: 'center', fontFamily: 'monospace' }}>
+      <CardContent sx={{ textAlign: 'center', fontFamily: 'monospace', opacity: 0.68 }}>
         <Typography gutterBottom variant="h5" component="div">
           {[partner.firstName, ' ', partner.secondName, ' ', partner.lastName]}
         </Typography>

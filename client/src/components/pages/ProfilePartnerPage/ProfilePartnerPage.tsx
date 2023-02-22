@@ -19,7 +19,7 @@ export default function ProfilePartnerPage(): JSX.Element {
       >
         <OneProfileCard />
         <Grid>
-          <OneStatisticCard />
+          {/* <OneStatisticCard /> */}
           <AboutPartnerProfileCard />
         </Grid>
       </Grid>
