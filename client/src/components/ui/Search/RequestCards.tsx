@@ -44,7 +44,7 @@ export default function RequestCards({ request }: RequestCardsProps): JSX.Elemen
           component="img"
           sx={{
             // 16:9
-            pt: '6.25%',
+            pt: '4.25%',
           }}
           image="https://avatars.mds.yandex.net/i?id=54b9b5936d827c669e972d6fc8a7d1d0-5498032-images-thumbs&n=13&exp=1"
           alt="random"

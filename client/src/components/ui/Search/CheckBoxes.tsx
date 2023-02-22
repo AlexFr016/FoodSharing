@@ -12,6 +12,7 @@ export default function CheckBoxes({ partners }: CheckBoxesProps): JSX.Element {
     <FormGroup>
       {partners.map((partner) => (
         <FormControlLabel
+          style={{ background: '#fafafa', opacity: 0.7, marginLeft: '3px' }}
           key={partner}
           control={<Checkbox sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }} />}
           label={partner}
