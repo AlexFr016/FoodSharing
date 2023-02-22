@@ -48,7 +48,6 @@ export default function NavigationBar(): JSX.Element {
 
   const user = useAppSelector((store) => store.user);
   const dispatch = useAppDispatch();
-  console.log(user);
   return (
     <AppBar position="static" sx={{ bgcolor: '#DCDCDC', opacity: 0.68 }}>
       <Container maxWidth="xl">
