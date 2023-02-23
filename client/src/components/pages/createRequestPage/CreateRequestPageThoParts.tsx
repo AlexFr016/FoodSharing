@@ -117,7 +117,7 @@ export default function CreateRequestPageThoParts(): JSX.Element {
                     label="Срок действия заявки"
                     type="datetime-local"
                     name="lifeTimeEnd"
-                    defaultValue="2017-05-24T10:30"
+                    defaultValue="2023-02-23T10:30"
                     sx={{ width: 250 }}
                     InputLabelProps={{
                       shrink: true,

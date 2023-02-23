@@ -37,3 +37,6 @@ export const loadOnePartner =
       .then((res) => dispatch(setOnePartner(res.data)))
       .catch(console.log);
   };
+
+
+ 
