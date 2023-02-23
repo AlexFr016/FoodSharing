@@ -11,7 +11,7 @@ export default function CommentCard({ comment }: CommentCardPropsType): JSX.Elem
   const dateParser = (date: string): string => {
     if (date !== null) {
       const dateArr = date.split('T')[0].split('-');
-      return `${dateArr[2]}-ого ${dateArr[1]} ${dateArr[0]} г.`;
+      return `${dateArr[2]} ${dateArr[1]} ${dateArr[0]} г.`;
     }
   };
   return (
@@ -27,7 +27,7 @@ export default function CommentCard({ comment }: CommentCardPropsType): JSX.Elem
     >
       <Avatar style={{ marginLeft: '10px' }} src={comment.pathPhoto} alt="avatar" />
       <Grid style={{ display: 'flex', flexDirection: 'column', marginLeft: '10px' }}>
-        <Typography>
+        <Typography style={{fontWeight: '800'}}>
           {comment.firstName} {comment.lastName} {dateParser(comment.createdAt)}
         </Typography>
         <Typography>{comment.body}</Typography>
