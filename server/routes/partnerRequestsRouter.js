@@ -7,7 +7,7 @@ partnerRequestsRouter.get('/actives', async (req, res) => {
   try {
     console.log('tututuututuut');
     const partnerActRequests = await Request.findAll({
-      where: { partnerid: req.session.user.id, statusid: 1 },
+      where: { partnerid: req.session.user.id, statusid: 2 },
       include: User,
     });
     res.json(partnerActRequests);
