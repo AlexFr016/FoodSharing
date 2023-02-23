@@ -38,10 +38,15 @@ searchRequestRouter
       const { input } = req.body;
 
       const foundRequests = await Request.findAll({
+        where: {
+          statusid: {
+            [Op.ne]: 3,
+          },
+        },
         include: [
           {
             model: User,
-            attributes: ['id', 'companyName'],
+            attributes: ['id', 'companyName', 'titleLogoPath'],
           },
           {
             model: Product,
@@ -112,7 +117,7 @@ searchRequestRouter.route('/filter').post(async (req, res) => {
         include: [
           {
             model: User,
-            attributes: ['id', 'companyName'],
+            attributes: ['id', 'companyName', 'titleLogoPath'],
           },
           {
             model: Product,
@@ -130,7 +135,7 @@ searchRequestRouter.route('/filter').post(async (req, res) => {
         include: [
           {
             model: User,
-            attributes: ['id', 'companyName'],
+            attributes: ['id', 'companyName', 'titleLogoPath'],
           },
           {
             model: Product,
@@ -176,7 +181,7 @@ searchRequestRouter.route('/filter-partners').post(async (req, res) => {
       include: [
         {
           model: User,
-          attributes: ['id', 'companyName'],
+          attributes: ['id', 'companyName', 'titleLogoPath'],
           where: {
             companyName: {
               [Op.in]: partners,

@@ -9,7 +9,7 @@ const initialState: BackendRequestWithUserType = {
   title: '',
   lifeTimeStart: null,
   lifeTimeEnd: null,
-  adress: '',
+  address: '',
   contactPhone: 0,
   contactName: '',
   description: '',

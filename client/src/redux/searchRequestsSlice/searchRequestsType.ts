@@ -21,6 +21,7 @@ export type BackendRequestSlice = {
 export type UserCompany = {
   id: number;
   companyName: string;
+  titleLogoPath: string;
 };
 
 export type BackendProductsTitle = {

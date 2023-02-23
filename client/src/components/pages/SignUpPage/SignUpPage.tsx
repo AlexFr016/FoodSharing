@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import type { SelectChangeEvent } from '@mui/material';
 import {
   Box,
   Button,
@@ -9,6 +10,7 @@ import {
   Grid,
   InputLabel,
   MenuItem,
+  OutlinedInput,
   Select,
   TextField,
   ThemeProvider,
@@ -31,6 +33,7 @@ export default function SignUpPage(): JSX.Element {
     pass: '',
     validpass: '',
   });
+  const [role, setRole] = useState('');
   const dispatch = useAppDispatch();
 
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>): void =>
@@ -42,6 +45,12 @@ export default function SignUpPage(): JSX.Element {
 
     e.currentTarget.reset();
   };
+
+  const handleChange = (event: SelectChangeEvent<string>): void => {
+    setRole(event.target.value);
+  };
+
+  const roleArr: string[] = ['пользователь', 'партнер'];
 
   return (
     <Container sx={{ height: '100vh' }} component="main" maxWidth="lg">
@@ -152,6 +161,24 @@ export default function SignUpPage(): JSX.Element {
                 style={{ background: '#fafafa' }}
               />
             </Grid>
+          </Grid>
+          <Grid item xs={5}>
+            <InputLabel id="demo-select-small">Выберете роль</InputLabel>
+            <Select
+              labelId="demo-select-small"
+              id="demo-select-small"
+              value={role}
+              onChange={handleChange}
+              style={{ background: '#fafafa'}}
+              label="Выберете роль"
+              fullWidth
+            >
+              {roleArr.map((item) => (
+                <MenuItem key={item} value={item}>
+                  {item}
+                </MenuItem>
+              ))}
+            </Select>
           </Grid>
           <Grid item xs={5}>
             <Button

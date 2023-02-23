@@ -13,6 +13,13 @@ module.exports = {
     const hashpassElbrusRoma = await bcrypt.hash('7', 10);
     const hashpassAlik = await bcrypt.hash('8', 10);
 
+    const hashpassUser9 = await bcrypt.hash('9', 10);
+    const hashpassUser10 = await bcrypt.hash('10', 10);
+    const hashpassUser11 = await bcrypt.hash('11', 10);
+    const hashpassUser12 = await bcrypt.hash('12', 10);
+    const hashpassUser13 = await bcrypt.hash('13', 10);
+    const hashpassUser14 = await bcrypt.hash('14', 10);
+
     await queryInterface.bulkInsert(
       'Roles',
       [
@@ -231,7 +238,7 @@ module.exports = {
           lastName: 'Эльбрусов',
           secondName: 'Эльбрусович',
           phone: '+79012323456',
-          pathPhoto: 'http://localhost:3000/image/Two.jpeg',
+          pathPhoto: 'https://ca.slack-edge.com/T03HY1ND24T-U04CE42VDAL-0dd00b61a59f-512',
           alternativePhone: '+79013245678',
           companyName: 'Эльбрус shop',
           titleLogoPath: 'https://jigidi-images.s3.amazonaws.com/puzzles/WGGOE19VR05DR4MW.jpg',
@@ -258,15 +265,135 @@ module.exports = {
             'Интернет магазин Алик предлагает к вашему столу свежие фрукты, овощи, ягоды, грибы и зелень недорого в широчайшем ассортименте. Продажа овощей и фруктов в Москве — это основное направление деятельности нашей компании. ',
           roleid: 3,
         },
+
+        {
+          email: '9@9',
+          hashpass: hashpassUser9,
+          firstName: 'Юля',
+          lastName: 'Тарасова',
+          secondName: '',
+          phone: '+7929786345',
+          pathPhoto: 'https://ca.slack-edge.com/T03HY1ND24T-U03J55HG72A-d5497be835c8-512',
+          alternativePhone: '+79013245678',
+          active: false,
+          roleid: 1,
+        },
+        {
+          email: '10@10',
+          hashpass: hashpassUser10,
+          firstName: 'Мария',
+          lastName: 'Поплавская',
+          secondName: '',
+          phone: '+7929786345',
+          pathPhoto: 'https://ca.slack-edge.com/T03HY1ND24T-U03JK078RRP-04509aa23e09-512',
+          alternativePhone: '+79013245678',
+          active: false,
+          roleid: 1,
+        },
+        {
+          email: '11@11',
+          hashpass: hashpassUser11,
+          firstName: 'Юлия',
+          lastName: 'Павлова',
+          secondName: '',
+          phone: '+7929786345',
+          pathPhoto: 'https://ca.slack-edge.com/T03HY1ND24T-U046QBRR7AR-53db647f542c-512',
+          alternativePhone: '+79013245678',
+          active: false,
+          roleid: 1,
+        },
+        {
+          email: '12@12',
+          hashpass: hashpassUser12,
+          firstName: 'Адам',
+          lastName: 'Балкоев',
+          secondName: '',
+          phone: '+7929786345',
+          pathPhoto: 'https://ca.slack-edge.com/T03HY1ND24T-U03JR6J9BPS-efe3dbf83bf1-512',
+          alternativePhone: '+79013245678',
+          active: false,
+          roleid: 1,
+        },
+        {
+          email: '13@13',
+          hashpass: hashpassUser13,
+          firstName: 'Соня',
+          lastName: 'Фидлер',
+          secondName: '',
+          phone: '+7929786345',
+          pathPhoto: 'https://ca.slack-edge.com/T03HY1ND24T-U03J3FNUJKE-10ba709047c6-512',
+          alternativePhone: '+79013245678',
+          active: false,
+          roleid: 1,
+        },
+        {
+          email: '14@14',
+          hashpass: hashpassUser14,
+          firstName: 'Андрей',
+          lastName: 'Власенко',
+          secondName: '',
+          phone: '+7929786345',
+          pathPhoto: 'https://ca.slack-edge.com/T03HY1ND24T-U04FD6CPK9N-79064a05167a-512',
+          alternativePhone: '+79013245678',
+          active: false,
+          roleid: 1,
+        },
+      ],
+      {},
+    );
+
+    await queryInterface.bulkInsert(
+      'Comments',
+      [
+        {
+          body: 'вернусь из Германии, заеду к Вам за шампиньонами.',
+          authorid: 9,
+          userid: 7,
+        },
+        {
+          body: 'Проведу вашему персоналу тренинг по командообразованию. Недорого. Тел.: +79013457854',
+          authorid: 10,
+          userid: 7,
+        },
+        {
+          body: 'Кто по вечерам стал забирать мои бананы?!',
+          authorid: 12,
+          userid: 7,
+        },
+        {
+          body: 'Продавец матерился при мне, прошу принять меры!',
+          authorid: 13,
+          userid: 7,
+        },
+        {
+          body: 'Тут продается только алкоголь и сигареты. Мне не подходит!',
+          authorid: 14,
+          userid: 7,
+        },
+        {
+          body: 'Ваш паштет просто топ! Делюсь с соседями)',
+          authorid: 11,
+          userid: 7,
+        },
       ],
       {},
     );
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('Statuses', null, {});
+    await queryInterface.bulkDelete('Comments', null, {});
     await queryInterface.bulkDelete('Users', null, {});
     await queryInterface.bulkDelete('Categories', null, {});
+    await queryInterface.bulkDelete('Statuses', null, {});
     await queryInterface.bulkDelete('Roles', null, {});
   },
 };
+
+// 9 Тарасова
+// 10 Поплавская
+// 11 Павлова
+// 12 Балкоев
+// 13 Фидлер
+// 14 Власенко
+
+// 7  "Эльбрус"

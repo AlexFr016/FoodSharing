@@ -32,7 +32,7 @@ export default function RequestPage(): JSX.Element {
   const dateParser = (date: string): string => {
     if (date !== null) {
       const dateArr = date.split('T')[0].split('-');
-      return `${dateArr[2]}-ого ${dateArr[1]} ${dateArr[0]} г.`;
+      return `${dateArr[2]} ${dateArr[1]} ${dateArr[0]} г.`;
     }
   };
 
@@ -85,15 +85,15 @@ export default function RequestPage(): JSX.Element {
         </Grid>
       </Paper>
       <Box sx={{bgcolor: '#DCDCDC', opacity: 0.68 }}> 
-      <Grid container style={{ display: 'flex', flexDirection: 'column' }}>
-        <Typography variant="h6" color="inherit" paragraph>
+      <Grid container sx={{ml: '10px'}} style={{ display: 'flex', flexDirection: 'column' }}>
+        <Typography sx={{mt: '5px'}} variant="h6" color="inherit"  paragraph>
           Информация о заявке: {request.description}
         </Typography>
         <Typography variant="h6" color="inherit" paragraph>
           {dateParser(request.lifeTimeStart)} - {dateParser(request.lifeTimeEnd)}
         </Typography>
         <Typography variant="h6" color="inherit" paragraph>
-          Адрес: {request.adress}
+          Адрес: {request.address}
         </Typography>
         <Typography variant="h6" color="inherit" paragraph>
           Контактное лицо: {request.contactName}
