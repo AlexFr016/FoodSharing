@@ -272,14 +272,18 @@ export default function NavigationBar(): JSX.Element {
             ))} */}
           </Box>
 
-          {user.status === 'logged' ? (
+          {user.status === 'logged' && (
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 3 }} style={{ opacity: 1 }}>
+                <IconButton
+                  onClick={handleOpenUserMenu}
+                  sx={{ p: 3, height: 3 }}
+                  style={{ opacity: 1 }}
+                >
                   <Avatar
                     style={{ backgroundColor: 'black' }}
                     alt="Remy Sharp"
-                    src="/static/images/avatar/2.jpg"
+                    src={user.pathPhoto}
                   />
                 </IconButton>
               </Tooltip>
@@ -353,18 +357,6 @@ export default function NavigationBar(): JSX.Element {
                ))} */}
               </Menu>
             </Box>
-          ) : (
-            <Typography
-              sx={{
-                my: 2,
-                color: 'black',
-                display: 'block',
-                fontStyle: 'border',
-                textAlign: 'center',
-              }}
-            >
-              Гость
-            </Typography>
           )}
         </Toolbar>
       </Container>

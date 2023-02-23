@@ -13,10 +13,9 @@ export default function OneProfileCard(): JSX.Element {
     <Card
       sx={{
         maxWidth: 400,
-        borderRadius: 10,
+        borderRadius: 6,
         boxShadow: 10,
         bgcolor: 'rgba(220, 220, 220, 0.68)',
-        
         height: 515,
         marginX: 3,
       }}

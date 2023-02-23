@@ -61,7 +61,7 @@ export default function OnePersonCard(): JSX.Element {
         alt="partner photo"
         image={user.status === 'logged' && user.pathPhoto}
       />
-      <CardContent sx={{ textAlign: 'center', fontFamily: 'monospace' }}>
+      <CardContent sx={{ textAlign: 'center', fontFamily: 'monospace', mt: 2 }}>
         {!edit && user.status === 'logged' ? (
           <>
             <Typography gutterBottom variant="h5" component="div">
