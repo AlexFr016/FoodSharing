@@ -238,7 +238,7 @@ module.exports = {
           lastName: 'Эльбрусов',
           secondName: 'Эльбрусович',
           phone: '+79012323456',
-          pathPhoto: 'http://localhost:3000/image/Two.jpeg',
+          pathPhoto: 'https://ca.slack-edge.com/T03HY1ND24T-U04CE42VDAL-0dd00b61a59f-512',
           alternativePhone: '+79013245678',
           companyName: 'Эльбрус shop',
           titleLogoPath: 'https://jigidi-images.s3.amazonaws.com/puzzles/WGGOE19VR05DR4MW.jpg',
