@@ -11,6 +11,7 @@
     "@mui/material-next": "^6.0.0-alpha.75",
     "@mui/styled-engine-sc": "^5.11.0",
     "@mui/x-date-pickers": "^5.0.19",
+    "@pbe/react-yandex-maps": "^1.2.2",
     "@reduxjs/toolkit": "^1.9.2",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

@@ -243,33 +243,6 @@ export default function NavigationBar(): JSX.Element {
             >
               Контакты
             </Button>
-            <Button
-              component={Link}
-              to="/map"
-              color="inherit"
-              sx={{
-                my: 2,
-                color: 'black',
-                display: 'block',
-                fontStyle: 'border',
-              }}
-            >
-              Карта
-            </Button>
-            {/* {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{
-                  my: 2,
-                  color: 'black',
-                  display: 'block',
-                  fontStyle: 'border',
-                }}
-              >
-                {page}
-              </Button>
-            ))} */}
           </Box>
 
           {user.status === 'logged' ? (

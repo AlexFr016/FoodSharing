@@ -26,3 +26,6 @@ export const loadPartners = (): AppThunk => (dispatch) => {
     .then((res) => dispatch(setPartners(res.data)))
     .catch(console.log);
 };
+
+
+

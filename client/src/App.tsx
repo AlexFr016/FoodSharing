@@ -19,7 +19,6 @@ import { getFavoritesRequestsApi } from './redux/favoritesRequestsSlice/favorite
 import RequestPage from './components/pages/RequestPage/RequestPage';
 import CreateRequestPageThoParts from './components/pages/createRequestPage/CreateRequestPageThoParts';
 import ContactPage from './components/ui/ContactPage/ContactPage';
-import MapRequestPage from './components/pages/MapRequestPage/MapRequestPage';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -42,7 +41,6 @@ function App(): JSX.Element {
             <Route path="/partners" element={<PartnersPage />} />
             <Route path="/partners/:id" element={<ProfilePartnerPage />} />
             <Route path="/contacts" element={<ContactPage />} />
-            <Route path="/map" element={<MapRequestPage />} />
 
             <Route
               element={
