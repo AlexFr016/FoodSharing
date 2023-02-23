@@ -43,7 +43,7 @@ export default function OnePartnerPersonRequestCard({
         </Typography>
       </CardContent>
       <CardActions sx={{ justifyContent: 'center', mb: 3 }}>
-        {partnerRequest.statusid === 1 ? (
+        {partnerRequest.statusid === 2 ? (
           <Button
             size="small"
             sx={{ bgcolor: '#F68B02', color: '#fff' }}
@@ -60,7 +60,7 @@ export default function OnePartnerPersonRequestCard({
             sx={{ bgcolor: '#F68B02', color: '#fff' }}
             onClick={() => {
               setRender(render + 1);
-              dispatch(updatePartnerStatusRequest(partnerRequest.id, 1));
+              dispatch(updatePartnerStatusRequest(partnerRequest.id, 2));
             }}
           >
             Восстановить
