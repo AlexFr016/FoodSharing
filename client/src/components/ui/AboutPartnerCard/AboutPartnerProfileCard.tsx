@@ -17,7 +17,7 @@ export default function AboutPartnerProfileCard(): JSX.Element {
         overflowY: 'scroll',
         bgcolor: '#DCDCDC',
         opacity: 0.68,
-        borderRadius: 10,
+        borderRadius: 6,
         boxShadow: 10,
         padding: 3,
         marginX: 3,

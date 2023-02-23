@@ -20,10 +20,9 @@ export default function OnePersonProfileCard({ partner }: PartnerPropsType): JSX
   return (
     <Card
       sx={{
-        maxWidth: 320,
-        borderRadius: 10,
+        width: 320,
+        borderRadius: 6,
         boxShadow: 10,
-        
         bgcolor: 'rgba(220, 220, 220, 0.68)',
         height: 515,
         marginX: 3,
@@ -31,12 +30,18 @@ export default function OnePersonProfileCard({ partner }: PartnerPropsType): JSX
       }}
     >
       <CardMedia
-        sx={{ height: 250, objectFit: 'contain',  }}
+        sx={{ height: 250, objectFit: 'contain' }}
         component="img"
         alt="partner photo"
         image={partner.pathPhoto}
       />
-      <CardContent sx={{ textAlign: 'center', fontFamily: 'monospace', mt: 2, bgcolor: 'rgba(220, 220, 220, 0.68)'}}>
+      <CardContent
+        sx={{
+          textAlign: 'center',
+          fontFamily: 'monospace',
+          mt: 2,
+        }}
+      >
         <Typography gutterBottom variant="h5" component="div">
           {partner.companyName}
         </Typography>
@@ -50,7 +55,7 @@ export default function OnePersonProfileCard({ partner }: PartnerPropsType): JSX
           <Button
             variant="contained"
             size="medium"
-            sx={{ bgcolor: '#F8C621' }}
+            sx={{ bgcolor: '#F68B02' }}
             onClick={() => {
               dispatch(loadOnePartner(partner.id));
               navigate(`/partners/${partner.id}`);

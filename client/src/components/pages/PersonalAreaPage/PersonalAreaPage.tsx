@@ -7,7 +7,7 @@ import {
   getUnactivePartnerRequests,
 } from '../../../redux/partnerRequestsSlice/partnerRequestsReducer';
 import AboutPartnerCard from '../../ui/AboutPartnerCard/AboutPartnerCard';
-import OneFavoriteCard from '../../ui/OneFavoriteCard/OneFavoriteCard';
+// import OneFavoriteCard from '../../ui/OneFavoriteCard/OneFavoriteCard';
 import OnePersonCard from '../../ui/OnePersonCard/OnePersonCard';
 import OnePartnerPersonRequestCard from '../../ui/OneRequestCard/OnePartnerPersonRequestCard';
 
@@ -17,7 +17,7 @@ export default function PersonalAreaPage(): JSX.Element {
   const dispatch = useAppDispatch();
   const [activeL, setActiveL] = useState(true);
   const [activeR, setActiveR] = useState(false);
-  const [render, setRender] = useState(1);
+  const [render, setRender] = useState(0);
 
   useEffect(() => {
     if (activeL) dispatch(getActivePartnerRequests());
@@ -106,7 +106,7 @@ export default function PersonalAreaPage(): JSX.Element {
         </>
       )}
 
-      {user.status === 'logged' && user.roleid === 1 && (
+      {/* {user.status === 'logged' && user.roleid === 1 && (
         <>
           <Grid
             sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: 30 }}
@@ -120,7 +120,7 @@ export default function PersonalAreaPage(): JSX.Element {
             <OneFavoriteCard />
           </Grid>
         </>
-      )}
+      )} */}
     </Container>
   );
 }
