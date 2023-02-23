@@ -9,7 +9,7 @@ commentsRouter.get('/:id', async (req, res) => {
     const comments = await User.findAll({
       where: { id },
       include: 'UserComments',
-    });
+      });
     const prettyComments = JSON.parse(JSON.stringify(comments[0]));
     const commentsArr = prettyComments.UserComments;
     const authorIdArr = prettyComments.UserComments.map((el) => el.authorid);
@@ -26,8 +26,8 @@ commentsRouter.get('/:id', async (req, res) => {
       });
     }
     // console.log(normalDataArr);
-    // const readableDataArr = normalDataArr.reverse()
-    res.json(normalDataArr);
+    const readableDataArr = normalDataArr.reverse()
+    res.json(readableDataArr);
   } catch (error) {
     console.log(error);
     res.sendStatus(500);

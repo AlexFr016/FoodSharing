@@ -15,7 +15,7 @@ export type BackendRequestWithUserType = {
   title: string;
   lifeTimeStart?: string;
   lifeTimeEnd: string;
-  adress: string;
+  address: string;
   contactPhone: number;
   contactName: string;
   description: string;
