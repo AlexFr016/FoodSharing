@@ -36,7 +36,7 @@ export default function RequestCards({ request }: RequestCardsProps): JSX.Elemen
   const user = useAppSelector((store) => store.user);
 
   const isFav = favRequests.find((favR) => favR.id === request.id);
-
+  // https://avatars.mds.yandex.net/i?id=54b9b5936d827c669e972d6fc8a7d1d0-5498032-images-thumbs&n=13&exp=1
   return (
     <Grid item xs={12} sm={6} md={4}>
       <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
@@ -46,7 +46,7 @@ export default function RequestCards({ request }: RequestCardsProps): JSX.Elemen
             // 16:9
             pt: '4.25%',
           }}
-          image="https://avatars.mds.yandex.net/i?id=54b9b5936d827c669e972d6fc8a7d1d0-5498032-images-thumbs&n=13&exp=1"
+          image={request?.User?.titleLogoPath}
           alt="random"
         />
         <CardContent sx={{ flexGrow: 1 }}>
