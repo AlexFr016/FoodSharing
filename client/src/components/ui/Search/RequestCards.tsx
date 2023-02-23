@@ -39,17 +39,26 @@ export default function RequestCards({ request }: RequestCardsProps): JSX.Elemen
   // https://avatars.mds.yandex.net/i?id=54b9b5936d827c669e972d6fc8a7d1d0-5498032-images-thumbs&n=13&exp=1
   return (
     <Grid item xs={12} sm={6} md={4}>
-      <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+      <Card
+        sx={{
+          height: '450px',
+          display: 'flex',
+          flexDirection: 'column',
+          bgcolor: 'rgba(220, 220, 220, 0.68)',
+          borderRadius: 6,
+        }}
+      >
         <CardMedia
           component="img"
           sx={{
             // 16:9
             pt: '4.25%',
+            height: '150px',
           }}
           image={request?.User?.titleLogoPath}
           alt="random"
         />
-        <CardContent sx={{ flexGrow: 1 }}>
+        <CardContent sx={{ flexGrow: 1, overflowY: 'scroll' }}>
           <Typography gutterBottom variant="h5" component="h2">
             {request.title}
           </Typography>
