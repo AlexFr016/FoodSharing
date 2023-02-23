@@ -79,7 +79,11 @@ export const loginHandler =
 
 export const checkAuth = (): AppThunk => (dispatch) => {
   axios<BackendUserType>('/api/user/check')
-    .then((res) => dispatch(setUser({ ...res.data, status: 'logged' })))
+    .then((res) => {
+      if (res.status === 200) {
+        dispatch(setUser({ ...res.data, status: 'logged' }));
+      }
+    })
     .catch(() => {
       dispatch(setUser({ status: 'empty' }));
     });

@@ -19,6 +19,7 @@ module.exports = {
     const hashpassUser12 = await bcrypt.hash('12', 10);
     const hashpassUser13 = await bcrypt.hash('13', 10);
     const hashpassUser14 = await bcrypt.hash('14', 10);
+    const hashpassVictoria = await bcrypt.hash('15', 10);
 
     await queryInterface.bulkInsert(
       'Roles',
@@ -338,6 +339,24 @@ module.exports = {
           active: false,
           roleid: 1,
         },
+        {
+          email: 'victoria.shop@gmail.com',
+          hashpass: hashpassVictoria,
+          firstName: 'Андрей',
+          lastName: 'Соколов',
+          secondName: 'Артёмович',
+          phone: '+79012323456',
+          pathPhoto:
+            'https://avatars.mds.yandex.net/i?id=fd2c919c92496dc745b30c9a75c2dc5f6a7eba05-4298842-images-thumbs&n=13',
+          alternativePhone: '+79014565678',
+          companyName: 'Виктория',
+          titleLogoPath:
+            'https://img-fotki.yandex.ru/get/5902/vkrasnoznamenske-ru.1/0_591f4_89a0ddbc_orig.jpg',
+          active: true,
+          description:
+            'Каждый день радовать наших покупателей отличным сервисом и по-настоящему вкусными и действительно свежими продуктами по справедливой цене.',
+          roleid: 3,
+        },
       ],
       {},
     );
@@ -346,8 +365,13 @@ module.exports = {
       'Comments',
       [
         {
-          body: 'вернусь из Германии, заеду к Вам за шампиньонами.',
-          authorid: 9,
+          body: 'Тут продается только алкоголь и сигареты. Мне не подходит!',
+          authorid: 14,
+          userid: 7,
+        },
+        {
+          body: 'Ваш паштет просто топ! Делюсь с соседями)',
+          authorid: 11,
           userid: 7,
         },
         {
@@ -366,13 +390,8 @@ module.exports = {
           userid: 7,
         },
         {
-          body: 'Тут продается только алкоголь и сигареты. Мне не подходит!',
-          authorid: 14,
-          userid: 7,
-        },
-        {
-          body: 'Ваш паштет просто топ! Делюсь с соседями)',
-          authorid: 11,
+          body: 'вернусь из Германии, заеду к Вам за шампиньонами.',
+          authorid: 9,
           userid: 7,
         },
       ],
