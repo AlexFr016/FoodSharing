@@ -38,6 +38,11 @@ searchRequestRouter
       const { input } = req.body;
 
       const foundRequests = await Request.findAll({
+        where: {
+          statusid: {
+            [Op.ne]: 3,
+          },
+        },
         include: [
           {
             model: User,
