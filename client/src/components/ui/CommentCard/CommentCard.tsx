@@ -16,7 +16,7 @@ export default function CommentCard({ comment }: CommentCardPropsType): JSX.Elem
   };
   return (
     <Card
-      sx={{ bgcolor: '#DCDCDC', opacity: 0.68, borderRadius: 10 }}
+      sx={{ bgcolor: '#DCDCDC', opacity: 0.88, borderRadius: 10 }}
       style={{
         display: 'flex',
         flexDirection: 'row',
@@ -27,7 +27,7 @@ export default function CommentCard({ comment }: CommentCardPropsType): JSX.Elem
     >
       <Avatar style={{ marginLeft: '10px' }} src={comment.pathPhoto} alt="avatar" />
       <Grid style={{ display: 'flex', flexDirection: 'column', marginLeft: '10px' }}>
-        <Typography style={{fontWeight: '800'}}>
+        <Typography style={{ fontWeight: '800' }}>
           {comment.firstName} {comment.lastName} {dateParser(comment.createdAt)}
         </Typography>
         <Typography>{comment.body}</Typography>
